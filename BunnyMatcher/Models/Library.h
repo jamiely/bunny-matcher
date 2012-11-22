@@ -11,6 +11,8 @@
 
 @interface Library : NSObject
 
+- (void) loadDefaultTopics;
+
 @property (nonatomic, strong) NSArray* topics;
 
 + (Library*) sharedInstance;
