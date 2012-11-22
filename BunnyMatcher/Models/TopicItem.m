@@ -17,4 +17,16 @@
     }
     return self;
 }
++ (id) itemWithName: (NSString*) aName {
+    return [[TopicItem alloc] initWithName: aName];
+}
++ (NSArray*) itemsWithNames: (NSArray*) aNames {
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity: aNames.count];
+    
+    for (NSString* name in aNames) {
+        [items addObject: [TopicItem itemWithName: name]];
+    }
+    
+    return items;
+}
 @end

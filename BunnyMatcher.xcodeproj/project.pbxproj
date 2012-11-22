@@ -27,6 +27,10 @@
 		6DACD524165E9A0700C06503 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD523165E9A0700C06503 /* Topic.m */; };
 		6DACD527165E9A3F00C06503 /* TopicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD526165E9A3F00C06503 /* TopicItem.m */; };
 		6DACD52A165E9A5800C06503 /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD529165E9A5800C06503 /* Library.m */; };
+		6DACD52D165E9D1000C06503 /* Scrambler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD52C165E9D1000C06503 /* Scrambler.m */; };
+		6DACD530165EA1CF00C06503 /* TopicCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD52F165EA1CF00C06503 /* TopicCollection.m */; };
+		6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */; };
+		6DACD537165ED1EE00C06503 /* ScramblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD536165ED1EE00C06503 /* ScramblerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,14 @@
 		6DACD526165E9A3F00C06503 /* TopicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicItem.m; path = Models/TopicItem.m; sourceTree = "<group>"; };
 		6DACD528165E9A5800C06503 /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Library.h; path = Models/Library.h; sourceTree = "<group>"; };
 		6DACD529165E9A5800C06503 /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Library.m; path = Models/Library.m; sourceTree = "<group>"; };
+		6DACD52B165E9D1000C06503 /* Scrambler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scrambler.h; path = Models/Scrambler.h; sourceTree = "<group>"; };
+		6DACD52C165E9D1000C06503 /* Scrambler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Scrambler.m; path = Models/Scrambler.m; sourceTree = "<group>"; };
+		6DACD52E165EA1CF00C06503 /* TopicCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicCollection.h; path = Models/TopicCollection.h; sourceTree = "<group>"; };
+		6DACD52F165EA1CF00C06503 /* TopicCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicCollection.m; path = Models/TopicCollection.m; sourceTree = "<group>"; };
+		6DACD532165EA61B00C06503 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+Shuffling.h"; path = "Categories/NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
+		6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Shuffling.m"; path = "Categories/NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		6DACD535165ED1EE00C06503 /* ScramblerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScramblerTests.h; sourceTree = "<group>"; };
+		6DACD536165ED1EE00C06503 /* ScramblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScramblerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +141,7 @@
 		6DACD4E1165E8D7700C06503 /* BunnyMatcher */ = {
 			isa = PBXGroup;
 			children = (
+				6DACD531165EA5D300C06503 /* Categories */,
 				6DACD521165E99D300C06503 /* Models */,
 				6DACD51D165E97C600C06503 /* Views */,
 				6DACD519165E924400C06503 /* Controllers */,
@@ -160,6 +173,8 @@
 				6DACD505165E8D7800C06503 /* BunnyMatcherTests.h */,
 				6DACD506165E8D7800C06503 /* BunnyMatcherTests.m */,
 				6DACD500165E8D7800C06503 /* Supporting Files */,
+				6DACD535165ED1EE00C06503 /* ScramblerTests.h */,
+				6DACD536165ED1EE00C06503 /* ScramblerTests.m */,
 			);
 			path = BunnyMatcherTests;
 			sourceTree = "<group>";
@@ -208,8 +223,21 @@
 				6DACD526165E9A3F00C06503 /* TopicItem.m */,
 				6DACD528165E9A5800C06503 /* Library.h */,
 				6DACD529165E9A5800C06503 /* Library.m */,
+				6DACD52B165E9D1000C06503 /* Scrambler.h */,
+				6DACD52C165E9D1000C06503 /* Scrambler.m */,
+				6DACD52E165EA1CF00C06503 /* TopicCollection.h */,
+				6DACD52F165EA1CF00C06503 /* TopicCollection.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6DACD531165EA5D300C06503 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6DACD532165EA61B00C06503 /* NSMutableArray+Shuffling.h */,
+				6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +357,9 @@
 				6DACD524165E9A0700C06503 /* Topic.m in Sources */,
 				6DACD527165E9A3F00C06503 /* TopicItem.m in Sources */,
 				6DACD52A165E9A5800C06503 /* Library.m in Sources */,
+				6DACD52D165E9D1000C06503 /* Scrambler.m in Sources */,
+				6DACD530165EA1CF00C06503 /* TopicCollection.m in Sources */,
+				6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DACD507165E8D7800C06503 /* BunnyMatcherTests.m in Sources */,
+				6DACD537165ED1EE00C06503 /* ScramblerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,8 +26,26 @@
     return self;
 }
 
+- (id) initWithName: (NSString*) aName andItems: (NSArray*) aItems {
+    self = [self init];
+    if(self) {
+        self.name = aName;
+        _items = aItems;
+    }
+    return self;
+}
+
 - (NSArray*) items {
     return _items;
+}
+
++ (id) topicWithName: (NSString*) aName andItems: (NSArray*) aItems {
+    return [[Topic alloc] initWithName: aName andItems: aItems];
+}
+
++ (id) topicWithName: (NSString*) aName andItemNames: (NSArray*) aNames {
+    return [Topic topicWithName: aName
+                       andItems: [TopicItem itemsWithNames: aNames]];
 }
 
 @end

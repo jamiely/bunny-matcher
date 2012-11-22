@@ -11,4 +11,6 @@
 @interface TopicItem : NSObject
 - (id) initWithName: (NSString*) aName;
 @property (nonatomic, copy) NSString *name;
++ (id) itemWithName: (NSString*) aName;
++ (NSArray*) itemsWithNames: (NSArray*) aNames;
 @end

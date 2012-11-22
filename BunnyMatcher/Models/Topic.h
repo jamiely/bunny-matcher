@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TopicItem.h"
 
 @interface Topic : NSObject
+- (id) initWithName: (NSString*) aName andItems: (NSArray*) aItems;
 - (NSArray*) items;
++ (id) topicWithName: (NSString*) aName andItems: (NSArray*) aItems;
++ (id) topicWithName: (NSString*) aName andItemNames: (NSArray*) aNames;
 @property (nonatomic, strong) NSString* name;
 @end
