@@ -21,6 +21,8 @@
 		6DACD4FC165E8D7700C06503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DD165E8D7700C06503 /* Foundation.framework */; };
 		6DACD504165E8D7800C06503 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD502165E8D7800C06503 /* InfoPlist.strings */; };
 		6DACD507165E8D7800C06503 /* BunnyMatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD506165E8D7800C06503 /* BunnyMatcherTests.m */; };
+		6DACD518165E8E8500C06503 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD516165E8E8500C06503 /* MainStoryboard_iPad.storyboard */; };
+		6DACD51C165E92B500C06503 /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD51B165E92B500C06503 /* BoardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		6DACD503165E8D7800C06503 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6DACD505165E8D7800C06503 /* BunnyMatcherTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BunnyMatcherTests.h; sourceTree = "<group>"; };
 		6DACD506165E8D7800C06503 /* BunnyMatcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BunnyMatcherTests.m; sourceTree = "<group>"; };
+		6DACD517165E8E8500C06503 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		6DACD51A165E92B500C06503 /* BoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardViewController.h; path = Controllers/BoardViewController.h; sourceTree = "<group>"; };
+		6DACD51B165E92B500C06503 /* BoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardViewController.m; path = Controllers/BoardViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,8 @@
 		6DACD4E1165E8D7700C06503 /* BunnyMatcher */ = {
 			isa = PBXGroup;
 			children = (
+				6DACD519165E924400C06503 /* Controllers */,
+				6DACD510165E8E4A00C06503 /* en.lproj */,
 				6DACD4EA165E8D7700C06503 /* AppDelegate.h */,
 				6DACD4EB165E8D7700C06503 /* AppDelegate.m */,
 				6DACD4E2165E8D7700C06503 /* Supporting Files */,
@@ -150,6 +157,23 @@
 				6DACD502165E8D7800C06503 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DACD510165E8E4A00C06503 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6DACD516165E8E8500C06503 /* MainStoryboard_iPad.storyboard */,
+			);
+			name = en.lproj;
+			sourceTree = "<group>";
+		};
+		6DACD519165E924400C06503 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6DACD51A165E92B500C06503 /* BoardViewController.h */,
+				6DACD51B165E92B500C06503 /* BoardViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +251,7 @@
 				6DACD4EE165E8D7700C06503 /* Default.png in Resources */,
 				6DACD4F0165E8D7700C06503 /* Default@2x.png in Resources */,
 				6DACD4F2165E8D7700C06503 /* Default-568h@2x.png in Resources */,
+				6DACD518165E8E8500C06503 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +288,7 @@
 			files = (
 				6DACD4E8165E8D7700C06503 /* main.m in Sources */,
 				6DACD4EC165E8D7700C06503 /* AppDelegate.m in Sources */,
+				6DACD51C165E92B500C06503 /* BoardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +325,14 @@
 				6DACD503165E8D7800C06503 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6DACD516165E8E8500C06503 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DACD517165E8E8500C06503 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
