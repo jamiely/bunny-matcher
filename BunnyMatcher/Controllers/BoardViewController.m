@@ -7,6 +7,7 @@
 //
 
 #import "BoardViewController.h"
+#import "StandardCollectionCell.h"
 
 @interface BoardViewController ()
 
@@ -45,6 +46,26 @@
 
 - (BOOL)shouldAutorotate {
     return YES;
+}
+
+#pragma mark - UICollectionViewDataSource methods
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    return 25;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    StandardCollectionCell *cell =
+        [aCollectionView dequeueReusableCellWithReuseIdentifier:@"StandardCell"
+                                                   forIndexPath:indexPath];
+    cell.textLabel.text = @"1";
+    return cell;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BoardViewController : UIViewController
+@interface BoardViewController : UIViewController<UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
