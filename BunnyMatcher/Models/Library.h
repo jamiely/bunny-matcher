@@ -12,6 +12,7 @@
 @interface Library : NSObject
 
 - (void) loadDefaultTopics;
+- (Topic*) topicWithName: (NSString*) name;
 
 @property (nonatomic, strong) NSArray* topics;
 

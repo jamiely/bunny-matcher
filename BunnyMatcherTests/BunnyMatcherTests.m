@@ -9,6 +9,7 @@
 #import "BunnyMatcherTests.h"
 #import "Topic.h"
 #import "TopicCollection.h"
+#import "Library.h"
 
 @implementation BunnyMatcherTests
 
@@ -58,6 +59,14 @@
     NSArray *scramble = [collection scrambledItems];
     STAssertTrue([scramble objectAtIndex: 0] != [items objectAtIndex: 0],
                   @"Items do not match");
+}
+
+- (void) testLibrary {
+    Library *library = [[Library alloc] init];
+    [library loadDefaultTopics];
+    
+    STAssertNotNil([library topicWithName: @"fruit"], @"Has fruit topic");
+    STAssertNil([library topicWithName: @"nil"], @"Nil topic doesn't exist");
 }
 
 @end

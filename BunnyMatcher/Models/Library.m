@@ -32,6 +32,13 @@
     self.topics = defaultTopics;
 }
 
+- (Topic*) topicWithName: (NSString*) name {
+    for (Topic *topic in self.topics) {
+        if([topic.name isEqualToString: name]) return topic;
+    }
+    return nil;
+}
+
 + (Library*) sharedInstance {
     static Library *instance;
     static dispatch_once_t onceToken;
