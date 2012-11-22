@@ -65,8 +65,11 @@
     Library *library = [[Library alloc] init];
     [library loadDefaultTopics];
     
-    STAssertNotNil([library topicWithName: @"fruit"], @"Has fruit topic");
+    STAssertNotNil([library topicWithName: LIBRARY_TOPIC_FRUITS], @"Has fruit topic");
     STAssertNil([library topicWithName: @"nil"], @"Nil topic doesn't exist");
+    
+    STAssertTrue([[library topicNames] containsObject: LIBRARY_TOPIC_STATES],
+                 @"Library has topic states");
 }
 
 @end

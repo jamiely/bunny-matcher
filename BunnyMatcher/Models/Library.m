@@ -8,6 +8,10 @@
 
 #import "Library.h"
 
+NSString* LIBRARY_TOPIC_FRUITS = @"fruits";
+NSString* LIBRARY_TOPIC_STATES = @"states";
+NSString* LIBRARY_TOPIC_ANIMALS = @"animals";
+
 @implementation Library
 
 @synthesize topics;
@@ -18,9 +22,9 @@
     NSString *fruit = @"Apple,Apricot,Avocado,Banana,Breadfruit,Blackberry,Blueberry,Cherry,Clementine,Date,Dragonfruit,Durian,Fig,Gooseberry,Grape,Grapefruit,Guava,Huckleberry,Jackfruit,Kiwi,Lemon,Lime,Lychee,Mandarine,Mango,Cantaloupe,Honeydew melon,Watermelon,Nectarine,Orange,Peach,Pear,Plum,Pineapple,Pomegranate,Pomelo,Raspberry,Rambutan,Star fruit,Strawberry,Tangerine,Tomato";
 
     NSDictionary *contentDictionary = @{
-        @"states": states,
-        @"animals": animals,
-        @"fruit": fruit
+        LIBRARY_TOPIC_FRUITS: states,
+        LIBRARY_TOPIC_ANIMALS: animals,
+        LIBRARY_TOPIC_STATES: fruit
     };
     
     NSMutableArray *defaultTopics = [NSMutableArray arrayWithCapacity: [contentDictionary count]];
@@ -37,6 +41,14 @@
         if([topic.name isEqualToString: name]) return topic;
     }
     return nil;
+}
+
+- (NSArray*) topicNames {
+    NSMutableArray *names = [NSMutableArray arrayWithCapacity: self.topics.count];
+    for (Topic *topic in self.topics) {
+        [names addObject: topic.name];
+    }
+    return names;
 }
 
 + (Library*) sharedInstance {
