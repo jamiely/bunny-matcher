@@ -71,7 +71,7 @@ const NSUInteger SCRAMBLER_PREFERRED_NUM_MAIN_TOPIC_ITEMS = 7;
     NSMutableArray *topics = [library.topics mutableCopy];
     [topics removeObject: self.mainTopic];
     [topics removeObjectsInArray: [self allPreferredTopics]];
-    return nil;
+    return topics;
 }
 
 - (NSArray*) atMost: (NSUInteger) count itemsFromTopics: (NSArray*) topics {

@@ -12,6 +12,7 @@
 extern NSString* LIBRARY_TOPIC_FRUITS;
 extern NSString* LIBRARY_TOPIC_STATES;
 extern NSString* LIBRARY_TOPIC_ANIMALS;
+extern NSString* LIBRARY_TOPIC_DESSERTS;
 
 @interface Library : NSObject
 

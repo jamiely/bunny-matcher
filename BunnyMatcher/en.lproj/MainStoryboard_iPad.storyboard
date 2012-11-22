@@ -22,24 +22,24 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Smb-At-bgE">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="384" id="1P4-HI-jeU"/>
-                                    <constraint firstAttribute="height" constant="379" id="RTW-xZ-ZBI"/>
+                                    <constraint firstAttribute="height" constant="484" id="1Nc-dH-QVE"/>
+                                    <constraint firstAttribute="width" constant="865" id="daE-nE-osn"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zmV-co-vc7">
-                                    <size key="itemSize" width="65" height="65"/>
+                                    <size key="itemSize" width="105" height="105"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StandardCell" id="eOf-Q0-PoA" customClass="StandardCollectionCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1p-9n-jgY">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1p-9n-jgY">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,8 +49,10 @@
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.11308918865362783" blue="0.055254602867988667" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="s1p-9n-jgY" firstAttribute="centerX" secondItem="eOf-Q0-PoA" secondAttribute="centerX" type="default" id="5O1-Pg-0nd"/>
-                                            <constraint firstItem="s1p-9n-jgY" firstAttribute="top" secondItem="eOf-Q0-PoA" secondAttribute="top" constant="14" id="xhh-gT-N78"/>
+                                            <constraint firstItem="s1p-9n-jgY" firstAttribute="bottom" secondItem="eOf-Q0-PoA" secondAttribute="bottom" type="default" id="Alu-Az-EaN"/>
+                                            <constraint firstItem="s1p-9n-jgY" firstAttribute="leading" secondItem="eOf-Q0-PoA" secondAttribute="leading" type="default" id="NSG-O9-rTt"/>
+                                            <constraint firstItem="s1p-9n-jgY" firstAttribute="trailing" secondItem="eOf-Q0-PoA" secondAttribute="trailing" type="default" id="kZs-MP-56M"/>
+                                            <constraint firstItem="s1p-9n-jgY" firstAttribute="top" secondItem="eOf-Q0-PoA" secondAttribute="top" type="default" id="z52-dH-vl7"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="textLabel" destination="s1p-9n-jgY" id="eyr-Qf-e5W"/>

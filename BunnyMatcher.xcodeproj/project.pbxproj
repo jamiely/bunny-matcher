@@ -31,6 +31,7 @@
 		6DACD530165EA1CF00C06503 /* TopicCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD52F165EA1CF00C06503 /* TopicCollection.m */; };
 		6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */; };
 		6DACD537165ED1EE00C06503 /* ScramblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD536165ED1EE00C06503 /* ScramblerTests.m */; };
+		6DACD53A165EE91000C06503 /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD539165EE91000C06503 /* Round.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Shuffling.m"; path = "Categories/NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
 		6DACD535165ED1EE00C06503 /* ScramblerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScramblerTests.h; sourceTree = "<group>"; };
 		6DACD536165ED1EE00C06503 /* ScramblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScramblerTests.m; sourceTree = "<group>"; };
+		6DACD538165EE91000C06503 /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Round.h; path = Models/Round.h; sourceTree = "<group>"; };
+		6DACD539165EE91000C06503 /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Round.m; path = Models/Round.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,8 @@
 				6DACD52C165E9D1000C06503 /* Scrambler.m */,
 				6DACD52E165EA1CF00C06503 /* TopicCollection.h */,
 				6DACD52F165EA1CF00C06503 /* TopicCollection.m */,
+				6DACD538165EE91000C06503 /* Round.h */,
+				6DACD539165EE91000C06503 /* Round.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				6DACD52D165E9D1000C06503 /* Scrambler.m in Sources */,
 				6DACD530165EA1CF00C06503 /* TopicCollection.m in Sources */,
 				6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */,
+				6DACD53A165EE91000C06503 /* Round.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

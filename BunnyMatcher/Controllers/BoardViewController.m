@@ -21,9 +21,28 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self initialize];
     }
     return self;
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder: aDecoder];
+    if(self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void) initialize {
+    // later, we'll pass a round pre-built to this controller
+    if(!self.round) {
+        self.round = [[Round alloc] init];
+        self.round.library = [Library sharedInstance];
+        self.round.mainTopic = [self.round.library topicWithName: LIBRARY_TOPIC_STATES];
+        
+        [self.round startRoundWithItemCount: 28];
+    }
 }
 
 #pragma mark - View Controller Delegate Functions
@@ -56,7 +75,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return 25;
+    NSLog(@"count: %d", self.round.topicItemCount);
+    return self.round.topicItemCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView
@@ -64,7 +84,7 @@
     StandardCollectionCell *cell =
         [aCollectionView dequeueReusableCellWithReuseIdentifier:@"StandardCell"
                                                    forIndexPath:indexPath];
-    cell.textLabel.text = @"1";
+    cell.textLabel.text = [[self.round topicItemAtIndex: indexPath.row] name];
     return cell;
 }
 
