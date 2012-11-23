@@ -55,6 +55,7 @@
     [super viewDidLoad];
     
     self.topicLabel.text = [self topic].name;
+    [self loadScore];
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,6 +123,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         hero.frame = newHeroLocation;
     } completion:^(BOOL finished) {
         heroIsMoving = NO;
+        self.round.score += 100;
+        [self loadScore];
     }];
 }
 
@@ -129,6 +132,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (Topic*) topic {
     return self.round.mainTopic;
+}
+
+- (void) loadScore {
+    self.scoreLabel.text = [NSString stringWithFormat: @"%06u", self.round.score];
 }
 
 @end

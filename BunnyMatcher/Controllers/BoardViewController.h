@@ -16,5 +16,5 @@
 @property (nonatomic, strong) Round *round;
 @property (weak, nonatomic) IBOutlet HeroView *heroView;
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @end

@@ -19,12 +19,14 @@
 @implementation Round
 @synthesize mainTopic;
 @synthesize library;
+@synthesize score;
 
 - (id) init {
     self = [super init];
     if(self) {
         _topicItems = @[];
         _spots = @[];
+        self.score = 0;
     }
     return self;
 }
