@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Jamie Ly. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface TopicItem : NSObject
 - (id) initWithName: (NSString*) aName;
 @property (nonatomic, copy) NSString *name;

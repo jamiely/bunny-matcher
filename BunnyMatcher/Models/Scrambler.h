@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Jamie Ly. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Topic.h"
 #import "Library.h"
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Jamie Ly. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface TopicCollection : NSObject
 - (id) initWithTopics: (NSArray*) topics;
 
