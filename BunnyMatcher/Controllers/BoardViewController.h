@@ -11,7 +11,7 @@
 #import "HeroView.h"
 
 @interface BoardViewController : UIViewController<UICollectionViewDataSource,
-    UIGestureRecognizerDelegate>
+    UICollectionViewDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) Round *round;
 @property (weak, nonatomic) IBOutlet HeroView *heroView;

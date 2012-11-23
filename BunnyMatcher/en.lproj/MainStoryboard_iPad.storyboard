@@ -61,6 +61,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="dqQ-kG-hfM" id="fGf-Y3-VQh"/>
+                                    <outlet property="delegate" destination="dqQ-kG-hfM" id="C8W-KM-OFz"/>
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-ww-1yv" customClass="HeroView">
@@ -98,12 +99,10 @@
                     <connections>
                         <outlet property="collectionView" destination="Smb-At-bgE" id="d5O-dP-UEE"/>
                         <outlet property="heroView" destination="q6l-ww-1yv" id="bmj-T8-IvE"/>
-                        <outlet property="tapGestureRecognizer" destination="uKy-Ap-4Tq" id="2U7-vO-A01"/>
                         <outlet property="topicLabel" destination="04Z-zb-DHl" id="bfy-Kq-Odm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8H3-TL-2tK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="uKy-Ap-4Tq"/>
             </objects>
             <point key="canvasLocation" x="-70" y="-498"/>
         </scene>

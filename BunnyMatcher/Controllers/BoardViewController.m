@@ -54,7 +54,6 @@
 {
     [super viewDidLoad];
     
-    [self setupGestureRecognizer];
     self.topicLabel.text = [self topic].name;
 }
 
@@ -93,15 +92,17 @@
     return cell;
 }
 
-#pragma mark - Input functions
-
-- (void) setupGestureRecognizer {
-    [self.tapGestureRecognizer addTarget: self action: @selector(onTap:)];
-    [self.view addGestureRecognizer: self.tapGestureRecognizer];
-}
-
-- (void) onTap:(UIGestureRecognizer *)gestureRecognizer {    
-    [self moveHeroTo: [gestureRecognizer locationInView: self.view]];
+- (void)  collectionView:(UICollectionView *)aCollectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self collectionView: aCollectionView
+                               cellForItemAtIndexPath: indexPath];
+    // calculate the cell center
+    CGPoint destination = cell.frame.origin;
+    destination.x += cell.frame.size.width / 2.f;
+    destination.y += cell.frame.size.height / 2.f;
+    
+    [self moveHeroTo: [self.view convertPoint: destination
+                                     fromView: aCollectionView]];
 }
 
 #pragma mark - Hero functions
