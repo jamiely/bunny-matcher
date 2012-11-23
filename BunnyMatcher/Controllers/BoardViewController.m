@@ -102,13 +102,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     destination.x += cell.frame.size.width / 2.f;
     destination.y += cell.frame.size.height / 2.f;
     
-    [self moveHeroTo: [self.view convertPoint: destination
-                                     fromView: aCollectionView]];
+    [self moveHeroToIndex: indexPath.row
+               atLocation: [self.view convertPoint: destination
+                                          fromView: aCollectionView]];
 }
 
 #pragma mark - Hero functions
 
-- (void) moveHeroTo: (CGPoint) location {
+- (void) moveHeroToIndex: (NSUInteger) index atLocation: (CGPoint) location {
     if(heroIsMoving) return;
     
     CGRect newHeroLocation = self.heroView.frame;
@@ -119,12 +120,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // start the animation
     heroIsMoving = YES;
     __block UIView *hero = self.heroView;
+    __block BoardSpot *spot = [self.round spotAtIndex: index];
     [UIView animateWithDuration:1.f animations:^{
         hero.frame = newHeroLocation;
     } completion:^(BOOL finished) {
         heroIsMoving = NO;
+        spot.consumed = YES;
         self.round.score += 100;
         [self loadScore];
+        [self.collectionView reloadItemsAtIndexPaths:
+         @[[NSIndexPath indexPathForItem:index inSection:0]]];
     }];
 }
 
