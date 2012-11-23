@@ -35,6 +35,7 @@
 		6DACD53D165EF0A200C06503 /* HeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD53C165EF0A200C06503 /* HeroView.m */; };
 		6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD53E1660283900C06503 /* QuartzCore.framework */; };
 		6DACD54216602AE300C06503 /* BoardSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54116602AE300C06503 /* BoardSpot.m */; };
+		6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54416603FCF00C06503 /* TitleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		6DACD53E1660283900C06503 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6DACD54016602AE300C06503 /* BoardSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardSpot.h; path = Models/BoardSpot.h; sourceTree = "<group>"; };
 		6DACD54116602AE300C06503 /* BoardSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSpot.m; path = Models/BoardSpot.m; sourceTree = "<group>"; };
+		6DACD54316603FCF00C06503 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleViewController.h; path = Controllers/TitleViewController.h; sourceTree = "<group>"; };
+		6DACD54416603FCF00C06503 /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleViewController.m; path = Controllers/TitleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +217,8 @@
 			children = (
 				6DACD51A165E92B500C06503 /* BoardViewController.h */,
 				6DACD51B165E92B500C06503 /* BoardViewController.m */,
+				6DACD54316603FCF00C06503 /* TitleViewController.h */,
+				6DACD54416603FCF00C06503 /* TitleViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				6DACD53A165EE91000C06503 /* Round.m in Sources */,
 				6DACD53D165EF0A200C06503 /* HeroView.m in Sources */,
 				6DACD54216602AE300C06503 /* BoardSpot.m in Sources */,
+				6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
