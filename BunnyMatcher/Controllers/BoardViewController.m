@@ -110,6 +110,8 @@
     if(heroIsMoving) return;
     
     CGRect newHeroLocation = self.heroView.frame;
+    location.x -= newHeroLocation.size.width / 2.f;
+    location.y -= newHeroLocation.size.height / 2.f;
     newHeroLocation.origin = location;
     
     // start the animation
