@@ -65,4 +65,14 @@
     return [[self spotAtIndex: index] name];
 }
 
+- (void) consumeSpotAtIndex: (NSUInteger) index {
+    BoardSpot *spot = [self spotAtIndex: index];
+    if(spot && !spot.consumed) {
+        spot.consumed = YES;
+    }
+}
+- (BOOL) spotIsConsumedAtIndex: (NSUInteger) index {
+    return [self spotAtIndex: index].consumed;
+}
+
 @end

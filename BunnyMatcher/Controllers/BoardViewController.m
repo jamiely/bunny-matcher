@@ -9,6 +9,8 @@
 #import "BoardViewController.h"
 #import "StandardCollectionCell.h"
 
+NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
+
 @interface BoardViewController () {
     BOOL heroIsMoving;
 }
@@ -141,8 +143,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 // Called when the hero has finished moving to the item corresponding to the
 // indexPath.
 - (void) movedToIndexPath: (NSIndexPath*) indexPath {
-    BoardSpot *spot = [self.round spotAtIndex: indexPath.row];
-    spot.consumed = YES;
+    [self.round consumeSpotAtIndex: indexPath.row];
     self.round.score += 100;
     [self loadScore];
     [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
@@ -155,7 +156,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) loadScore {
-    self.scoreLabel.text = [NSString stringWithFormat: @"%06u", self.round.score];
+    self.scoreLabel.text =
+        [NSString stringWithFormat: BOARDVIEWCONTROLLER_SCORE_FORMAT,
+         self.round.score];
 }
 
 @end

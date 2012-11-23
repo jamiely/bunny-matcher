@@ -22,6 +22,9 @@
 
 - (NSString*) nameAtIndex: (NSUInteger) index;
 
+- (void) consumeSpotAtIndex: (NSUInteger) index;
+- (BOOL) spotIsConsumedAtIndex: (NSUInteger) index;
+
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;
 @property (nonatomic, assign) NSUInteger *score;
