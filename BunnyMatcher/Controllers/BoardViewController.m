@@ -60,12 +60,6 @@ NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
     [self loadScore];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (NSUInteger) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscape;
 }
