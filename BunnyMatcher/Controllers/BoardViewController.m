@@ -95,42 +95,57 @@
 
 - (void)  collectionView:(UICollectionView *)aCollectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [self collectionView: aCollectionView
-                               cellForItemAtIndexPath: indexPath];
-    // calculate the cell center
-    CGPoint destination = cell.frame.origin;
-    destination.x += cell.frame.size.width / 2.f;
-    destination.y += cell.frame.size.height / 2.f;
-    
-    [self moveHeroToIndex: indexPath.row
-               atLocation: [self.view convertPoint: destination
-                                          fromView: aCollectionView]];
+    [self moveHeroToIndexPath: indexPath];
 }
 
 #pragma mark - Hero functions
 
-- (void) moveHeroToIndex: (NSUInteger) index atLocation: (CGPoint) location {
-    if(heroIsMoving) return;
+- (CGRect) newHeroLocationFromCell: (UICollectionViewCell*) cell {
+    // calculate the cell center
+    CGPoint destination = cell.frame.origin;
+    destination.x += cell.frame.size.width / 2.f;
+    destination.y += cell.frame.size.height / 2.f;
+    destination = [self.view convertPoint: destination
+                                 fromView: self.collectionView];
     
     CGRect newHeroLocation = self.heroView.frame;
-    location.x -= newHeroLocation.size.width / 2.f;
-    location.y -= newHeroLocation.size.height / 2.f;
-    newHeroLocation.origin = location;
+    destination.x -= newHeroLocation.size.width / 2.f;
+    destination.y -= newHeroLocation.size.height / 2.f;
+    newHeroLocation.origin = destination;
+    
+    return newHeroLocation;
+}
+
+- (CGRect) newHeroLocationFromIndexPath: (NSIndexPath*) indexPath {
+    // get the new hero location
+    UICollectionViewCell *cell = [self collectionView: self.collectionView
+                               cellForItemAtIndexPath: indexPath];
+    return [self newHeroLocationFromCell: cell];
+}
+
+- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath {
+    if(heroIsMoving) return;
+    
+    CGRect newHeroLocation = [self newHeroLocationFromIndexPath: indexPath];
     
     // start the animation
     heroIsMoving = YES;
-    __block UIView *hero = self.heroView;
-    __block BoardSpot *spot = [self.round spotAtIndex: index];
     [UIView animateWithDuration:1.f animations:^{
-        hero.frame = newHeroLocation;
+        self.heroView.frame = newHeroLocation;
     } completion:^(BOOL finished) {
         heroIsMoving = NO;
-        spot.consumed = YES;
-        self.round.score += 100;
-        [self loadScore];
-        [self.collectionView reloadItemsAtIndexPaths:
-         @[[NSIndexPath indexPathForItem:index inSection:0]]];
+        [self movedToIndexPath: indexPath];
     }];
+}
+
+// Called when the hero has finished moving to the item corresponding to the
+// indexPath.
+- (void) movedToIndexPath: (NSIndexPath*) indexPath {
+    BoardSpot *spot = [self.round spotAtIndex: indexPath.row];
+    spot.consumed = YES;
+    self.round.score += 100;
+    [self loadScore];
+    [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
 }
 
 #pragma mark - Model helpers
