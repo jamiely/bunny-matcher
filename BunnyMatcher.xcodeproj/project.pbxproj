@@ -32,6 +32,8 @@
 		6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */; };
 		6DACD537165ED1EE00C06503 /* ScramblerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD536165ED1EE00C06503 /* ScramblerTests.m */; };
 		6DACD53A165EE91000C06503 /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD539165EE91000C06503 /* Round.m */; };
+		6DACD53D165EF0A200C06503 /* HeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD53C165EF0A200C06503 /* HeroView.m */; };
+		6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD53E1660283900C06503 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,9 @@
 		6DACD536165ED1EE00C06503 /* ScramblerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScramblerTests.m; sourceTree = "<group>"; };
 		6DACD538165EE91000C06503 /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Round.h; path = Models/Round.h; sourceTree = "<group>"; };
 		6DACD539165EE91000C06503 /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Round.m; path = Models/Round.m; sourceTree = "<group>"; };
+		6DACD53B165EF0A200C06503 /* HeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroView.h; path = Views/HeroView.h; sourceTree = "<group>"; };
+		6DACD53C165EF0A200C06503 /* HeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroView.m; path = Views/HeroView.m; sourceTree = "<group>"; };
+		6DACD53E1660283900C06503 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */,
 				6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */,
 				6DACD4DE165E8D7700C06503 /* Foundation.framework in Frameworks */,
 				6DACD4E0165E8D7700C06503 /* CoreGraphics.framework in Frameworks */,
@@ -114,6 +120,7 @@
 		6DACD4CC165E8D7700C06503 = {
 			isa = PBXGroup;
 			children = (
+				6DACD53E1660283900C06503 /* QuartzCore.framework */,
 				6DACD4E1165E8D7700C06503 /* BunnyMatcher */,
 				6DACD4FF165E8D7700C06503 /* BunnyMatcherTests */,
 				6DACD4DA165E8D7700C06503 /* Frameworks */,
@@ -213,6 +220,8 @@
 			children = (
 				6DACD51E165E97F300C06503 /* StandardCollectionCell.h */,
 				6DACD51F165E97F300C06503 /* StandardCollectionCell.m */,
+				6DACD53B165EF0A200C06503 /* HeroView.h */,
+				6DACD53C165EF0A200C06503 /* HeroView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -366,6 +375,7 @@
 				6DACD530165EA1CF00C06503 /* TopicCollection.m in Sources */,
 				6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */,
 				6DACD53A165EE91000C06503 /* Round.m in Sources */,
+				6DACD53D165EF0A200C06503 /* HeroView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

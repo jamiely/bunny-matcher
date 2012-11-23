@@ -9,8 +9,9 @@
 #import "BoardViewController.h"
 #import "StandardCollectionCell.h"
 
-@interface BoardViewController ()
-
+@interface BoardViewController () {
+    BOOL heroIsMoving;
+}
 @end
 
 @implementation BoardViewController
@@ -35,6 +36,8 @@
 }
 
 - (void) initialize {
+    heroIsMoving = NO;
+    
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
         self.round = [[Round alloc] init];
@@ -50,7 +53,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    [self setupGestureRecognizer];
+    self.topicLabel.text = [self topic].name;
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,6 +91,41 @@
                                                    forIndexPath:indexPath];
     cell.textLabel.text = [[self.round topicItemAtIndex: indexPath.row] name];
     return cell;
+}
+
+#pragma mark - Input functions
+
+- (void) setupGestureRecognizer {
+    [self.tapGestureRecognizer addTarget: self action: @selector(onTap:)];
+    [self.view addGestureRecognizer: self.tapGestureRecognizer];
+}
+
+- (void) onTap:(UIGestureRecognizer *)gestureRecognizer {    
+    [self moveHeroTo: [gestureRecognizer locationInView: self.view]];
+}
+
+#pragma mark - Hero functions
+
+- (void) moveHeroTo: (CGPoint) location {
+    if(heroIsMoving) return;
+    
+    CGRect newHeroLocation = self.heroView.frame;
+    newHeroLocation.origin = location;
+    
+    // start the animation
+    heroIsMoving = YES;
+    __block UIView *hero = self.heroView;
+    [UIView animateWithDuration:1.f animations:^{
+        hero.frame = newHeroLocation;
+    } completion:^(BOOL finished) {
+        heroIsMoving = NO;
+    }];
+}
+
+#pragma mark - Model helpers
+
+- (Topic*) topic {
+    return self.round.mainTopic;
 }
 
 @end
