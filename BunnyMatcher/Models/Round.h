@@ -8,6 +8,7 @@
 
 #import "Topic.h"
 #import "Library.h"
+#import "BoardSpot.h"
 
 @interface Round : NSObject
 
@@ -15,6 +16,11 @@
 - (NSUInteger) topicItemCount;
 - (NSArray*) topicItems;
 - (TopicItem*) topicItemAtIndex: (NSUInteger) index;
+
+- (NSArray*) spots;
+- (BoardSpot*) spotAtIndex: (NSUInteger) index;
+
+- (NSString*) nameAtIndex: (NSUInteger) index;
 
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;

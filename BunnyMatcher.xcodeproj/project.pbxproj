@@ -34,6 +34,7 @@
 		6DACD53A165EE91000C06503 /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD539165EE91000C06503 /* Round.m */; };
 		6DACD53D165EF0A200C06503 /* HeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD53C165EF0A200C06503 /* HeroView.m */; };
 		6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD53E1660283900C06503 /* QuartzCore.framework */; };
+		6DACD54216602AE300C06503 /* BoardSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54116602AE300C06503 /* BoardSpot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		6DACD53B165EF0A200C06503 /* HeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroView.h; path = Views/HeroView.h; sourceTree = "<group>"; };
 		6DACD53C165EF0A200C06503 /* HeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroView.m; path = Views/HeroView.m; sourceTree = "<group>"; };
 		6DACD53E1660283900C06503 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6DACD54016602AE300C06503 /* BoardSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardSpot.h; path = Models/BoardSpot.h; sourceTree = "<group>"; };
+		6DACD54116602AE300C06503 /* BoardSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSpot.m; path = Models/BoardSpot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 				6DACD52F165EA1CF00C06503 /* TopicCollection.m */,
 				6DACD538165EE91000C06503 /* Round.h */,
 				6DACD539165EE91000C06503 /* Round.m */,
+				6DACD54016602AE300C06503 /* BoardSpot.h */,
+				6DACD54116602AE300C06503 /* BoardSpot.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 				6DACD534165EA61B00C06503 /* NSMutableArray+Shuffling.m in Sources */,
 				6DACD53A165EE91000C06503 /* Round.m in Sources */,
 				6DACD53D165EF0A200C06503 /* HeroView.m in Sources */,
+				6DACD54216602AE300C06503 /* BoardSpot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

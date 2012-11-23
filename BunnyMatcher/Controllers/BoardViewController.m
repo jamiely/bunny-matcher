@@ -89,7 +89,7 @@
     StandardCollectionCell *cell =
         [aCollectionView dequeueReusableCellWithReuseIdentifier:@"StandardCell"
                                                    forIndexPath:indexPath];
-    cell.textLabel.text = [[self.round topicItemAtIndex: indexPath.row] name];
+    cell.textLabel.text = [self.round nameAtIndex: indexPath.row];
     return cell;
 }
 
