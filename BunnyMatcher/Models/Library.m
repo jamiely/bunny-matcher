@@ -24,9 +24,9 @@ NSString* LIBRARY_TOPIC_DESSERTS = @"desserts";
     NSString *desserts = @"Ambrosia,Angel food cake,Apple crisp,Apple dumpling,Apple pie,Bacon sundae,Banana pudding,Banana split,Bananas Foster,Blondie (confection),Boston cream pie,Bread pudding,Brown Betty (dessert),Caramel,Carrot cake,Chocolate brownie,Chocolate chip cookie,Chocolate-covered potato chips,Chocolate-covered bacon,Cobbler (food),Corn cookie,Cottage Pudding,Crumble,Cupcake,Cupcone,Dirt cake,Doughnut,Fried Coke,Fried dough,Fudge,Funnel cake,German chocolate cake,Golden Opulence Sundae,Gooey butter cake,Hostess CupCake,Hot milk cake,Hummingbird cake,Ice cream cone,Icebox cake,Italian ice,Kentucky jam cake,King cake,Lemon meringue pie,Macaroon,Marshmallow creme,Neapolitan ice cream,Panocha,Parfait (food),Persimmon pudding,Pound cake,Pudding,Red velvet cake,Scotcheroos,S'more,Stack cake,Strawberry Delight,Strawberry rhubarb pie,Sundae,Twinkie,Waldorf pudding,Whoopie pie";
 
     NSDictionary *contentDictionary = @{
-        LIBRARY_TOPIC_FRUITS: states,
+        LIBRARY_TOPIC_FRUITS: fruit,
         LIBRARY_TOPIC_ANIMALS: animals,
-        LIBRARY_TOPIC_STATES: fruit,
+        LIBRARY_TOPIC_STATES: states,
         LIBRARY_TOPIC_DESSERTS: desserts
     };
     

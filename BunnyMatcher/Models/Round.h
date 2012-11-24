@@ -24,6 +24,7 @@
 
 - (void) consumeSpotAtIndex: (NSUInteger) index;
 - (BOOL) spotIsConsumedAtIndex: (NSUInteger) index;
+- (BOOL) mayConsumeSpotAtIndex: (NSUInteger) index;
 
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;

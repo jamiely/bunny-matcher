@@ -74,5 +74,12 @@
 - (BOOL) spotIsConsumedAtIndex: (NSUInteger) index {
     return [self spotAtIndex: index].consumed;
 }
-
+- (BOOL) mayConsumeSpotAtIndex: (NSUInteger) index {
+    BoardSpot *spot = [self spotAtIndex: index];
+    if(spot.consumed) {
+        return NO;
+    }
+    
+    return [self.mainTopic hasItem: spot.item];
+}
 @end

@@ -137,8 +137,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 // Called when the hero has finished moving to the item corresponding to the
 // indexPath.
 - (void) movedToIndexPath: (NSIndexPath*) indexPath {
-    [self.round consumeSpotAtIndex: indexPath.row];
-    self.round.score += 100;
+    NSUInteger index = indexPath.row;
+    
+    if([self.round spotIsConsumedAtIndex: index]) {
+        return;
+    }
+    
+    if([self.round mayConsumeSpotAtIndex: index]) {
+        [self.round consumeSpotAtIndex: index];
+        self.round.score += 100;
+    }
+    else {
+        self.round.score -= 50;
+    }
     [self loadScore];
     [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
 }

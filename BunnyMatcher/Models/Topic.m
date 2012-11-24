@@ -39,6 +39,10 @@
     return _items;
 }
 
+- (BOOL) hasItem: (TopicItem*) item {
+    return [self.items containsObject: item];
+}
+
 + (id) topicWithName: (NSString*) aName andItems: (NSArray*) aItems {
     return [[Topic alloc] initWithName: aName andItems: aItems];
 }

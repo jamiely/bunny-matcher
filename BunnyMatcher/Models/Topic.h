@@ -11,6 +11,7 @@
 @interface Topic : NSObject
 - (id) initWithName: (NSString*) aName andItems: (NSArray*) aItems;
 - (NSArray*) items;
+- (BOOL) hasItem: (TopicItem*) item;
 + (id) topicWithName: (NSString*) aName andItems: (NSArray*) aItems;
 + (id) topicWithName: (NSString*) aName andItemNames: (NSArray*) aNames;
 @property (nonatomic, strong) NSString* name;
