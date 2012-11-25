@@ -28,6 +28,6 @@
 
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;
-@property (nonatomic, assign) NSUInteger *score;
+@property (nonatomic, assign) NSInteger score;
 
 @end
