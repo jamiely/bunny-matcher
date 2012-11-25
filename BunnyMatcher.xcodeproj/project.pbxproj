@@ -36,6 +36,7 @@
 		6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD53E1660283900C06503 /* QuartzCore.framework */; };
 		6DACD54216602AE300C06503 /* BoardSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54116602AE300C06503 /* BoardSpot.m */; };
 		6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54416603FCF00C06503 /* TitleViewController.m */; };
+		6DACD54816604B6D00C06503 /* EnemyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54716604B6D00C06503 /* EnemyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		6DACD54116602AE300C06503 /* BoardSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSpot.m; path = Models/BoardSpot.m; sourceTree = "<group>"; };
 		6DACD54316603FCF00C06503 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleViewController.h; path = Controllers/TitleViewController.h; sourceTree = "<group>"; };
 		6DACD54416603FCF00C06503 /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleViewController.m; path = Controllers/TitleViewController.m; sourceTree = "<group>"; };
+		6DACD54616604B6D00C06503 /* EnemyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyView.h; path = Views/EnemyView.h; sourceTree = "<group>"; };
+		6DACD54716604B6D00C06503 /* EnemyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyView.m; path = Views/EnemyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +233,8 @@
 				6DACD51F165E97F300C06503 /* StandardCollectionCell.m */,
 				6DACD53B165EF0A200C06503 /* HeroView.h */,
 				6DACD53C165EF0A200C06503 /* HeroView.m */,
+				6DACD54616604B6D00C06503 /* EnemyView.h */,
+				6DACD54716604B6D00C06503 /* EnemyView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				6DACD53D165EF0A200C06503 /* HeroView.m in Sources */,
 				6DACD54216602AE300C06503 /* BoardSpot.m in Sources */,
 				6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */,
+				6DACD54816604B6D00C06503 /* EnemyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
