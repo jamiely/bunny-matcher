@@ -9,6 +9,9 @@
 #import "Round.h"
 #import "Scrambler.h"
 
+const NSInteger ROUND_SCORE_POINT = 100;
+const NSInteger ROUND_SCORE_PENALTY = -50;
+
 @interface Round() {
     NSArray *_topicItems;
     NSArray *_spots;

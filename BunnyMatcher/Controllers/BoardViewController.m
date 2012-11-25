@@ -10,6 +10,7 @@
 #import "StandardCollectionCell.h"
 
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
+NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 @interface BoardViewController () {
     BOOL heroIsMoving;
@@ -143,13 +144,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     
+    NSInteger scoreDelta = 0;
     if([self.round mayConsumeSpotAtIndex: index]) {
         [self.round consumeSpotAtIndex: index];
-        self.round.score += 100;
+        scoreDelta = ROUND_SCORE_POINT;
     }
     else {
-        self.round.score -= 50;
+        scoreDelta = ROUND_SCORE_PENALTY;
     }
+    
+    self.round.score += scoreDelta;
     [self loadScore];
     [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
 }
@@ -161,9 +165,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) loadScore {
-    self.scoreLabel.text =
-        [NSString stringWithFormat: BOARDVIEWCONTROLLER_SCORE_FORMAT,
-         self.round.score];
+    if(self.round.score >= 0) {
+        self.scoreLabel.text = [NSString stringWithFormat: BOARDVIEWCONTROLLER_SCORE_FORMAT, self.round.score];
+        
+        self.scoreLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        self.scoreLabel.text = [NSString stringWithFormat: BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT, -self.round.score];
+        self.scoreLabel.textColor = [UIColor redColor];
+    }
+    
+    
 }
 
 @end
