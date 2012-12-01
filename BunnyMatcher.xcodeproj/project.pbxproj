@@ -37,7 +37,6 @@
 		6DACD54216602AE300C06503 /* BoardSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54116602AE300C06503 /* BoardSpot.m */; };
 		6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54416603FCF00C06503 /* TitleViewController.m */; };
 		6DACD54816604B6D00C06503 /* EnemyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54716604B6D00C06503 /* EnemyView.m */; };
-		6DACD54B1669AA2700C06503 /* EnemyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54A1669AA2600C06503 /* EnemyViewController.m */; };
 		6DACD54E1669AEAB00C06503 /* ActorMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54D1669AEAB00C06503 /* ActorMovement.m */; };
 /* End PBXBuildFile section */
 
@@ -101,8 +100,6 @@
 		6DACD54416603FCF00C06503 /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleViewController.m; path = Controllers/TitleViewController.m; sourceTree = "<group>"; };
 		6DACD54616604B6D00C06503 /* EnemyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyView.h; path = Views/EnemyView.h; sourceTree = "<group>"; };
 		6DACD54716604B6D00C06503 /* EnemyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyView.m; path = Views/EnemyView.m; sourceTree = "<group>"; };
-		6DACD5491669AA2600C06503 /* EnemyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyViewController.h; path = Controllers/EnemyViewController.h; sourceTree = "<group>"; };
-		6DACD54A1669AA2600C06503 /* EnemyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyViewController.m; path = Controllers/EnemyViewController.m; sourceTree = "<group>"; };
 		6DACD54C1669AEAB00C06503 /* ActorMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActorMovement.h; path = Models/ActorMovement.h; sourceTree = "<group>"; };
 		6DACD54D1669AEAB00C06503 /* ActorMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActorMovement.m; path = Models/ActorMovement.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,8 +225,6 @@
 				6DACD51B165E92B500C06503 /* BoardViewController.m */,
 				6DACD54316603FCF00C06503 /* TitleViewController.h */,
 				6DACD54416603FCF00C06503 /* TitleViewController.m */,
-				6DACD5491669AA2600C06503 /* EnemyViewController.h */,
-				6DACD54A1669AA2600C06503 /* EnemyViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -404,7 +399,6 @@
 				6DACD54216602AE300C06503 /* BoardSpot.m in Sources */,
 				6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */,
 				6DACD54816604B6D00C06503 /* EnemyView.m in Sources */,
-				6DACD54B1669AA2700C06503 /* EnemyViewController.m in Sources */,
 				6DACD54E1669AEAB00C06503 /* ActorMovement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

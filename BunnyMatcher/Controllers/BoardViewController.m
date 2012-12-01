@@ -8,7 +8,6 @@
 
 #import "BoardViewController.h"
 #import "StandardCollectionCell.h"
-#import "EnemyViewController.h"
 #import "ActorMovement.h"
 
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
@@ -18,7 +17,6 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 }
 @property (nonatomic, assign) BOOL heroIsMoving;
 @property (nonatomic, assign) BOOL enemyMayMove;
-@property (nonatomic, strong) EnemyViewController *enemyController;
 @property (nonatomic, strong) ActorMovement *actorMovement;
 @end
 
@@ -65,10 +63,6 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.topicLabel.text = [self topic].name;
     [self loadScore];
-    
-    // setup enemy
-    self.enemyController = [[EnemyViewController alloc] init];
-    self.enemyController.view = self.enemyView;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
