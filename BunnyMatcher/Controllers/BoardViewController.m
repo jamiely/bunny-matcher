@@ -8,6 +8,7 @@
 
 #import "BoardViewController.h"
 #import "StandardCollectionCell.h"
+#import "EnemyViewController.h"
 
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
@@ -15,6 +16,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @interface BoardViewController () {
 }
 @property (nonatomic, assign) BOOL heroIsMoving;
+@property (nonatomic, assign) BOOL enemyMayMove;
+@property (nonatomic, strong) EnemyViewController *enemyController;
 @end
 
 @implementation BoardViewController
@@ -59,6 +62,18 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.topicLabel.text = [self topic].name;
     [self loadScore];
+    
+    // setup enemy
+    self.enemyController = [[EnemyViewController alloc] init];
+    self.enemyController.view = self.enemyView;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self beginEnemyMovement];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    self.enemyMayMove = NO;
 }
 
 - (NSUInteger) supportedInterfaceOrientations {
@@ -93,6 +108,32 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 - (void)  collectionView:(UICollectionView *)aCollectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self moveHeroToIndexPath: indexPath];
+}
+
+#pragma mark - Enemy functions
+
+- (void) beginEnemyMovement {
+    self.enemyMayMove = true;
+    [self moveEnemyRecursivelyWithIntervalInSeconds: 5.0];
+}
+
+- (void) moveEnemyRecursivelyWithIntervalInSeconds: (CGFloat) intervalInSeconds {
+    if(!self.enemyMayMove) return;
+    
+    [self moveEnemyAfterDelayInSeconds: intervalInSeconds completion:^{
+        [self moveEnemyRecursivelyWithIntervalInSeconds: intervalInSeconds];
+    }];
+}
+
+- (void) moveEnemyAfterDelayInSeconds: (CGFloat) delayInSeconds
+                           completion: (void (^)()) completion {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.enemyController moveWithinFrame: self.view.frame];
+        if(completion) {
+            completion();
+        }
+    });
 }
 
 #pragma mark - Hero functions

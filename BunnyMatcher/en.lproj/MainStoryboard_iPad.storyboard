@@ -119,7 +119,7 @@
                                     <outlet property="delegate" destination="dqQ-kG-hfM" id="C8W-KM-OFz"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-ww-1yv" customClass="HeroView">
+                            <view alpha="0.40000000000000013" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-ww-1yv" customClass="HeroView">
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hero" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWd-y6-EDa">
                                         <constraints>
@@ -188,6 +188,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="collectionView" destination="Smb-At-bgE" id="d5O-dP-UEE"/>
+                        <outlet property="enemyView" destination="El8-g7-JRw" id="lOL-hT-fnA"/>
                         <outlet property="heroView" destination="q6l-ww-1yv" id="bmj-T8-IvE"/>
                         <outlet property="scoreLabel" destination="tiY-KN-waK" id="4C7-Ps-LJR"/>
                         <outlet property="topicLabel" destination="04Z-zb-DHl" id="bfy-Kq-Odm"/>

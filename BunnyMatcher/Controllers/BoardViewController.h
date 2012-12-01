@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) Round *round;
 @property (weak, nonatomic) IBOutlet HeroView *heroView;
+@property (weak, nonatomic) IBOutlet UIView *enemyView;
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @end
