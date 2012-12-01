@@ -141,19 +141,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Hero functions
 
-- (CGRect) newHeroLocationFromCell: (UICollectionViewCell*) cell {
+- (CGRect) newHeroLocationFromIndexPath: (NSIndexPath*) indexPath {
+    // get the new hero location
+    UICollectionViewCell *cell = [self collectionView: self.collectionView
+                               cellForItemAtIndexPath: indexPath];
     CGRect cellFrame = [self.view convertRect: cell.frame
                                      fromView: self.collectionView];
     
     return [self.actorMovement newActorLocationFromFrame:self.heroView.frame
                                                  toFrame:cellFrame];
-}
-
-- (CGRect) newHeroLocationFromIndexPath: (NSIndexPath*) indexPath {
-    // get the new hero location
-    UICollectionViewCell *cell = [self collectionView: self.collectionView
-                               cellForItemAtIndexPath: indexPath];
-    return [self newHeroLocationFromCell: cell];
 }
 
 - (CGRect) intermediateHeroFrameGivenCurrentFrame: (CGRect*) currentFrame
