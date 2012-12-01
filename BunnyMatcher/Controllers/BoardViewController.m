@@ -13,8 +13,8 @@ NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 @interface BoardViewController () {
-    BOOL heroIsMoving;
 }
+@property (nonatomic, assign) BOOL heroIsMoving;
 @end
 
 @implementation BoardViewController
@@ -39,7 +39,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 }
 
 - (void) initialize {
-    heroIsMoving = NO;
+    self.heroIsMoving = NO;
     
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
@@ -120,18 +120,66 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return [self newHeroLocationFromCell: cell];
 }
 
-- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath {
-    if(heroIsMoving) return;
+- (CGRect) intermediateHeroFrameGivenCurrentFrame: (CGRect*) currentFrame
+                                    andFinalFrame: (CGRect*) finalFrame {
     
-    CGRect newHeroLocation = [self newHeroLocationFromIndexPath: indexPath];
+    CGRect intermediateHeroFrame = *finalFrame;
+    
+    CGPoint finalOrigin = (*finalFrame).origin;
+    CGPoint currentOrigin = (*currentFrame).origin;
+    
+    CGFloat dx = ABS(finalOrigin.x - currentOrigin.x);
+    CGFloat dy = ABS(finalOrigin.y - currentOrigin.y);
+    
+    CGPoint intermediateOrigin = intermediateHeroFrame.origin;
+    
+    if(dx > dy) {
+        // then we want to move in the y direction first
+        intermediateOrigin.x = currentOrigin.x;
+    }
+    else {
+        intermediateOrigin.y = currentOrigin.y;
+    }
+    
+    intermediateHeroFrame.origin = intermediateOrigin;
+    
+    return intermediateHeroFrame;
+}
+
+- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath {
+    if(self.heroIsMoving) return;
+    
+    CGRect currentHeroFrame = self.heroView.frame;
+    CGRect finalHeroFrame = [self newHeroLocationFromIndexPath: indexPath];
+    CGRect intermediateHeroFrame =
+        [self intermediateHeroFrameGivenCurrentFrame: &currentHeroFrame
+                                       andFinalFrame: &finalHeroFrame];
     
     // start the animation
-    heroIsMoving = YES;
-    [UIView animateWithDuration:1.f animations:^{
-        self.heroView.frame = newHeroLocation;
+    self.heroIsMoving = YES;
+    __weak BoardViewController *weakSelf = self;
+    [self changeHeroFrameTo: intermediateHeroFrame
+               andThenFrame: finalHeroFrame
+                 completion:^(BOOL finished) {
+                     weakSelf.heroIsMoving = NO;
+                     [weakSelf movedToIndexPath: indexPath];
+                 }];
+}
+
+- (void) changeHeroFrameTo: (CGRect) intermediateHeroFrame
+              andThenFrame: (CGRect) finalHeroFrame
+                completion: (void (^)(BOOL))completion  {
+
+
+    __weak BoardViewController *weakSelf = self;
+    [UIView animateWithDuration:0.5 animations:^{
+        // We want to move in two parts. First, move in the y direction,
+        // straight down.
+        weakSelf.heroView.frame = intermediateHeroFrame;
     } completion:^(BOOL finished) {
-        heroIsMoving = NO;
-        [self movedToIndexPath: indexPath];
+        [UIView animateWithDuration:0.5 animations:^{
+            weakSelf.heroView.frame = finalHeroFrame;
+        } completion: completion];
     }];
 }
 
