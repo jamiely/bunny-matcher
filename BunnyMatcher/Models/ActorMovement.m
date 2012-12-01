@@ -25,4 +25,30 @@
     return newHeroLocation;
 }
 
+- (CGRect) intermediateActorFrameGivenCurrentFrame: (CGRect*) currentFrame
+                                     andFinalFrame: (CGRect*) finalFrame {
+    
+    CGRect intermediateHeroFrame = *finalFrame;
+    
+    CGPoint finalOrigin = (*finalFrame).origin;
+    CGPoint currentOrigin = (*currentFrame).origin;
+    
+    CGFloat dx = ABS(finalOrigin.x - currentOrigin.x);
+    CGFloat dy = ABS(finalOrigin.y - currentOrigin.y);
+    
+    CGPoint intermediateOrigin = intermediateHeroFrame.origin;
+    
+    if(dx > dy) {
+        // then we want to move in the y direction first
+        intermediateOrigin.x = currentOrigin.x;
+    }
+    else {
+        intermediateOrigin.y = currentOrigin.y;
+    }
+    
+    intermediateHeroFrame.origin = intermediateOrigin;
+    
+    return intermediateHeroFrame;
+}
+
 @end

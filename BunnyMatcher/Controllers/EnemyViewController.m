@@ -29,4 +29,17 @@
     }];
 }
 
+- (void) moveToPoint: (CGPoint) point {
+    CGRect destinationFrame = self.view.frame;
+    destinationFrame.origin = point;
+    
+    __weak EnemyViewController *weakSelf = self;
+    [UIView animateWithDuration:2.f animations:^{
+        weakSelf.view.frame = destinationFrame;
+    } completion:^(BOOL finished) {
+        // none for now
+        NSLog(@"Moved enemy to %@", NSStringFromCGRect(destinationFrame));
+    }];
+}
+
 @end

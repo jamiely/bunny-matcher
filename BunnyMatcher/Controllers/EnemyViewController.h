@@ -10,4 +10,5 @@
 
 @interface EnemyViewController : UIViewController
 - (void) moveWithinFrame: (CGRect) boundingBox;
+- (void) moveToPoint: (CGPoint) point;
 @end

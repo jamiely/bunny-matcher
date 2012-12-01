@@ -110,7 +110,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (void)  collectionView:(UICollectionView *)aCollectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self moveHeroToIndexPath: indexPath];
+    [self moveHeroToIndexPath: indexPath completion: nil];
 }
 
 #pragma mark - Enemy functions
@@ -132,76 +132,65 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                            completion: (void (^)()) completion {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.enemyController moveWithinFrame: self.view.frame];
+        CGRect nextFrame = [self randomEnemyFrame];
+        [self.enemyController moveToPoint: nextFrame.origin];
         if(completion) {
             completion();
         }
     });
 }
 
+- (CGRect) randomEnemyFrame {
+    NSInteger itemCount = [self collectionView: self.collectionView numberOfItemsInSection:0];
+    NSInteger index = arc4random_uniform(itemCount);
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem: index inSection: 0];
+    return [self view: self.enemyView locationFromIndexPath: indexPath];
+}
+
 #pragma mark - Hero functions
 
-- (CGRect) newHeroLocationFromIndexPath: (NSIndexPath*) indexPath {
+- (CGRect) view: (UIView*) aView locationFromIndexPath: (NSIndexPath*) indexPath {
     // get the new hero location
     UICollectionViewCell *cell = [self collectionView: self.collectionView
                                cellForItemAtIndexPath: indexPath];
     CGRect cellFrame = [self.view convertRect: cell.frame
                                      fromView: self.collectionView];
     
-    return [self.actorMovement newActorLocationFromFrame:self.heroView.frame
+    return [self.actorMovement newActorLocationFromFrame:aView.frame
                                                  toFrame:cellFrame];
 }
 
-- (CGRect) intermediateHeroFrameGivenCurrentFrame: (CGRect*) currentFrame
-                                    andFinalFrame: (CGRect*) finalFrame {
-    
-    CGRect intermediateHeroFrame = *finalFrame;
-    
-    CGPoint finalOrigin = (*finalFrame).origin;
-    CGPoint currentOrigin = (*currentFrame).origin;
-    
-    CGFloat dx = ABS(finalOrigin.x - currentOrigin.x);
-    CGFloat dy = ABS(finalOrigin.y - currentOrigin.y);
-    
-    CGPoint intermediateOrigin = intermediateHeroFrame.origin;
-    
-    if(dx > dy) {
-        // then we want to move in the y direction first
-        intermediateOrigin.x = currentOrigin.x;
-    }
-    else {
-        intermediateOrigin.y = currentOrigin.y;
-    }
-    
-    intermediateHeroFrame.origin = intermediateOrigin;
-    
-    return intermediateHeroFrame;
-}
-
-- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath {
+- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
+                  completion: (void(^)(BOOL finished))completion {
     if(self.heroIsMoving) return;
-    
-    CGRect currentHeroFrame = self.heroView.frame;
-    CGRect finalHeroFrame = [self newHeroLocationFromIndexPath: indexPath];
-    CGRect intermediateHeroFrame =
-        [self intermediateHeroFrameGivenCurrentFrame: &currentHeroFrame
-                                       andFinalFrame: &finalHeroFrame];
-    
     // start the animation
     self.heroIsMoving = YES;
     __weak BoardViewController *weakSelf = self;
-    [self changeHeroFrameTo: intermediateHeroFrame
-               andThenFrame: finalHeroFrame
-                 completion:^(BOOL finished) {
-                     weakSelf.heroIsMoving = NO;
-                     [weakSelf movedToIndexPath: indexPath];
-                 }];
+    [self moveViewToIndexPath: indexPath
+                   completion:^(BOOL finished) {
+                       weakSelf.heroIsMoving = NO;
+                       [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
+                   }];
+}
+- (void) moveViewToIndexPath: (NSIndexPath*) indexPath
+                  completion: (void(^)(BOOL finished))completion {
+    
+    CGRect currentHeroFrame = self.heroView.frame;
+    CGRect finalHeroFrame = [self view: self.heroView locationFromIndexPath: indexPath];
+    CGRect intermediateHeroFrame =
+        [self.actorMovement intermediateActorFrameGivenCurrentFrame: &currentHeroFrame
+                                                      andFinalFrame: &finalHeroFrame];
+    
+    [self moveView: self.heroView
+           toFrame: intermediateHeroFrame
+         thenFrame: finalHeroFrame
+        completion: completion];
 }
 
-- (void) changeHeroFrameTo: (CGRect) intermediateHeroFrame
-              andThenFrame: (CGRect) finalHeroFrame
-                completion: (void (^)(BOOL))completion  {
-
+- (void) moveView: (UIView*) aView
+          toFrame: (CGRect) intermediateHeroFrame
+        thenFrame: (CGRect) finalHeroFrame
+       completion: (void (^)(BOOL))completion  {
 
     __weak BoardViewController *weakSelf = self;
     [UIView animateWithDuration:0.5 animations:^{
@@ -217,7 +206,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 // Called when the hero has finished moving to the item corresponding to the
 // indexPath.
-- (void) movedToIndexPath: (NSIndexPath*) indexPath {
+- (void) view: (UIView*) aView movedToIndexPath: (NSIndexPath*) indexPath {
+    if(aView != self.heroView) return;
+    
     NSUInteger index = indexPath.row;
     
     if([self.round spotIsConsumedAtIndex: index]) {

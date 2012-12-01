@@ -7,6 +7,8 @@
 //
 
 @interface ActorMovement : NSObject
+- (CGRect) intermediateActorFrameGivenCurrentFrame: (CGRect*) currentFrame
+                                     andFinalFrame: (CGRect*) finalFrame;
 - (CGRect) newActorLocationFromFrame: (CGRect) source
                              toFrame: (CGRect) rect;
 @end
