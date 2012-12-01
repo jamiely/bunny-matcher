@@ -6,8 +6,7 @@
 //  Copyright (c) 2012 Jamie Ly. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface ActorMovement : NSObject
-
+- (CGRect) newActorLocationFromFrame: (CGRect) source
+                             toFrame: (CGRect) rect;
 @end

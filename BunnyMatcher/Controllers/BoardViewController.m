@@ -9,6 +9,7 @@
 #import "BoardViewController.h"
 #import "StandardCollectionCell.h"
 #import "EnemyViewController.h"
+#import "ActorMovement.h"
 
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
@@ -18,6 +19,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, assign) BOOL heroIsMoving;
 @property (nonatomic, assign) BOOL enemyMayMove;
 @property (nonatomic, strong) EnemyViewController *enemyController;
+@property (nonatomic, strong) ActorMovement *actorMovement;
 @end
 
 @implementation BoardViewController
@@ -43,6 +45,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (void) initialize {
     self.heroIsMoving = NO;
+    self.actorMovement = [[ActorMovement alloc] init];
     
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
@@ -139,19 +142,11 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Hero functions
 
 - (CGRect) newHeroLocationFromCell: (UICollectionViewCell*) cell {
-    // calculate the cell center
-    CGPoint destination = cell.frame.origin;
-    destination.x += cell.frame.size.width / 2.f;
-    destination.y += cell.frame.size.height / 2.f;
-    destination = [self.view convertPoint: destination
-                                 fromView: self.collectionView];
+    CGRect cellFrame = [self.view convertRect: cell.frame
+                                     fromView: self.collectionView];
     
-    CGRect newHeroLocation = self.heroView.frame;
-    destination.x -= newHeroLocation.size.width / 2.f;
-    destination.y -= newHeroLocation.size.height / 2.f;
-    newHeroLocation.origin = destination;
-    
-    return newHeroLocation;
+    return [self.actorMovement newActorLocationFromFrame:self.heroView.frame
+                                                 toFrame:cellFrame];
 }
 
 - (CGRect) newHeroLocationFromIndexPath: (NSIndexPath*) indexPath {
