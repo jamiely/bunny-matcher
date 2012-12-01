@@ -50,6 +50,8 @@ const NSUInteger SCRAMBLER_PREFERRED_NUM_MAIN_TOPIC_ITEMS = 7;
     [drawnItems addObjectsFromArray: [self atMost: self.preferredNumberOfMainTopicItems
                                   itemsFromTopics: @[self.mainTopic]]];
     
+    self.drawnNumberOfMainTopicItems = drawnItems.count;
+    
     if(drawnItems.count >= itemCount) return drawnItems;
     
     NSUInteger remainder = itemCount - drawnItems.count;

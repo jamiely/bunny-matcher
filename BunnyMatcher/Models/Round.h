@@ -29,8 +29,12 @@ extern const NSInteger ROUND_SCORE_PENALTY;
 - (BOOL) spotIsConsumedAtIndex: (NSUInteger) index;
 - (BOOL) mayConsumeSpotAtIndex: (NSUInteger) index;
 
+- (BOOL) roundOver;
+
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;
 @property (nonatomic, assign) NSInteger score;
+@property (nonatomic, readonly) NSUInteger mainTopicItemsRemaining;
+@property (nonatomic, readonly) NSUInteger mainTopicItemCount;
 
 @end

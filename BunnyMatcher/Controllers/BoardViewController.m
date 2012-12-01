@@ -63,6 +63,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.topicLabel.text = [self topic].name;
     [self loadScore];
+    self.roundCompleteView.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -211,6 +212,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if([self.round mayConsumeSpotAtIndex: index]) {
         [self.round consumeSpotAtIndex: index];
         scoreDelta = ROUND_SCORE_POINT;
+        if([self.round roundOver]) {
+            self.roundCompleteView.hidden = NO;
+        }
     }
     else {
         scoreDelta = ROUND_SCORE_PENALTY;

@@ -16,7 +16,8 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
     NSArray *_topicItems;
     NSArray *_spots;
 }
-
+@property (nonatomic, assign) NSUInteger mainTopicItemsRemaining;
+@property (nonatomic, assign) NSUInteger mainTopicItemCount;
 @end
 
 @implementation Round
@@ -30,6 +31,8 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
         _topicItems = @[];
         _spots = @[];
         self.score = 0;
+        self.mainTopicItemsRemaining = 0;
+        self.mainTopicItemCount = 0;
     }
     return self;
 }
@@ -44,6 +47,9 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
         [spots addObject: [BoardSpot spotWithItem: topicItem]];
     }
     _spots = [spots copy];
+    
+    self.mainTopicItemCount = scrambler.drawnNumberOfMainTopicItems;
+    self.mainTopicItemsRemaining = self.mainTopicItemCount;
 }
 
 - (NSUInteger) topicItemCount {
@@ -72,6 +78,8 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
     BoardSpot *spot = [self spotAtIndex: index];
     if(spot && !spot.consumed) {
         spot.consumed = YES;
+        self.mainTopicItemsRemaining --;
+        NSLog(@"Main topic items remaining: %d", self.mainTopicItemsRemaining);
     }
 }
 - (BOOL) spotIsConsumedAtIndex: (NSUInteger) index {
@@ -84,5 +92,8 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
     }
     
     return [self.mainTopic hasItem: spot.item];
+}
+- (BOOL) roundOver {
+    return self.mainTopicItemsRemaining == 0;
 }
 @end

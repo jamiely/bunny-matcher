@@ -27,5 +27,6 @@ extern const NSUInteger SCRAMBLER_PREFERRED_NUM_MAIN_TOPIC_ITEMS;
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;
 @property (nonatomic, strong) NSMutableSet *preferredTopics;
+@property (nonatomic, assign) NSUInteger drawnNumberOfMainTopicItems;
 
 @end
