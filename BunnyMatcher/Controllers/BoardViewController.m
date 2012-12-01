@@ -123,28 +123,25 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (void) moveEnemyRecursivelyWithIntervalInSeconds: (CGFloat) intervalInSeconds {
     if(!self.enemyMayMove) return;
     
-    [self moveEnemyAfterDelayInSeconds: intervalInSeconds completion:^{
+    [self moveEnemyAfterDelayInSeconds: intervalInSeconds completion:^(BOOL finish){
         [self moveEnemyRecursivelyWithIntervalInSeconds: intervalInSeconds];
     }];
 }
 
 - (void) moveEnemyAfterDelayInSeconds: (CGFloat) delayInSeconds
-                           completion: (void (^)()) completion {
+                           completion: (void (^)(BOOL finish)) completion {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        CGRect nextFrame = [self randomEnemyFrame];
-        [self.enemyController moveToPoint: nextFrame.origin];
-        if(completion) {
-            completion();
-        }
+        [self moveView: self.enemyView
+           toIndexPath: [self randomIndexPath]
+            completion: completion];
     });
 }
 
-- (CGRect) randomEnemyFrame {
+- (NSIndexPath*) randomIndexPath {
     NSInteger itemCount = [self collectionView: self.collectionView numberOfItemsInSection:0];
     NSInteger index = arc4random_uniform(itemCount);
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem: index inSection: 0];
-    return [self view: self.enemyView locationFromIndexPath: indexPath];
+    return [NSIndexPath indexPathForItem: index inSection: 0];
 }
 
 #pragma mark - Hero functions
@@ -166,22 +163,24 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // start the animation
     self.heroIsMoving = YES;
     __weak BoardViewController *weakSelf = self;
-    [self moveViewToIndexPath: indexPath
-                   completion:^(BOOL finished) {
-                       weakSelf.heroIsMoving = NO;
-                       [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
-                   }];
+    [self moveView: self.heroView
+       toIndexPath: indexPath
+        completion:^(BOOL finished) {
+            weakSelf.heroIsMoving = NO;
+            [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
+        }];
 }
-- (void) moveViewToIndexPath: (NSIndexPath*) indexPath
-                  completion: (void(^)(BOOL finished))completion {
+- (void) moveView: (UIView*) aView
+      toIndexPath: (NSIndexPath*) indexPath
+       completion: (void(^)(BOOL finished))completion {
     
-    CGRect currentHeroFrame = self.heroView.frame;
-    CGRect finalHeroFrame = [self view: self.heroView locationFromIndexPath: indexPath];
+    CGRect currentHeroFrame = aView.frame;
+    CGRect finalHeroFrame = [self view: aView locationFromIndexPath: indexPath];
     CGRect intermediateHeroFrame =
         [self.actorMovement intermediateActorFrameGivenCurrentFrame: &currentHeroFrame
                                                       andFinalFrame: &finalHeroFrame];
     
-    [self moveView: self.heroView
+    [self moveView: aView
            toFrame: intermediateHeroFrame
          thenFrame: finalHeroFrame
         completion: completion];
@@ -192,14 +191,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         thenFrame: (CGRect) finalHeroFrame
        completion: (void (^)(BOOL))completion  {
 
-    __weak BoardViewController *weakSelf = self;
     [UIView animateWithDuration:0.5 animations:^{
         // We want to move in two parts. First, move in the y direction,
         // straight down.
-        weakSelf.heroView.frame = intermediateHeroFrame;
+        aView.frame = intermediateHeroFrame;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.5 animations:^{
-            weakSelf.heroView.frame = finalHeroFrame;
+            aView.frame = finalHeroFrame;
         } completion: completion];
     }];
 }
