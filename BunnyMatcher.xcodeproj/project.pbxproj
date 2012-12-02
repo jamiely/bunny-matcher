@@ -39,6 +39,10 @@
 		6DACD54816604B6D00C06503 /* EnemyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54716604B6D00C06503 /* EnemyView.m */; };
 		6DACD54E1669AEAB00C06503 /* ActorMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54D1669AEAB00C06503 /* ActorMovement.m */; };
 		6DACD551166AF52500C06503 /* LivesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD550166AF52500C06503 /* LivesView.m */; };
+		6DACD554166B0BF200C06503 /* UIImage+Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD553166B0BF200C06503 /* UIImage+Sprite.m */; };
+		6DACD557166B0C9100C06503 /* kit_from_firefox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD556166B0C9100C06503 /* kit_from_firefox.png */; };
+		6DACD559166B106000C06503 /* tux_from_linux.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD558166B106000C06503 /* tux_from_linux.png */; };
+		6DACD55C166B108200C06503 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD55B166B108200C06503 /* CharacterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,12 @@
 		6DACD54D1669AEAB00C06503 /* ActorMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActorMovement.m; path = Models/ActorMovement.m; sourceTree = "<group>"; };
 		6DACD54F166AF52500C06503 /* LivesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LivesView.h; path = Views/LivesView.h; sourceTree = "<group>"; };
 		6DACD550166AF52500C06503 /* LivesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivesView.m; path = Views/LivesView.m; sourceTree = "<group>"; };
+		6DACD552166B0BF200C06503 /* UIImage+Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Sprite.h"; sourceTree = "<group>"; };
+		6DACD553166B0BF200C06503 /* UIImage+Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Sprite.m"; sourceTree = "<group>"; };
+		6DACD556166B0C9100C06503 /* kit_from_firefox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kit_from_firefox.png; path = Assets/kit_from_firefox.png; sourceTree = "<group>"; };
+		6DACD558166B106000C06503 /* tux_from_linux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tux_from_linux.png; path = Assets/tux_from_linux.png; sourceTree = "<group>"; };
+		6DACD55A166B108200C06503 /* CharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterView.h; path = Views/CharacterView.h; sourceTree = "<group>"; };
+		6DACD55B166B108200C06503 /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacterView.m; path = Views/CharacterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +176,7 @@
 		6DACD4E1165E8D7700C06503 /* BunnyMatcher */ = {
 			isa = PBXGroup;
 			children = (
+				6DACD555166B0C8100C06503 /* Assets */,
 				6DACD531165EA5D300C06503 /* Categories */,
 				6DACD521165E99D300C06503 /* Models */,
 				6DACD51D165E97C600C06503 /* Views */,
@@ -243,6 +254,8 @@
 				6DACD54716604B6D00C06503 /* EnemyView.m */,
 				6DACD54F166AF52500C06503 /* LivesView.h */,
 				6DACD550166AF52500C06503 /* LivesView.m */,
+				6DACD55A166B108200C06503 /* CharacterView.h */,
+				6DACD55B166B108200C06503 /* CharacterView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,10 +286,21 @@
 		6DACD531165EA5D300C06503 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				6DACD552166B0BF200C06503 /* UIImage+Sprite.h */,
+				6DACD553166B0BF200C06503 /* UIImage+Sprite.m */,
 				6DACD532165EA61B00C06503 /* NSMutableArray+Shuffling.h */,
 				6DACD533165EA61B00C06503 /* NSMutableArray+Shuffling.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		6DACD555166B0C8100C06503 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6DACD558166B106000C06503 /* tux_from_linux.png */,
+				6DACD556166B0C9100C06503 /* kit_from_firefox.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +379,8 @@
 				6DACD4F0165E8D7700C06503 /* Default@2x.png in Resources */,
 				6DACD4F2165E8D7700C06503 /* Default-568h@2x.png in Resources */,
 				6DACD518165E8E8500C06503 /* MainStoryboard_iPad.storyboard in Resources */,
+				6DACD557166B0C9100C06503 /* kit_from_firefox.png in Resources */,
+				6DACD559166B106000C06503 /* tux_from_linux.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +432,8 @@
 				6DACD54816604B6D00C06503 /* EnemyView.m in Sources */,
 				6DACD54E1669AEAB00C06503 /* ActorMovement.m in Sources */,
 				6DACD551166AF52500C06503 /* LivesView.m in Sources */,
+				6DACD554166B0BF200C06503 /* UIImage+Sprite.m in Sources */,
+				6DACD55C166B108200C06503 /* CharacterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

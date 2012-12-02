@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Jamie Ly. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CharacterView.h"
 
-@interface EnemyView : UIView
+@interface EnemyView : CharacterView
 
 @end

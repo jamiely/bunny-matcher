@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Jamie Ly. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CharacterView.h"
 
-@interface HeroView : UIView
+@interface HeroView : CharacterView
 
 @end
