@@ -284,6 +284,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) handleCollision {
+    self.enemyView.frame = [[self.enemyView.layer presentationLayer] frame];
     [self.enemyView.layer removeAllAnimations];
     [self collideHero];
 }
