@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Round.h"
 #import "HeroView.h"
+#import "LivesView.h"
 
 @interface BoardViewController : UIViewController<UICollectionViewDataSource,
     UICollectionViewDelegate, UIGestureRecognizerDelegate>
@@ -19,4 +20,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIView *roundCompleteView;
+@property (weak, nonatomic) IBOutlet LivesView *livesView;
 @end

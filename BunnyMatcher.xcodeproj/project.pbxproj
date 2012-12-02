@@ -38,6 +38,7 @@
 		6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54416603FCF00C06503 /* TitleViewController.m */; };
 		6DACD54816604B6D00C06503 /* EnemyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54716604B6D00C06503 /* EnemyView.m */; };
 		6DACD54E1669AEAB00C06503 /* ActorMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD54D1669AEAB00C06503 /* ActorMovement.m */; };
+		6DACD551166AF52500C06503 /* LivesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD550166AF52500C06503 /* LivesView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		6DACD54716604B6D00C06503 /* EnemyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyView.m; path = Views/EnemyView.m; sourceTree = "<group>"; };
 		6DACD54C1669AEAB00C06503 /* ActorMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActorMovement.h; path = Models/ActorMovement.h; sourceTree = "<group>"; };
 		6DACD54D1669AEAB00C06503 /* ActorMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActorMovement.m; path = Models/ActorMovement.m; sourceTree = "<group>"; };
+		6DACD54F166AF52500C06503 /* LivesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LivesView.h; path = Views/LivesView.h; sourceTree = "<group>"; };
+		6DACD550166AF52500C06503 /* LivesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivesView.m; path = Views/LivesView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +241,8 @@
 				6DACD53C165EF0A200C06503 /* HeroView.m */,
 				6DACD54616604B6D00C06503 /* EnemyView.h */,
 				6DACD54716604B6D00C06503 /* EnemyView.m */,
+				6DACD54F166AF52500C06503 /* LivesView.h */,
+				6DACD550166AF52500C06503 /* LivesView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				6DACD54516603FCF00C06503 /* TitleViewController.m in Sources */,
 				6DACD54816604B6D00C06503 /* EnemyView.m in Sources */,
 				6DACD54E1669AEAB00C06503 /* ActorMovement.m in Sources */,
+				6DACD551166AF52500C06503 /* LivesView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

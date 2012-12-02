@@ -20,6 +20,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, strong) ActorMovement *actorMovement;
 @property (nonatomic, strong) NSTimer *gameLoopTimer;
 @property (nonatomic, assign) BOOL heroHasCollided;
+@property (nonatomic, assign) NSUInteger heroLives;
 @end
 
 @implementation BoardViewController
@@ -46,6 +47,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 - (void) initialize {
     self.heroIsMoving = NO;
     self.heroHasCollided = NO;
+    self.heroLives = 3;
     self.actorMovement = [[ActorMovement alloc] init];
     
     // later, we'll pass a round pre-built to this controller
@@ -67,6 +69,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     self.topicLabel.text = [self topic].name;
     [self loadScore];
     self.roundCompleteView.hidden = YES;
+    self.livesView.lives = self.heroLives;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -288,6 +291,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) collideHero {
     self.heroHasCollided = YES;
+    self.heroLives --;
+    self.livesView.lives = self.heroLives;
     [self stopHeroMovement];
 }
 
