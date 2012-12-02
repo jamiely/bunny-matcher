@@ -163,6 +163,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) stopHeroMovement {
     self.heroIsMoving = NO;
+    self.heroView.frame = [[self.heroView.layer presentationLayer] frame];
+    [self.heroView.layer removeAllAnimations];
 }
 
 - (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
@@ -247,7 +249,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (void) startGameLoop {
     [self stopGameLoop];
     
-    self.gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+    self.gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
                                                           target:self
                                                         selector:@selector(gameLoop)
                                                         userInfo:nil
@@ -275,19 +277,18 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     CGRect enemyRect = [[self.enemyView.layer presentationLayer] frame];
 
     if(CGRectIntersectsRect(heroRect, enemyRect)) {
-        NSLog(@"Collision with the enemy!");
-        // undo animations
-        [UIView animateWithDuration:0 animations:^{
-            self.heroView.frame = heroRect;
-            self.enemyView.frame = enemyRect;
-        }];
-        [self collideHero];
-        [self stopHeroMovement];
+        [self handleCollision];
     }
+}
+
+- (void) handleCollision {
+    [self.enemyView.layer removeAllAnimations];
+    [self collideHero];
 }
 
 - (void) collideHero {
     self.heroHasCollided = YES;
+    [self stopHeroMovement];
 }
 
 - (void) resetCollision {
