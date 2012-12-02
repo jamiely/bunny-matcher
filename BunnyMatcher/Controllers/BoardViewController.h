@@ -19,6 +19,5 @@
 @property (weak, nonatomic) IBOutlet UIView *enemyView;
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UIView *roundCompleteView;
 @property (weak, nonatomic) IBOutlet LivesView *livesView;
 @end

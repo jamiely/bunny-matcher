@@ -68,7 +68,6 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.topicLabel.text = [self topic].name;
     [self loadScore];
-    self.roundCompleteView.hidden = YES;
     self.livesView.lives = self.heroLives;
 }
 
@@ -235,7 +234,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         [self.round consumeSpotAtIndex: index];
         scoreDelta = ROUND_SCORE_POINT;
         if([self.round roundOver]) {
-            self.roundCompleteView.hidden = NO;
+            [self performSegueWithIdentifier:@"RoundCompleteSegue" sender:self];
         }
     }
     else {
@@ -293,6 +292,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.heroHasCollided = YES;
     self.heroLives --;
     self.livesView.lives = self.heroLives;
+    if(self.heroLives <= 0) {
+        [self performSegueWithIdentifier:@"GameOverSegue" sender: self];
+    }
     [self stopHeroMovement];
 }
 
