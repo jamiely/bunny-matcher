@@ -40,7 +40,7 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
 - (void) startRoundWithItemCount: (NSUInteger) itemCount {
     Scrambler *scrambler = [[Scrambler alloc] initWithMainTopic: self.mainTopic
                                                      andLibrary: self.library];
-    _topicItems = [scrambler drawWithCount: itemCount];
+    _topicItems = [scrambler drawScrambledWithCount: itemCount];
     
     NSMutableArray *spots = [NSMutableArray arrayWithCapacity: _topicItems.count];
     for(TopicItem* topicItem in _topicItems) {

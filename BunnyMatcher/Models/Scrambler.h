@@ -20,6 +20,7 @@ extern const NSUInteger SCRAMBLER_PREFERRED_NUM_MAIN_TOPIC_ITEMS;
 
 // returns a list of topic items
 - (NSArray*) drawWithCount: (NSUInteger) itemCount;
+- (NSArray*) drawScrambledWithCount: (NSUInteger) itemCount;
 
 - (NSArray*) allPreferredTopics;
 

@@ -8,6 +8,7 @@
 
 #import "Scrambler.h"
 #import "TopicCollection.h"
+#import "NSMutableArray+Shuffling.h"
 
 const NSUInteger SCRAMBLER_PREFERRED_NUM_MAIN_TOPIC_ITEMS = 7;
 
@@ -42,6 +43,12 @@ const NSUInteger SCRAMBLER_PREFERRED_NUM_MAIN_TOPIC_ITEMS = 7;
 
 - (NSArray*) allPreferredTopics {
     return [self.preferredTopics allObjects];
+}
+
+- (NSArray*) drawScrambledWithCount: (NSUInteger) itemCount {
+    NSMutableArray *items = [[self drawWithCount: itemCount] mutableCopy];
+    [items shuffle];
+    return [items copy];
 }
 
 // returns a list of topic items
