@@ -43,10 +43,15 @@
     CGRect imageViewFrame = CGRectMake(0, 0, 56.f, 80.f);
     self.imageView = [[UIImageView alloc] initWithFrame: imageViewFrame];
     CGSize spriteSize = CGSizeMake(56.f, 80.f);
+    
+    NSRange runRange;
+    runRange.length = 6;
+    runRange.location = 3;
     self.imageView.animationImages =
     [self.spriteSheetImage spritesWithSpriteSheetImage: self.spriteSheetImage
+                                               inRange: runRange
                                             spriteSize: spriteSize];
-    self.imageView.animationDuration = 0.5;
+    self.imageView.animationDuration = 0.7;
     self.imageView.animationRepeatCount = 0; // infinite
     
     [self addSubview: self.imageView];
