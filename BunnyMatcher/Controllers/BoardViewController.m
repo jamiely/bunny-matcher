@@ -18,6 +18,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, assign) BOOL heroIsMoving;
 @property (nonatomic, assign) BOOL enemyMayMove;
 @property (nonatomic, strong) ActorMovement *actorMovement;
+@property (nonatomic, strong) NSTimer *gameLoopTimer;
+@property (nonatomic, assign) BOOL heroHasCollided;
 @end
 
 @implementation BoardViewController
@@ -43,6 +45,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (void) initialize {
     self.heroIsMoving = NO;
+    self.heroHasCollided = NO;
     self.actorMovement = [[ActorMovement alloc] init];
     
     // later, we'll pass a round pre-built to this controller
@@ -67,11 +70,13 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self startGameLoop];
     [self beginEnemyMovement];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     self.enemyMayMove = NO;
+    [self stopGameLoop];
 }
 
 - (NSUInteger) supportedInterfaceOrientations {
@@ -152,16 +157,28 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                                  toFrame:cellFrame];
 }
 
+- (void) startHeroMovement {
+    self.heroIsMoving = YES;
+}
+
+- (void) stopHeroMovement {
+    self.heroIsMoving = NO;
+}
+
 - (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
                   completion: (void(^)(BOOL finished))completion {
+    [self resetCollision];
+    
     if(self.heroIsMoving) return;
     // start the animation
-    self.heroIsMoving = YES;
+    [self startHeroMovement];
     __weak BoardViewController *weakSelf = self;
     [self moveView: self.heroView
        toIndexPath: indexPath
         completion:^(BOOL finished) {
-            weakSelf.heroIsMoving = NO;
+            [weakSelf stopHeroMovement];
+            if(! finished) return;
+            
             [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
         }];
 }
@@ -223,6 +240,58 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.round.score += scoreDelta;
     [self loadScore];
     [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
+}
+
+#pragma mark - Game Loop Functions
+
+- (void) startGameLoop {
+    [self stopGameLoop];
+    
+    self.gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                          target:self
+                                                        selector:@selector(gameLoop)
+                                                        userInfo:nil
+                                                         repeats:YES];
+}
+
+- (void) gameLoop {
+    [self resolveCollisions];
+}
+
+- (void) stopGameLoop {
+    if(! self.gameLoopTimer) return;
+    
+    [self.gameLoopTimer invalidate];
+    self.gameLoopTimer = nil;
+}
+
+#pragma mark - Collision monitoring
+
+- (void) resolveCollisions {
+    if(self.heroHasCollided) return;
+    
+    // get the current animating position 
+    CGRect heroRect = [[self.heroView.layer presentationLayer] frame];
+    CGRect enemyRect = [[self.enemyView.layer presentationLayer] frame];
+
+    if(CGRectIntersectsRect(heroRect, enemyRect)) {
+        NSLog(@"Collision with the enemy!");
+        // undo animations
+        [UIView animateWithDuration:0 animations:^{
+            self.heroView.frame = heroRect;
+            self.enemyView.frame = enemyRect;
+        }];
+        [self collideHero];
+        [self stopHeroMovement];
+    }
+}
+
+- (void) collideHero {
+    self.heroHasCollided = YES;
+}
+
+- (void) resetCollision {
+    self.heroHasCollided = NO;
 }
 
 #pragma mark - Model helpers
