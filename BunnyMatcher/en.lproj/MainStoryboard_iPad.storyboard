@@ -67,11 +67,14 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gm5-En-xdG" userLabel="Background header">
+                                <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Board" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04Z-zb-DHl">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="173" id="MEs-Tr-SrA"/>
+                                    <constraint firstAttribute="height" constant="33" id="29e-0T-LVS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -119,7 +122,7 @@
                                     <outlet property="delegate" destination="dqQ-kG-hfM" id="C8W-KM-OFz"/>
                                 </connections>
                             </collectionView>
-                            <view alpha="0.40000000000000013" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-ww-1yv" customClass="HeroView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-ww-1yv" customClass="HeroView">
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hero" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWd-y6-EDa">
                                         <constraints>
@@ -139,8 +142,8 @@
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-KN-waK">
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Bbi-8f-qAH"/>
                                     <constraint firstAttribute="width" constant="148" id="FaL-PM-uIH"/>
-                                    <constraint firstAttribute="height" constant="42" id="dvM-Tq-cy6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -183,7 +186,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="6UV-SY-IJJ" firstAttribute="leading" secondItem="ehm-By-8vQ" secondAttribute="leading" type="default" id="3Vp-ud-jiL"/>
                                     <constraint firstItem="jnF-NT-fVC" firstAttribute="leading" secondItem="ehm-By-8vQ" secondAttribute="leading" constant="51" id="C8H-3C-sh4"/>
@@ -194,22 +197,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="q6l-ww-1yv" secondAttribute="trailing" constant="693" id="1lf-Bt-OyT"/>
-                            <constraint firstItem="q6l-ww-1yv" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="3" id="5zp-0P-DDH"/>
-                            <constraint firstItem="ehm-By-8vQ" firstAttribute="centerY" secondItem="q6l-ww-1yv" secondAttribute="centerY" type="default" id="B8z-BC-7Yv"/>
+                            <constraint firstItem="04Z-zb-DHl" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="20" symbolic="YES" type="default" id="05J-GX-C5b"/>
+                            <constraint firstItem="Gm5-En-xdG" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" type="default" id="0V4-eg-jd5"/>
+                            <constraint firstItem="Smb-At-bgE" firstAttribute="top" secondItem="q6l-ww-1yv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1ew-Cr-QuI"/>
+                            <constraint firstAttribute="bottom" secondItem="Gm5-En-xdG" secondAttribute="bottom" constant="633" id="5wH-UA-fah"/>
                             <constraint firstAttribute="bottom" secondItem="El8-g7-JRw" secondAttribute="bottom" constant="26" id="CnG-mw-sss"/>
+                            <constraint firstItem="q6l-ww-1yv" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="12" id="GsR-rg-Jhc"/>
                             <constraint firstItem="El8-g7-JRw" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="603" id="HsZ-v8-Ri5"/>
-                            <constraint firstItem="Smb-At-bgE" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="70" id="Id2-uu-Afk"/>
-                            <constraint firstItem="q6l-ww-1yv" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="266" id="JEk-QM-sln"/>
                             <constraint firstItem="ehm-By-8vQ" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="731" id="LQL-Gi-vt7"/>
-                            <constraint firstItem="Smb-At-bgE" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="95" id="T7o-o7-qRY"/>
+                            <constraint firstAttribute="trailing" secondItem="04Z-zb-DHl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Pzi-fE-Lde"/>
+                            <constraint firstItem="q6l-ww-1yv" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="642" id="SsH-Za-7EE"/>
                             <constraint firstAttribute="trailing" secondItem="ehm-By-8vQ" secondAttribute="trailing" constant="226" id="TTi-Rn-l0o"/>
-                            <constraint firstItem="04Z-zb-DHl" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="64" id="Vhh-nW-7VO"/>
+                            <constraint firstItem="Smb-At-bgE" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="95" id="WJx-pH-4cz"/>
                             <constraint firstItem="ehm-By-8vQ" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="27" id="e9e-7N-W62"/>
-                            <constraint firstAttribute="bottom" secondItem="q6l-ww-1yv" secondAttribute="bottom" constant="626" id="eS5-5e-tKp"/>
-                            <constraint firstAttribute="trailing" secondItem="El8-g7-JRw" secondAttribute="trailing" constant="448" id="hx1-BP-OeP"/>
+                            <constraint firstItem="04Z-zb-DHl" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iKr-74-zqO"/>
+                            <constraint firstAttribute="trailing" secondItem="El8-g7-JRw" secondAttribute="trailing" constant="448" id="jAQ-wO-m82"/>
                             <constraint firstItem="tiY-KN-waK" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="20" symbolic="YES" type="default" id="kss-aW-2an"/>
-                            <constraint firstItem="04Z-zb-DHl" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="12" id="qFB-xY-8Jz"/>
+                            <constraint firstItem="Gm5-En-xdG" firstAttribute="trailing" secondItem="t6V-nr-kqf" secondAttribute="trailing" type="default" id="kzt-e3-axF"/>
+                            <constraint firstItem="ehm-By-8vQ" firstAttribute="bottom" secondItem="04Z-zb-DHl" secondAttribute="bottom" type="default" id="qG4-de-twx"/>
+                            <constraint firstItem="Gm5-En-xdG" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" type="default" id="quH-S1-A2R"/>
+                            <constraint firstAttribute="trailing" secondItem="q6l-ww-1yv" secondAttribute="trailing" constant="317" id="rQo-wh-6au"/>
+                            <constraint firstItem="Smb-At-bgE" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="70" id="xBJ-kc-LrC"/>
                             <constraint firstItem="El8-g7-JRw" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="511" id="y9z-te-azJ"/>
                             <constraint firstAttribute="trailing" secondItem="tiY-KN-waK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="yrc-1V-SNv"/>
                         </constraints>
@@ -378,9 +386,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>

@@ -66,7 +66,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 {
     [super viewDidLoad];
     
-    self.topicLabel.text = [self topic].name;
+    self.topicLabel.text = [[self topic].name capitalizedString];
     [self loadScore];
     self.livesView.lives = self.heroLives;
 }
