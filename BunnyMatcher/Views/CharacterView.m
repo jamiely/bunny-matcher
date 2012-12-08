@@ -40,9 +40,11 @@
 - (void) initialize {
     self.spriteSheetImage = [UIImage imageNamed: [self spriteImageName]];
     
-    CGRect imageViewFrame = CGRectMake(0, 0, 56.f, 80.f);
-    self.imageView = [[UIImageView alloc] initWithFrame: imageViewFrame];
     CGSize spriteSize = CGSizeMake(56.f, 80.f);
+    
+    CGRect imageViewFrame = CGRectMake(0, 0, 0, 0);
+    imageViewFrame.size = spriteSize;
+    self.imageView = [[UIImageView alloc] initWithFrame: imageViewFrame];
     
     NSRange runRange;
     runRange.length = 6;
