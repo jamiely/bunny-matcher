@@ -43,6 +43,7 @@
 		6DACD557166B0C9100C06503 /* kit_from_firefox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD556166B0C9100C06503 /* kit_from_firefox.png */; };
 		6DACD559166B106000C06503 /* tux_from_linux.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD558166B106000C06503 /* tux_from_linux.png */; };
 		6DACD55C166B108200C06503 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD55B166B108200C06503 /* CharacterView.m */; };
+		6DACD55F1673F5D700C06503 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD55E1673F5D700C06503 /* Hero.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		6DACD558166B106000C06503 /* tux_from_linux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tux_from_linux.png; path = Assets/tux_from_linux.png; sourceTree = "<group>"; };
 		6DACD55A166B108200C06503 /* CharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterView.h; path = Views/CharacterView.h; sourceTree = "<group>"; };
 		6DACD55B166B108200C06503 /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacterView.m; path = Views/CharacterView.m; sourceTree = "<group>"; };
+		6DACD55D1673F5D600C06503 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hero.h; path = Models/Hero.h; sourceTree = "<group>"; };
+		6DACD55E1673F5D700C06503 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hero.m; path = Models/Hero.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +282,8 @@
 				6DACD54116602AE300C06503 /* BoardSpot.m */,
 				6DACD54C1669AEAB00C06503 /* ActorMovement.h */,
 				6DACD54D1669AEAB00C06503 /* ActorMovement.m */,
+				6DACD55D1673F5D600C06503 /* Hero.h */,
+				6DACD55E1673F5D700C06503 /* Hero.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				6DACD551166AF52500C06503 /* LivesView.m in Sources */,
 				6DACD554166B0BF200C06503 /* UIImage+Sprite.m in Sources */,
 				6DACD55C166B108200C06503 /* CharacterView.m in Sources */,
+				6DACD55F1673F5D700C06503 /* Hero.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
