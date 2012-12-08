@@ -9,14 +9,14 @@
 #import "BoardViewController.h"
 #import "StandardCollectionCell.h"
 #import "ActorMovement.h"
-#import "Hero.h"
+#import "HeroViewController.h"
 
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 @interface BoardViewController () {
 }
-@property (nonatomic, strong) Hero *hero;
+@property (nonatomic, strong) HeroViewController *heroController;
 @property (nonatomic, assign) BOOL enemyMayMove;
 @property (nonatomic, strong) ActorMovement *actorMovement;
 @property (nonatomic, strong) NSTimer *gameLoopTimer;
@@ -54,6 +54,9 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
         
         [self.round startRoundWithItemCount: 28];
     }
+    
+    self.heroController = [[HeroViewController alloc] initWithModel: [[Hero alloc] init]
+                                                            andView: self.heroView];
 }
 
 #pragma mark - View Controller Delegate Functions
@@ -64,7 +67,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.topicLabel.text = [[self topic].name capitalizedString];
     [self loadScore];
-    self.livesView.lives = self.hero.lives;
+    self.livesView.lives = self.heroController.heroLives;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -155,28 +158,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                                  toFrame:cellFrame];
 }
 
-- (void) startHeroMovement {
-    self.hero.isMoving = YES;
-}
-
-- (void) stopHeroMovement {
-    self.hero.isMoving = NO;
-    self.heroView.frame = [[self.heroView.layer presentationLayer] frame];
-    [self.heroView.layer removeAllAnimations];
-}
-
 - (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
                   completion: (void(^)(BOOL finished))completion {
     [self resetCollision];
     
-    if(self.hero.isMoving) return;
+    if(self.heroController.isMoving) return;
+    
     // start the animation
-    [self startHeroMovement];
+    [self.heroController startMovement];
     __weak BoardViewController *weakSelf = self;
     [self moveView: self.heroView
        toIndexPath: indexPath
         completion:^(BOOL finished) {
-            [weakSelf stopHeroMovement];
+            [weakSelf.heroController stopMovement];
             if(! finished) return;
             
             [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
@@ -268,7 +262,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Collision monitoring
 
 - (void) resolveCollisions {
-    if(self.hero.hasCollided) return;
+    if(self.heroController.hasCollided) return;
     
     // get the current animating position 
     CGRect heroRect = [[self.heroView.layer presentationLayer] frame];
@@ -286,17 +280,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) collideHero {
-    self.hero.hasCollided = YES;
-    self.hero.lives --;
-    self.livesView.lives = self.hero.lives;
-    if(self.hero.lives <= 0) {
+    self.heroController.hasCollided = YES;
+    self.heroController.heroLives --;
+    self.livesView.lives = self.heroController.heroLives;
+    if(self.heroController.heroLives <= 0) {
         [self performSegueWithIdentifier:@"GameOverSegue" sender: self];
     }
-    [self stopHeroMovement];
+    [self.heroController stopMovement];
 }
 
 - (void) resetCollision {
-    self.hero.hasCollided = NO;
+    self.heroController.hasCollided = NO;
 }
 
 #pragma mark - Model helpers

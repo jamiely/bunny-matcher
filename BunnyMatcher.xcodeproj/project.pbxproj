@@ -44,6 +44,7 @@
 		6DACD559166B106000C06503 /* tux_from_linux.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DACD558166B106000C06503 /* tux_from_linux.png */; };
 		6DACD55C166B108200C06503 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD55B166B108200C06503 /* CharacterView.m */; };
 		6DACD55F1673F5D700C06503 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD55E1673F5D700C06503 /* Hero.m */; };
+		6DACD5621673F79A00C06503 /* HeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD5611673F79A00C06503 /* HeroViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		6DACD55B166B108200C06503 /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacterView.m; path = Views/CharacterView.m; sourceTree = "<group>"; };
 		6DACD55D1673F5D600C06503 /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hero.h; path = Models/Hero.h; sourceTree = "<group>"; };
 		6DACD55E1673F5D700C06503 /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hero.m; path = Models/Hero.m; sourceTree = "<group>"; };
+		6DACD5601673F79A00C06503 /* HeroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroViewController.h; path = Controllers/HeroViewController.h; sourceTree = "<group>"; };
+		6DACD5611673F79A00C06503 /* HeroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroViewController.m; path = Controllers/HeroViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 				6DACD51B165E92B500C06503 /* BoardViewController.m */,
 				6DACD54316603FCF00C06503 /* TitleViewController.h */,
 				6DACD54416603FCF00C06503 /* TitleViewController.m */,
+				6DACD5601673F79A00C06503 /* HeroViewController.h */,
+				6DACD5611673F79A00C06503 /* HeroViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				6DACD554166B0BF200C06503 /* UIImage+Sprite.m in Sources */,
 				6DACD55C166B108200C06503 /* CharacterView.m in Sources */,
 				6DACD55F1673F5D700C06503 /* Hero.m in Sources */,
+				6DACD5621673F79A00C06503 /* HeroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
