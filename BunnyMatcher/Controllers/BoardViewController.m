@@ -67,7 +67,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.topicLabel.text = [[self topic].name capitalizedString];
     [self loadScore];
-    self.livesView.lives = self.heroController.heroLives;
+    [self updateHeroDisplay];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -96,7 +96,6 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"count: %d", self.round.topicItemCount);
     return self.round.topicItemCount;
 }
 
@@ -160,7 +159,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
                   completion: (void(^)(BOOL finished))completion {
-    [self resetCollision];
+    [self.heroController resetCollision];
     
     if(self.heroController.isMoving) return;
     
@@ -280,17 +279,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) collideHero {
-    self.heroController.hasCollided = YES;
-    self.heroController.heroLives --;
-    self.livesView.lives = self.heroController.heroLives;
-    if(self.heroController.heroLives <= 0) {
+    [self.heroController collide];
+    
+    if([self isGameOver]) {
         [self performSegueWithIdentifier:@"GameOverSegue" sender: self];
     }
-    [self.heroController stopMovement];
 }
 
-- (void) resetCollision {
-    self.heroController.hasCollided = NO;
+- (void) updateHeroDisplay {
+    self.livesView.lives = self.heroController.heroLives;
+}
+
+- (BOOL) isGameOver {
+    return self.heroController.heroLives == 0;
 }
 
 #pragma mark - Model helpers

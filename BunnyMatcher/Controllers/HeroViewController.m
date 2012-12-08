@@ -8,8 +8,8 @@
 
 #import "HeroViewController.h"
 
-@interface HeroViewController ()
-
+@interface HeroViewController()
+@property (nonatomic, strong) Hero* hero;
 @end
 
 @implementation HeroViewController
@@ -58,6 +58,16 @@
 
 - (void) setHasCollided:(BOOL)hasCollided {
     self.hero.hasCollided = hasCollided;
+}
+
+- (void) collide {
+    self.hasCollided = YES;
+    self.heroLives --;
+    [self stopMovement];
+}
+
+- (void) resetCollision {
+    self.hasCollided = NO;
 }
 
 @end

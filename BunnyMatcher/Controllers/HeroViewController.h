@@ -13,11 +13,15 @@
 @interface HeroViewController : UIViewController
 - (id) initWithModel: (Hero*) hero;
 - (id) initWithModel: (Hero*) hero andView: (HeroView*) view;
+
 - (void) startMovement;
 - (void) stopMovement;
 - (BOOL) isMoving;
+- (BOOL) hasCollided;
 
-@property (nonatomic, strong) Hero* hero;
-@property (nonatomic, assign) BOOL hasCollided;
+- (void) collide;
+- (void) resetCollision;
+
 @property (nonatomic, assign) NSUInteger heroLives;
+
 @end
