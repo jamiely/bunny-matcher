@@ -13,6 +13,9 @@
 
 @interface BoardViewController : UIViewController<UICollectionViewDataSource,
     UICollectionViewDelegate, UIGestureRecognizerDelegate>
+
+- (IBAction) playAgain: (UIStoryboardSegue*) segue;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) Round *round;
 @property (weak, nonatomic) IBOutlet HeroView *heroView;

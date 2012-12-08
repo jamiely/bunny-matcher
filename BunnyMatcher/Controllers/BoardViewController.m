@@ -323,4 +323,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+#pragma mark - Segue functions
+
+- (IBAction) playAgain: (UIStoryboardSegue*) segue {
+    void ((^completion)()) = ^{
+        [self.navigationController popViewControllerAnimated: NO];
+    };
+    [self dismissViewControllerAnimated:YES completion:completion];
+}
+
 @end
