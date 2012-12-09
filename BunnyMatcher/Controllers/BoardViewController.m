@@ -53,10 +53,9 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
         [self.round startRoundWithItemCount: 28];
     }
     
-    self.heroController = [[HeroViewController alloc] initWithModel: [[Hero alloc] init]
-                                                            andView: self.heroView];
+    self.heroController =
+        [[HeroViewController alloc] initWithModel: [[Hero alloc] init]];
     self.enemyController = [[EnemyViewController alloc] init];
-    self.enemyController.view = self.enemyView;
     self.enemyController.delegate = self;
     self.enemyController.actorMovement = self.actorMovement;
 }
@@ -68,6 +67,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     [super viewDidLoad];
     
     self.topicLabel.text = [[self topic].name capitalizedString];
+    self.heroController.view = self.heroView;
+    self.enemyController.view = self.enemyView;
     [self updateScoreDisplay];
     [self updateHeroDisplay];
 }

@@ -14,18 +14,12 @@
 
 @implementation HeroViewController
 
+@synthesize view;
+
 - (id) initWithModel: (Hero*) hero {
     self = [self init];
     if(self) {
         self.hero = hero;
-    }
-    return self;
-}
-
-- (id) initWithModel: (Hero*) hero andView: (HeroView*) view {
-    self = [self initWithModel: hero];
-    if(self) {
-        self.view = view;
     }
     return self;
 }

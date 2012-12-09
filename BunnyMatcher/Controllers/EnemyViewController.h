@@ -7,6 +7,7 @@
 //
 
 #import "ActorMovement.h"
+#import "EnemyView.h"
 
 @protocol EnemyViewControllerDelegate <NSObject>
 - (NSIndexPath*) nextIndexPathDestination;
