@@ -8,9 +8,8 @@
 
 #import "TitleViewController.h"
 
-@interface TitleViewController() {
-    NSArray *contents;
-}
+@interface TitleViewController()
+@property (nonatomic, strong) NSArray *contents;
 
 @end
 
@@ -21,7 +20,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    contents = @[@"Play", @"Contact"];
+    self.contents = @[@"Play", @"Contact"];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -40,13 +39,13 @@
 
 - (NSInteger) tableView:(UITableView *)tableView
   numberOfRowsInSection:(NSInteger)section {
-    return contents.count;
+    return self.contents.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [aTableView dequeueReusableCellWithIdentifier: @"StandardCell"];
-    cell.textLabel.text = [contents objectAtIndex: indexPath.row];
+    cell.textLabel.text = [self.contents objectAtIndex: indexPath.row];
     return cell;
 }
 

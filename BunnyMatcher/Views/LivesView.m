@@ -22,7 +22,6 @@
 - (void)setLives:(NSUInteger)aLives {
     lives = aLives;
     self.livesValueLabel.text = [NSString stringWithFormat: @"%d", aLives];
-    NSLog(@"Lives set to %d", self.lives);
 }
 
 #pragma mark - View Helpers

@@ -34,7 +34,7 @@
 }
 
 - (NSString*) spriteImageName {
-    return @"";
+    assert(NO);
 }
 
 - (void) initialize {
