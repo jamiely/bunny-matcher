@@ -51,4 +51,41 @@
     return intermediateHeroFrame;
 }
 
+- (void) moveView: (UIView*) aView
+          toFrame: (CGRect) intermediateHeroFrame
+        thenFrame: (CGRect) finalHeroFrame
+       completion: (void (^)(BOOL))completion  {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        // We want to move in two parts. First, move in the y direction,
+        // straight down.
+        aView.frame = intermediateHeroFrame;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            aView.frame = finalHeroFrame;
+        } completion: completion];
+    }];
+}
+
+- (void) moveView: (UIView*) aView
+      toIndexPath: (NSIndexPath*) indexPath
+       completion: (void(^)(BOOL finished))completion {
+    
+    CGRect currentFrame = aView.frame;
+    CGRect finalFrame = [self.delegate view: aView locationFromIndexPath: indexPath];
+    CGRect intermediateFrame =
+        [self intermediateActorFrameGivenCurrentFrame: &currentFrame
+                                        andFinalFrame: &finalFrame];
+    
+    [self moveView: aView
+           toFrame: intermediateFrame
+         thenFrame: finalFrame
+        completion: completion];
+    
+    NSLog(@"Moving view: %@ from: %@ to: %@",
+          aView,
+          NSStringFromCGRect(currentFrame),
+          NSStringFromCGRect(finalFrame));
+}
+
 @end

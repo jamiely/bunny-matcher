@@ -14,10 +14,9 @@
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
-@interface BoardViewController () {
-}
+@interface BoardViewController ()
 @property (nonatomic, strong) HeroViewController *heroController;
-@property (nonatomic, assign) BOOL enemyMayMove;
+@property (nonatomic, strong) EnemyViewController *enemyController;
 @property (nonatomic, strong) ActorMovement *actorMovement;
 @property (nonatomic, strong) NSTimer *gameLoopTimer;
 @end
@@ -45,6 +44,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (void) initialize {
     self.actorMovement = [[ActorMovement alloc] init];
+    self.actorMovement.delegate = self;
     
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
@@ -55,6 +55,10 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.heroController = [[HeroViewController alloc] initWithModel: [[Hero alloc] init]
                                                             andView: self.heroView];
+    self.enemyController = [[EnemyViewController alloc] init];
+    self.enemyController.view = self.enemyView;
+    self.enemyController.delegate = self;
+    self.enemyController.actorMovement = self.actorMovement;
 }
 
 #pragma mark - View Controller Delegate Functions
@@ -70,11 +74,11 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (void)viewDidAppear:(BOOL)animated {
     [self startGameLoop];
-    [self beginEnemyMovement];
+    [self.enemyController beginEnemyMovement];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    self.enemyMayMove = NO;
+    self.enemyController.mayMove = NO;
     [self stopGameLoop];
 }
 
@@ -114,34 +118,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Enemy functions
 
-- (void) beginEnemyMovement {
-    self.enemyMayMove = true;
-    [self moveEnemyRecursivelyWithIntervalInSeconds: 5.0];
-}
-
-// arguably, this should be done as part of the game loop
-- (void) moveEnemyRecursivelyWithIntervalInSeconds: (CGFloat) intervalInSeconds {
-    if(!self.enemyMayMove) return;
-    
-    [self moveEnemyAfterDelayInSeconds: intervalInSeconds completion:^(BOOL finish){
-        [self moveEnemyRecursivelyWithIntervalInSeconds: intervalInSeconds];
-    }];
-}
-
-- (void) moveEnemyAfterDelayInSeconds: (CGFloat) delayInSeconds
-                           completion: (void (^)(BOOL finish)) completion {
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self moveView: self.enemyView
-           toIndexPath: [self randomIndexPath]
-            completion: completion];
-    });
-}
-
 - (NSIndexPath*) randomIndexPath {
     NSInteger itemCount = [self collectionView: self.collectionView numberOfItemsInSection:0];
     NSInteger index = arc4random_uniform(itemCount);
     return [NSIndexPath indexPathForItem: index inSection: 0];
+}
+
+- (NSIndexPath*) nextIndexPathDestination {
+    return [self randomIndexPath];
 }
 
 #pragma mark - Movement functions
@@ -157,38 +141,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                                  toFrame:cellFrame];
 }
 
-- (void) moveView: (UIView*) aView
-      toIndexPath: (NSIndexPath*) indexPath
-       completion: (void(^)(BOOL finished))completion {
-    
-    CGRect currentHeroFrame = aView.frame;
-    CGRect finalHeroFrame = [self view: aView locationFromIndexPath: indexPath];
-    CGRect intermediateHeroFrame =
-        [self.actorMovement intermediateActorFrameGivenCurrentFrame: &currentHeroFrame
-                                                      andFinalFrame: &finalHeroFrame];
-    
-    [self moveView: aView
-           toFrame: intermediateHeroFrame
-         thenFrame: finalHeroFrame
-        completion: completion];
-}
-
-- (void) moveView: (UIView*) aView
-          toFrame: (CGRect) intermediateHeroFrame
-        thenFrame: (CGRect) finalHeroFrame
-       completion: (void (^)(BOOL))completion  {
-
-    [UIView animateWithDuration:0.5 animations:^{
-        // We want to move in two parts. First, move in the y direction,
-        // straight down.
-        aView.frame = intermediateHeroFrame;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 animations:^{
-            aView.frame = finalHeroFrame;
-        } completion: completion];
-    }];
-}
-
 // Called when the hero has finished moving to the item corresponding to the
 // indexPath.
 - (void) view: (UIView*) aView movedToIndexPath: (NSIndexPath*) indexPath {
@@ -200,19 +152,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     
-    NSInteger scoreDelta = 0;
-    if([self.round mayConsumeSpotAtIndex: index]) {
-        [self.round consumeSpotAtIndex: index];
-        scoreDelta = ROUND_SCORE_POINT;
+    if([self.round tryToConsumeSpotAtIndex: index]) {
         if([self.round roundOver]) {
             [self roundCompleteSegue];
         }
     }
-    else {
-        scoreDelta = ROUND_SCORE_PENALTY;
-    }
     
-    self.round.score += scoreDelta;
     [self updateScoreDisplay];
     [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
 }
@@ -226,14 +171,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // start the animation
     [self.heroController startMovement];
     __weak BoardViewController *weakSelf = self;
-    [self moveView: self.heroView
-       toIndexPath: indexPath
-        completion:^(BOOL finished) {
-            [weakSelf.heroController stopMovement];
-            if(! finished) return;
-            
-            [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
-        }];
+    [self.actorMovement moveView: self.heroView
+                     toIndexPath: indexPath
+                      completion:^(BOOL finished) {
+                          [weakSelf.heroController stopMovement];
+                          if(! finished) return;
+                        
+                          [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
+                      }];
 }
 
 #pragma mark - Game Loop Functions

@@ -10,9 +10,12 @@
 #import "Round.h"
 #import "HeroView.h"
 #import "LivesView.h"
+#import "ActorMovement.h"
+#import "EnemyViewController.h"
 
 @interface BoardViewController : UIViewController<UICollectionViewDataSource,
-    UICollectionViewDelegate, UIGestureRecognizerDelegate>
+    UICollectionViewDelegate, UIGestureRecognizerDelegate, ActorMovementDelegate,
+    EnemyViewControllerDelegate>
 
 - (IBAction) playAgain: (UIStoryboardSegue*) segue;
 

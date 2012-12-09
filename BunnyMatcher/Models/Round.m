@@ -11,6 +11,7 @@
 
 const NSInteger ROUND_SCORE_POINT = 100;
 const NSInteger ROUND_SCORE_PENALTY = -50;
+const NSInteger ROUND_SCORE_CAPTURED = -100;
 
 @interface Round() {
     NSArray *_topicItems;
@@ -93,8 +94,42 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
     
     return [self.mainTopic hasItem: spot.item];
 }
+
+- (BOOL) tryToConsumeSpotAtIndex: (NSUInteger) index {
+    if([self mayConsumeSpotAtIndex: index]) {
+        [self consumeSpotAtIndex: index];
+        [self scoreEvent: CorrectTerm];
+        return YES;
+    }
+    else {
+        [self scoreEvent: IncorrectTerm];
+        return NO;
+    }
+
+}
+
 - (BOOL) roundOver {
     return self.mainTopicItemsRemaining == 0;
+}
+
+- (NSInteger) scoreEvent: (ScoreEvent) event {
+    NSInteger scoreDelta = 0;
+    switch(event) {
+        case CorrectTerm: {
+            scoreDelta = ROUND_SCORE_POINT;
+            break;
+        }
+        case IncorrectTerm: {
+            scoreDelta = ROUND_SCORE_PENALTY;
+            break;
+        }
+        case Captured: {
+            scoreDelta = ROUND_SCORE_CAPTURED;
+            break;
+        }
+    }
+    self.score += scoreDelta;
+    return self.score;
 }
 
 + (id) roundWithLibrary: (Library*) library andMainTopicName: (NSString*) topicName {

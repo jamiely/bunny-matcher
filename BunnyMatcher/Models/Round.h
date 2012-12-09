@@ -13,6 +13,12 @@
 extern const NSInteger ROUND_SCORE_POINT;
 extern const NSInteger ROUND_SCORE_PENALTY;
 
+typedef enum {
+    CorrectTerm,
+    IncorrectTerm,
+    Captured
+} ScoreEvent;
+
 @interface Round : NSObject
 
 - (void) startRoundWithItemCount: (NSUInteger) itemCount;
@@ -25,11 +31,14 @@ extern const NSInteger ROUND_SCORE_PENALTY;
 
 - (NSString*) nameAtIndex: (NSUInteger) index;
 
-- (void) consumeSpotAtIndex: (NSUInteger) index;
 - (BOOL) spotIsConsumedAtIndex: (NSUInteger) index;
-- (BOOL) mayConsumeSpotAtIndex: (NSUInteger) index;
+- (BOOL) tryToConsumeSpotAtIndex: (NSUInteger) index;
 
 - (BOOL) roundOver;
+
+// score functions
+
+- (NSInteger) scoreEvent: (ScoreEvent) event;
 
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;
