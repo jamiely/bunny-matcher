@@ -5,7 +5,8 @@ A grouping/matching game.
 Media
 =====
 
-<img src="https://raw.github.com/jamiely/bunny-matcher/master/Media/screenshot_410f214.png">
+<img
+src="https://raw.github.com/jamiely/bunny-matcher/master/Media/screenshot_15cc052.png">
 
 * 15cc052 - http://youtu.be/tAUsp2lJa4M
 * 544e132 - http://youtu.be/loA5WxkCfEg
