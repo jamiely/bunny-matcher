@@ -96,4 +96,11 @@ const NSInteger ROUND_SCORE_PENALTY = -50;
 - (BOOL) roundOver {
     return self.mainTopicItemsRemaining == 0;
 }
+
++ (id) roundWithLibrary: (Library*) library andMainTopicName: (NSString*) topicName {
+    Round *round = [[Round alloc] init];
+    round.library = library;
+    round.mainTopic = [library topicWithName: topicName];
+    return round;
+}
 @end

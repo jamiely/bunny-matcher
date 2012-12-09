@@ -37,4 +37,6 @@ extern const NSInteger ROUND_SCORE_PENALTY;
 @property (nonatomic, readonly) NSUInteger mainTopicItemsRemaining;
 @property (nonatomic, readonly) NSUInteger mainTopicItemCount;
 
++ (id) roundWithLibrary: (Library*) library andMainTopicName: (NSString*) topicName;
+
 @end

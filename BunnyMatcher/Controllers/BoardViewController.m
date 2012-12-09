@@ -48,10 +48,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
-        self.round = [[Round alloc] init];
-        self.round.library = [Library sharedInstance];
-        self.round.mainTopic = [self.round.library topicWithName: LIBRARY_TOPIC_STATES];
-        
+        self.round = [Round roundWithLibrary:[Library sharedInstance]
+                            andMainTopicName:LIBRARY_TOPIC_STATES];
         [self.round startRoundWithItemCount: 28];
     }
     
@@ -66,7 +64,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     [super viewDidLoad];
     
     self.topicLabel.text = [[self topic].name capitalizedString];
-    [self loadScore];
+    [self updateScoreDisplay];
     [self updateHeroDisplay];
 }
 
@@ -101,8 +99,9 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellId = @"StandardCell";
     StandardCollectionCell *cell =
-        [aCollectionView dequeueReusableCellWithReuseIdentifier:@"StandardCell"
+        [aCollectionView dequeueReusableCellWithReuseIdentifier:cellId
                                                    forIndexPath:indexPath];
     cell.textLabel.text = [self.round nameAtIndex: indexPath.row];
     return cell;
@@ -120,6 +119,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self moveEnemyRecursivelyWithIntervalInSeconds: 5.0];
 }
 
+// arguably, this should be done as part of the game loop
 - (void) moveEnemyRecursivelyWithIntervalInSeconds: (CGFloat) intervalInSeconds {
     if(!self.enemyMayMove) return;
     
@@ -144,7 +144,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return [NSIndexPath indexPathForItem: index inSection: 0];
 }
 
-#pragma mark - Hero functions
+#pragma mark - Movement functions
 
 - (CGRect) view: (UIView*) aView locationFromIndexPath: (NSIndexPath*) indexPath {
     // get the new hero location
@@ -157,24 +157,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                                  toFrame:cellFrame];
 }
 
-- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
-                  completion: (void(^)(BOOL finished))completion {
-    [self.heroController resetCollision];
-    
-    if(self.heroController.isMoving) return;
-    
-    // start the animation
-    [self.heroController startMovement];
-    __weak BoardViewController *weakSelf = self;
-    [self moveView: self.heroView
-       toIndexPath: indexPath
-        completion:^(BOOL finished) {
-            [weakSelf.heroController stopMovement];
-            if(! finished) return;
-            
-            [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
-        }];
-}
 - (void) moveView: (UIView*) aView
       toIndexPath: (NSIndexPath*) indexPath
        completion: (void(^)(BOOL finished))completion {
@@ -223,7 +205,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         [self.round consumeSpotAtIndex: index];
         scoreDelta = ROUND_SCORE_POINT;
         if([self.round roundOver]) {
-            [self performSegueWithIdentifier:@"RoundCompleteSegue" sender:self];
+            [self roundCompleteSegue];
         }
     }
     else {
@@ -231,8 +213,27 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     self.round.score += scoreDelta;
-    [self loadScore];
+    [self updateScoreDisplay];
     [self.collectionView reloadItemsAtIndexPaths: @[indexPath]];
+}
+
+- (void) moveHeroToIndexPath: (NSIndexPath*) indexPath
+                  completion: (void(^)(BOOL finished))completion {
+    [self.heroController resetCollision];
+    
+    if(self.heroController.isMoving) return;
+    
+    // start the animation
+    [self.heroController startMovement];
+    __weak BoardViewController *weakSelf = self;
+    [self moveView: self.heroView
+       toIndexPath: indexPath
+        completion:^(BOOL finished) {
+            [weakSelf.heroController stopMovement];
+            if(! finished) return;
+            
+            [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
+        }];
 }
 
 #pragma mark - Game Loop Functions
@@ -282,7 +283,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.heroController collide];
     
     if([self isGameOver]) {
-        [self performSegueWithIdentifier:@"GameOverSegue" sender: self];
+        [self gameOverSegue];
     }
 }
 
@@ -300,7 +301,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return self.round.mainTopic;
 }
 
-- (void) loadScore {
+// Used to render the score.
+- (void) updateScoreDisplay {
     if(self.round.score >= 0) {
         self.scoreLabel.text = [NSString stringWithFormat: BOARDVIEWCONTROLLER_SCORE_FORMAT, self.round.score];
         
@@ -310,11 +312,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         self.scoreLabel.text = [NSString stringWithFormat: BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT, -self.round.score];
         self.scoreLabel.textColor = [UIColor redColor];
     }
-    
-    
 }
 
 #pragma mark - Segue functions
+
+- (void) roundCompleteSegue {
+    static NSString *segueId = @"RoundCompleteSegue";
+    [self performSegueWithIdentifier:segueId sender:self];
+}
+
+- (void) gameOverSegue {
+    static NSString *segueId = @"GameOverSegue";
+    [self performSegueWithIdentifier:segueId sender: self];
+}
 
 - (IBAction) playAgain: (UIStoryboardSegue*) segue {
     void ((^completion)()) = ^{
