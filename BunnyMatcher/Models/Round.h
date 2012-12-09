@@ -10,9 +10,6 @@
 #import "Library.h"
 #import "BoardSpot.h"
 
-extern const NSInteger ROUND_SCORE_POINT;
-extern const NSInteger ROUND_SCORE_PENALTY;
-
 typedef enum {
     CorrectTerm,
     IncorrectTerm,
