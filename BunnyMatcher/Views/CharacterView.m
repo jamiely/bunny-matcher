@@ -59,5 +59,16 @@
     [self addSubview: self.imageView];
     [self bringSubviewToFront: self.imageView];
     [self.imageView startAnimating];
+    
+    self.backgroundColor = [UIColor clearColor];
+    [self hideLabels];
+}
+
+- (void) hideLabels {
+    for(UIView *view in self.subviews) {
+        if([view isKindOfClass: [UILabel class]]) {
+            view.hidden = YES;
+        }
+    }
 }
 @end
