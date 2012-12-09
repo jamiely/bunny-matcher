@@ -119,13 +119,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self moveHeroToIndexPath: indexPath completion: nil];
 }
 
-#pragma mark - Enemy functions
-
-- (NSIndexPath*) randomIndexPath {
-    NSInteger itemCount = [self collectionView: self.collectionView numberOfItemsInSection:0];
-    NSInteger index = arc4random_uniform(itemCount);
-    return [NSIndexPath indexPathForItem: index inSection: 0];
-}
+#pragma mark - EnemyViewControllerDelegate functions
 
 - (NSIndexPath*) nextIndexPathDestination {
     return [self randomIndexPath];
@@ -232,21 +226,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+#pragma mark - UI Updates
+
 - (void) updateHeroDisplay {
     self.livesView.lives = self.heroController.heroLives;
 }
 
-- (BOOL) isGameOver {
-    return self.heroController.heroLives == 0;
-}
-
-#pragma mark - Model helpers
-
-- (Topic*) topic {
-    return self.round.mainTopic;
-}
-
-// Used to render the score.
 - (void) updateScoreDisplay {
     NSString *format;
     NSInteger score;
@@ -265,6 +250,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     self.scoreLabel.text = [NSString stringWithFormat: format, score];
     self.scoreLabel.textColor = color;
+}
+
+#pragma mark - Model helpers
+
+- (BOOL) isGameOver {
+    return self.heroController.heroLives == 0;
+}
+
+- (Topic*) topic {
+    return self.round.mainTopic;
+}
+
+
+- (NSIndexPath*) randomIndexPath {
+    NSInteger itemCount = [self collectionView: self.collectionView numberOfItemsInSection:0];
+    NSInteger index = arc4random_uniform(itemCount);
+    return [NSIndexPath indexPathForItem: index inSection: 0];
 }
 
 #pragma mark - Segue functions
