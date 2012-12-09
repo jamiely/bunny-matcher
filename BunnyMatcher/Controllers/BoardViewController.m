@@ -248,15 +248,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 // Used to render the score.
 - (void) updateScoreDisplay {
+    NSString *format;
+    NSInteger score;
+    UIColor *color;
+    
     if(self.round.score >= 0) {
-        self.scoreLabel.text = [NSString stringWithFormat: BOARDVIEWCONTROLLER_SCORE_FORMAT, self.round.score];
-        
-        self.scoreLabel.textColor = [UIColor blackColor];
+        format = BOARDVIEWCONTROLLER_SCORE_FORMAT;
+        score = self.round.score;
+        color = [UIColor blackColor];
     }
     else {
-        self.scoreLabel.text = [NSString stringWithFormat: BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT, -self.round.score];
-        self.scoreLabel.textColor = [UIColor redColor];
+        format = BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT;
+        score = - self.round.score;
+        color = [UIColor redColor];
     }
+    
+    self.scoreLabel.text = [NSString stringWithFormat: format, score];
+    self.scoreLabel.textColor = color;
 }
 
 #pragma mark - Segue functions
