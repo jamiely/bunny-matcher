@@ -13,24 +13,21 @@ const NSInteger ROUND_SCORE_POINT = 100;
 const NSInteger ROUND_SCORE_PENALTY = -50;
 const NSInteger ROUND_SCORE_CAPTURED = -100;
 
-@interface Round() {
-    NSArray *_topicItems;
-    NSArray *_spots;
-}
+@interface Round()
+@property (nonatomic, strong) NSArray *topicItems;
+@property (nonatomic, strong) NSArray *spots;
 @property (nonatomic, assign) NSUInteger mainTopicItemsRemaining;
 @property (nonatomic, assign) NSUInteger mainTopicItemCount;
+@property (nonatomic, assign) NSInteger score;
 @end
 
 @implementation Round
-@synthesize mainTopic;
-@synthesize library;
-@synthesize score;
 
 - (id) init {
     self = [super init];
     if(self) {
-        _topicItems = @[];
-        _spots = @[];
+        self.topicItems = @[];
+        self.spots = @[];
         self.score = 0;
         self.mainTopicItemsRemaining = 0;
         self.mainTopicItemCount = 0;
@@ -41,34 +38,28 @@ const NSInteger ROUND_SCORE_CAPTURED = -100;
 - (void) startRoundWithItemCount: (NSUInteger) itemCount {
     Scrambler *scrambler = [[Scrambler alloc] initWithMainTopic: self.mainTopic
                                                      andLibrary: self.library];
-    _topicItems = [scrambler drawScrambledWithCount: itemCount];
+    self.topicItems = [scrambler drawScrambledWithCount: itemCount];
     
-    NSMutableArray *spots = [NSMutableArray arrayWithCapacity: _topicItems.count];
-    for(TopicItem* topicItem in _topicItems) {
+    NSMutableArray *spots = [NSMutableArray arrayWithCapacity: self.topicItems.count];
+    for(TopicItem* topicItem in self.topicItems) {
         [spots addObject: [BoardSpot spotWithItem: topicItem]];
     }
-    _spots = [spots copy];
+    self.spots = [spots copy];
     
     self.mainTopicItemCount = scrambler.drawnNumberOfMainTopicItems;
     self.mainTopicItemsRemaining = self.mainTopicItemCount;
 }
 
 - (NSUInteger) topicItemCount {
-    return _topicItems.count;
-}
-- (NSArray*) topicItems {
-    return _topicItems;
+    return self.topicItems.count;
 }
 
 - (TopicItem*) topicItemAtIndex: (NSUInteger) index {
-    return [_topicItems objectAtIndex: index];
+    return [self.topicItems objectAtIndex: index];
 }
 
-- (NSArray*) spots {
-    return _spots;
-}
 - (BoardSpot*) spotAtIndex: (NSUInteger) index {
-    return [_spots objectAtIndex: index];
+    return [self.spots objectAtIndex: index];
 }
 
 - (NSString*) nameAtIndex: (NSUInteger) index {
@@ -130,6 +121,18 @@ const NSInteger ROUND_SCORE_CAPTURED = -100;
     }
     self.score += scoreDelta;
     return self.score;
+}
+
+- (Topic*) nextTopic {
+    return [self.library topicAfter: self.mainTopic];
+}
+
+- (Round*) nextRound {
+    Round *next = [[Round alloc] init];
+    next.library = self.library;
+    next.mainTopic = [self nextTopic];
+    next.score = self.score;
+    return next;
 }
 
 + (id) roundWithLibrary: (Library*) library andMainTopicName: (NSString*) topicName {

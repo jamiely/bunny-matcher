@@ -71,4 +71,8 @@
 - (BOOL) collidesWithRect: (CGRect) rect {
     return CGRectIntersectsRect(self.presentationFrame, rect);
 }
+
+- (void) resetLives {
+    self.heroLives = HERO_LIVES_DEFAULT;
+}
 @end

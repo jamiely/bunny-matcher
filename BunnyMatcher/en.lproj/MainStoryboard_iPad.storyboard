@@ -306,16 +306,35 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdF-06-l8j">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="py7-Zs-EFT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Next Round">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="QaB-yt-WFE" kind="unwind" unwindAction="nextRound:" id="Wmz-04-eIn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dn8-dy-pf7" firstAttribute="top" secondItem="f9n-tT-4Eo" secondAttribute="top" constant="248" id="2Mt-QW-K9l"/>
-                            <constraint firstItem="dn8-dy-pf7" firstAttribute="centerX" secondItem="f9n-tT-4Eo" secondAttribute="centerX" type="default" id="sTX-Y9-b6Q"/>
+                            <constraint firstItem="qdF-06-l8j" firstAttribute="centerX" secondItem="dn8-dy-pf7" secondAttribute="centerX" type="default" id="9A6-1a-6s5"/>
+                            <constraint firstItem="dn8-dy-pf7" firstAttribute="centerX" secondItem="f9n-tT-4Eo" secondAttribute="centerX" type="default" id="AAw-MN-has"/>
+                            <constraint firstItem="qdF-06-l8j" firstAttribute="top" secondItem="dn8-dy-pf7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xsr-Yp-OR7"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="st7-iy-BOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QaB-yt-WFE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2412" y="-147"/>
         </scene>
@@ -342,9 +361,10 @@
         <class className="BoardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BoardViewController.h"/>
             <relationships>
+                <relationship kind="action" name="nextRound:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="action" name="playAgain:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="enemyView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="enemyView" candidateClass="EnemyView"/>
                 <relationship kind="outlet" name="heroView" candidateClass="HeroView"/>
                 <relationship kind="outlet" name="livesView" candidateClass="LivesView"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
@@ -386,6 +406,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>

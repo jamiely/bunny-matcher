@@ -54,6 +54,16 @@ NSString* LIBRARY_TOPIC_DESSERTS = @"desserts";
     return names;
 }
 
+- (Topic*) topicAfter: (Topic*) topic {
+    NSInteger index = [self.topics indexOfObject: topic];
+    if(index == NSNotFound) {
+        return nil;
+    }
+    
+    NSInteger nextIndex = (index + 1) % self.topics.count;
+    return [self.topics objectAtIndex: nextIndex];
+}
+
 + (Library*) sharedInstance {
     static Library *instance;
     static dispatch_once_t onceToken;

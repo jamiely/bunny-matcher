@@ -1,3 +1,4 @@
+
 //
 //  BoardViewController.h
 //  BunnyMatcher
@@ -18,6 +19,7 @@
     EnemyViewControllerDelegate>
 
 - (IBAction) playAgain: (UIStoryboardSegue*) segue;
+- (IBAction) nextRound: (UIStoryboardSegue*) segue;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) Round *round;

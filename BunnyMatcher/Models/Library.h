@@ -17,6 +17,9 @@ extern NSString* LIBRARY_TOPIC_DESSERTS;
 - (void) loadDefaultTopics;
 - (Topic*) topicWithName: (NSString*) name;
 - (NSArray*) topicNames;
+// Returns the topic after the passed topic, with wraparound. Returns nil
+// if the topic is not part of the library
+- (Topic*) topicAfter: (Topic*) topic;
 
 @property (nonatomic, strong) NSArray* topics;
 

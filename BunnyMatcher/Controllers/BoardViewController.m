@@ -11,6 +11,8 @@
 #import "ActorMovement.h"
 #import "HeroViewController.h"
 
+const NSUInteger BOARD_ITEM_COUNT = 28;
+
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 
@@ -50,7 +52,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     if(!self.round) {
         self.round = [Round roundWithLibrary:[Library sharedInstance]
                             andMainTopicName:LIBRARY_TOPIC_STATES];
-        [self.round startRoundWithItemCount: 28];
+        [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
     }
     
     self.heroController =
@@ -66,13 +68,10 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 {
     [super viewDidLoad];
     
-    self.topicLabel.text = [[self topic].name capitalizedString];
-    
     self.heroController.view = self.heroView;
     self.enemyController.view = self.enemyView;
     
-    [self updateScoreDisplay];
-    [self updateHeroDisplay];
+    [self updateDisplays];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -228,6 +227,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - UI Updates
 
+- (void) updateDisplays {
+    [self updateTopicDisplay];
+    [self updateHeroDisplay];
+    [self updateScoreDisplay];
+}
+
+- (void) updateTopicDisplay {
+    self.topicLabel.text = [[self topic].name capitalizedString];
+}
+
 - (void) updateHeroDisplay {
     self.livesView.lives = self.heroController.heroLives;
 }
@@ -286,6 +295,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         [self.navigationController popViewControllerAnimated: NO];
     };
     [self dismissViewControllerAnimated:YES completion:completion];
+}
+
+- (IBAction) nextRound: (UIStoryboardSegue*) segue {
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.round = self.round.nextRound;
+        [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
+        
+        [self.heroController resetLives];
+        [self updateDisplays];
+        [self.collectionView reloadData];
+    }];
 }
 
 @end

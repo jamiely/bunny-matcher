@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+const extern NSUInteger HERO_LIVES_DEFAULT;
+
 @interface Hero : NSObject
 
 @property (nonatomic, assign) BOOL isMoving;

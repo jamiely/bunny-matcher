@@ -8,6 +8,8 @@
 
 #import "Hero.h"
 
+const NSUInteger HERO_LIVES_DEFAULT = 3;
+
 @implementation Hero
 
 - (id) init {
@@ -15,7 +17,7 @@
     if(self) {
         self.hasCollided = NO;
         self.isMoving = NO;
-        self.lives = 3;
+        self.lives = HERO_LIVES_DEFAULT;
     }
     return self;
 }

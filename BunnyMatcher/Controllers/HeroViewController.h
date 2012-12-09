@@ -24,6 +24,8 @@
 - (CGRect) presentationFrame;
 - (BOOL) collidesWithRect: (CGRect) rect;
 
+- (void) resetLives;
+
 @property (nonatomic, assign) NSUInteger heroLives;
 
 @end
