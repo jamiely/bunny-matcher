@@ -64,4 +64,11 @@
     self.hasCollided = NO;
 }
 
+- (CGRect) presentationFrame {
+    return [[self.view.layer presentationLayer] frame];
+}
+
+- (BOOL) collidesWithRect: (CGRect) rect {
+    return CGRectIntersectsRect(self.presentationFrame, rect);
+}
 @end

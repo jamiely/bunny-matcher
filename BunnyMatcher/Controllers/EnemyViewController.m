@@ -42,4 +42,13 @@
     });
 }
 
+- (void) collide {
+    self.view.frame = [[self.view.layer presentationLayer] frame];
+    [self.view.layer removeAllAnimations];
+}
+
+- (CGRect) presentationFrame {
+    return [[self.view.layer presentationLayer] frame];
+}
+
 @end

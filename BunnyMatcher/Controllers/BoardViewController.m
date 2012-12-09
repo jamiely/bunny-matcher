@@ -67,8 +67,10 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     [super viewDidLoad];
     
     self.topicLabel.text = [[self topic].name capitalizedString];
+    
     self.heroController.view = self.heroView;
     self.enemyController.view = self.enemyView;
+    
     [self updateScoreDisplay];
     [self updateHeroDisplay];
 }
@@ -209,24 +211,21 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) resolveCollisions {
     if(self.heroController.hasCollided) return;
-    
-    // get the current animating position 
-    CGRect heroRect = [[self.heroView.layer presentationLayer] frame];
-    CGRect enemyRect = [[self.enemyView.layer presentationLayer] frame];
 
-    if(CGRectIntersectsRect(heroRect, enemyRect)) {
+    if([self.heroController collidesWithRect:
+        self.enemyController.presentationFrame]) {
         [self handleCollision];
     }
 }
 
 - (void) handleCollision {
-    self.enemyView.frame = [[self.enemyView.layer presentationLayer] frame];
-    [self.enemyView.layer removeAllAnimations];
+    [self.enemyController collide];
     [self collideHero];
 }
 
 - (void) collideHero {
     [self.heroController collide];
+    [self updateHeroDisplay];
     
     if([self isGameOver]) {
         [self gameOverSegue];

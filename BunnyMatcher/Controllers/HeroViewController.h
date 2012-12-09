@@ -12,7 +12,6 @@
 
 @interface HeroViewController : UIViewController
 - (id) initWithModel: (Hero*) hero;
-- (id) initWithModel: (Hero*) hero andView: (HeroView*) view;
 
 - (void) startMovement;
 - (void) stopMovement;
@@ -21,6 +20,9 @@
 
 - (void) collide;
 - (void) resetCollision;
+
+- (CGRect) presentationFrame;
+- (BOOL) collidesWithRect: (CGRect) rect;
 
 @property (nonatomic, assign) NSUInteger heroLives;
 
