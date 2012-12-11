@@ -46,6 +46,7 @@
 		6DACD5621673F79A00C06503 /* HeroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD5611673F79A00C06503 /* HeroViewController.m */; };
 		6DACD565167444F800C06503 /* EnemyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD564167444F800C06503 /* EnemyViewController.m */; };
 		6DACD5681674504200C06503 /* UIImage+Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD5671674504200C06503 /* UIImage+Sprite.m */; };
+		6DE534F91676D0F8004F270E /* topics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DE534F81676D0F8004F270E /* topics.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		6DACD564167444F800C06503 /* EnemyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyViewController.m; path = Controllers/EnemyViewController.m; sourceTree = "<group>"; };
 		6DACD5661674504200C06503 /* UIImage+Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Sprite.h"; path = "Categories/UIImage+Sprite.h"; sourceTree = "<group>"; };
 		6DACD5671674504200C06503 /* UIImage+Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Sprite.m"; path = "Categories/UIImage+Sprite.m"; sourceTree = "<group>"; };
+		6DE534F81676D0F8004F270E /* topics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = topics.txt; path = Assets/topics.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 			children = (
 				6DACD558166B106000C06503 /* tux_from_linux.png */,
 				6DACD556166B0C9100C06503 /* kit_from_firefox.png */,
+				6DE534F81676D0F8004F270E /* topics.txt */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				6DACD518165E8E8500C06503 /* MainStoryboard_iPad.storyboard in Resources */,
 				6DACD557166B0C9100C06503 /* kit_from_firefox.png in Resources */,
 				6DACD559166B106000C06503 /* tux_from_linux.png in Resources */,
+				6DE534F91676D0F8004F270E /* topics.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +633,7 @@
 				6DACD50C165E8D7800C06503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DACD50D165E8D7800C06503 /* Build configuration list for PBXNativeTarget "BunnyMatcherTests" */ = {
 			isa = XCConfigurationList;
@@ -637,6 +642,7 @@
 				6DACD50F165E8D7800C06503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
