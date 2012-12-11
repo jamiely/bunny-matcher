@@ -8,22 +8,20 @@
 
 @protocol ActorMovementDelegate;
 
+extern const CGFloat ACTOR_DEFAULT_SPEED;
+
 @interface ActorMovement : NSObject
 - (CGRect) intermediateActorFrameGivenCurrentFrame: (CGRect*) currentFrame
                                      andFinalFrame: (CGRect*) finalFrame;
 - (CGRect) newActorLocationFromFrame: (CGRect) source
                              toFrame: (CGRect) rect;
-- (void) moveView: (UIView*) aView
-          toFrame: (CGRect) intermediateHeroFrame
-        thenFrame: (CGRect) finalHeroFrame
-       completion: (void (^)(BOOL))completion;
 
 - (void) moveView: (UIView*) aView
       toIndexPath: (NSIndexPath*) indexPath
        completion: (void(^)(BOOL finished))completion;
 
 @property (nonatomic, strong) id<ActorMovementDelegate> delegate;
-
+@property (nonatomic, assign) CGFloat speed;
 @end
 
 @protocol ActorMovementDelegate <NSObject>
