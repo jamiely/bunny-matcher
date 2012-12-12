@@ -8,7 +8,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Round.h"
 #import "HeroView.h"
 #import "LivesView.h"
 #import "ActorMovement.h"
@@ -22,7 +21,6 @@
 - (IBAction) nextRound: (UIStoryboardSegue*) segue;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) Round *round;
 @property (weak, nonatomic) IBOutlet HeroView *heroView;
 @property (weak, nonatomic) IBOutlet EnemyView *enemyView;
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;

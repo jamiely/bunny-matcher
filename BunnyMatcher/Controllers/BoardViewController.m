@@ -10,6 +10,7 @@
 #import "StandardCollectionCell.h"
 #import "ActorMovement.h"
 #import "HeroViewController.h"
+#import "Game.h"
 
 const NSUInteger BOARD_ITEM_COUNT = 28;
 
@@ -21,6 +22,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, strong) EnemyViewController *enemyController;
 @property (nonatomic, strong) ActorMovement *actorMovement;
 @property (nonatomic, strong) NSTimer *gameLoopTimer;
+@property (nonatomic, strong) Game *game;
 @end
 
 @implementation BoardViewController
@@ -51,12 +53,9 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     // load the library
     NSString *filepath = [[NSBundle mainBundle] pathForResource:@"topics"
                                                          ofType:@"txt"];
-    [[Library sharedInstance] loadFromFile: filepath];
-    
-    // later, we'll pass a round pre-built to this controller
-    if(!self.round) {
-        [self startInitialRound];
-    }
+    Library *lib = [Library sharedInstance];
+    [lib loadFromFile: filepath];
+    self.game = [[Game alloc] initWithLibrary:lib andItemCount:BOARD_ITEM_COUNT];
     
     self.heroController =
         [[HeroViewController alloc] initWithModel: [[Hero alloc] init]];
@@ -64,15 +63,6 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     self.enemyController.delegate = self;
     self.enemyController.actorMovement = self.actorMovement;
 }
-
-- (void) startInitialRound {
-    Library *lib = [Library sharedInstance];
-    NSString *topicName = [lib randomTopic].name;
-    
-    self.round = [Round roundWithLibrary:lib andMainTopicName:topicName];
-    [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
-}
-
 #pragma mark - View Controller Delegate Functions
 
 - (void)viewDidLoad
@@ -274,6 +264,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Model helpers
 
+- (Round*) round {
+    return self.game.currentRound;
+}
+
 - (BOOL) isGameOver {
     return self.heroController.heroLives == 0;
 }
@@ -310,9 +304,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
     [self dismissViewControllerAnimated:YES completion:^{
-        self.round = self.round.nextRound;
-        [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
-        
         [self.heroController resetLives];
         [self updateDisplays];
         [self.collectionView reloadData];

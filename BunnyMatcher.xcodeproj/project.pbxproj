@@ -47,6 +47,7 @@
 		6DACD565167444F800C06503 /* EnemyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD564167444F800C06503 /* EnemyViewController.m */; };
 		6DACD5681674504200C06503 /* UIImage+Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD5671674504200C06503 /* UIImage+Sprite.m */; };
 		6DE534F91676D0F8004F270E /* topics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DE534F81676D0F8004F270E /* topics.txt */; };
+		6DE534FD16781D4B004F270E /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE534FC16781D4B004F270E /* Game.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,8 @@
 		6DACD5661674504200C06503 /* UIImage+Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Sprite.h"; path = "Categories/UIImage+Sprite.h"; sourceTree = "<group>"; };
 		6DACD5671674504200C06503 /* UIImage+Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Sprite.m"; path = "Categories/UIImage+Sprite.m"; sourceTree = "<group>"; };
 		6DE534F81676D0F8004F270E /* topics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = topics.txt; path = Assets/topics.txt; sourceTree = "<group>"; };
+		6DE534FB16781D4B004F270E /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = Models/Game.h; sourceTree = "<group>"; };
+		6DE534FC16781D4B004F270E /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Models/Game.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +299,8 @@
 				6DACD54D1669AEAB00C06503 /* ActorMovement.m */,
 				6DACD55D1673F5D600C06503 /* Hero.h */,
 				6DACD55E1673F5D700C06503 /* Hero.m */,
+				6DE534FB16781D4B004F270E /* Game.h */,
+				6DE534FC16781D4B004F270E /* Game.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				6DACD5621673F79A00C06503 /* HeroViewController.m in Sources */,
 				6DACD565167444F800C06503 /* EnemyViewController.m in Sources */,
 				6DACD5681674504200C06503 /* UIImage+Sprite.m in Sources */,
+				6DE534FD16781D4B004F270E /* Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
