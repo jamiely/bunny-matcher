@@ -48,6 +48,7 @@
 		6DACD5681674504200C06503 /* UIImage+Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DACD5671674504200C06503 /* UIImage+Sprite.m */; };
 		6DE534F91676D0F8004F270E /* topics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DE534F81676D0F8004F270E /* topics.txt */; };
 		6DE534FD16781D4B004F270E /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE534FC16781D4B004F270E /* Game.m */; };
+		6DE5350016782D58004F270E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE534FE16782D58004F270E /* MainStoryboard_iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		6DE534F81676D0F8004F270E /* topics.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = topics.txt; path = Assets/topics.txt; sourceTree = "<group>"; };
 		6DE534FB16781D4B004F270E /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = Models/Game.h; sourceTree = "<group>"; };
 		6DE534FC16781D4B004F270E /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Models/Game.m; sourceTree = "<group>"; };
+		6DE534FF16782D58004F270E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				6DACD516165E8E8500C06503 /* MainStoryboard_iPad.storyboard */,
+				6DE534FE16782D58004F270E /* MainStoryboard_iPhone.storyboard */,
 			);
 			name = en.lproj;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				6DACD557166B0C9100C06503 /* kit_from_firefox.png in Resources */,
 				6DACD559166B106000C06503 /* tux_from_linux.png in Resources */,
 				6DE534F91676D0F8004F270E /* topics.txt in Resources */,
+				6DE5350016782D58004F270E /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +511,14 @@
 				6DACD517165E8E8500C06503 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		6DE534FE16782D58004F270E /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DE534FF16782D58004F270E /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
