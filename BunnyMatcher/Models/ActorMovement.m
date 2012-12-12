@@ -79,6 +79,9 @@ withNextDestinationBlock: (void(^)(CGPoint nextDestination))nextDestinationBlock
         }
         aView.frame = intermediateHeroFrame;
     } completion:^(BOOL finished) {
+        // don't go through the next animation if interrupted
+        if(! finished) return;
+        
         [UIView animateWithDuration:dur2 animations:^{
             if(nextDestinationBlock) {
                 nextDestinationBlock(finalHeroFrame.origin);
