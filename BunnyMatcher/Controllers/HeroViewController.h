@@ -21,6 +21,7 @@
 - (void) collide;
 - (void) resetCollision;
 
+// A convenience method to return the frame corresponding to the presentation CALayer frame
 - (CGRect) presentationFrame;
 - (BOOL) collidesWithRect: (CGRect) rect;
 

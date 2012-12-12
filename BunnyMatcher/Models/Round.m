@@ -131,7 +131,6 @@ const NSInteger ROUND_SCORE_CAPTURED = -100;
     Round *next = [[Round alloc] init];
     next.library = self.library;
     next.mainTopic = [self nextTopic];
-    next.score = self.score;
     return next;
 }
 

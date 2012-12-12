@@ -12,7 +12,7 @@
 #import "HeroViewController.h"
 #import "Game.h"
 
-const NSUInteger BOARD_ITEM_COUNT = 28;
+const NSUInteger BOARD_ITEM_COUNT = 30;
 
 NSString *BOARDVIEWCONTROLLER_SCORE_FORMAT = @"%06d";
 NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
@@ -252,14 +252,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger score;
     UIColor *color;
     
-    if(self.round.score >= 0) {
+    if(self.game.score >= 0) {
         format = BOARDVIEWCONTROLLER_SCORE_FORMAT;
-        score = self.round.score;
+        score = self.game.score;
         color = [UIColor blackColor];
     }
     else {
         format = BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT;
-        score = - self.round.score;
+        score = - self.game.score;
         color = [UIColor redColor];
     }
     
@@ -309,6 +309,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
     [self dismissViewControllerAnimated:YES completion:^{
+        [self.game nextRound];
         [self.heroController resetLives];
         [self updateDisplays];
         [self.collectionView reloadData];
