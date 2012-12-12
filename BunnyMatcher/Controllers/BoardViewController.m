@@ -48,10 +48,16 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     self.actorMovement = [[ActorMovement alloc] init];
     self.actorMovement.delegate = self;
     
+    // load the library
+    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"topics"
+                                                         ofType:@"txt"];
+    [[Library sharedInstance] loadFromFile: filepath];
+    
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
+        NSString *topicName = [[Library sharedInstance] randomTopic].name;
         self.round = [Round roundWithLibrary:[Library sharedInstance]
-                            andMainTopicName:LIBRARY_TOPIC_STATES];
+                            andMainTopicName:topicName];
         [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
     }
     

@@ -15,8 +15,6 @@ NSString* LIBRARY_TOPIC_DESSERTS = @"desserts";
 
 @implementation Library
 
-@synthesize topics;
-
 - (void) loadDefaultTopics {
     NSString *states = @"Alabama,Alaska,American Samoa,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,District of Columbia,Florida,Georgia,Guam,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,Nebraska,Nevada,New Hampshire,New Jersey,New Mexico,New York,North Carolina,North Dakota,Northern Marianas Islands,Ohio,Oklahoma,Oregon,Pennsylvania,Puerto Rico,Rhode Island,South Carolina,South Dakota,Tennessee,Texas,Utah,Vermont,Virginia,Virgin Islands,Washington,West Virginia,Wisconsin,Wyoming";
     NSString *animals = @"aardvark,alligator,armadillo,badger,boar,camel,cat,cow,dog,donkey,elephant,elk,fish,fox,frog,goat,horse,iguana,jaguar,kangaroo,lamb,lion,mole,ox,panda,pig,reindeer,seal,sheep,tiger,turtle,wolf,zebra";
@@ -62,6 +60,42 @@ NSString* LIBRARY_TOPIC_DESSERTS = @"desserts";
     
     NSInteger nextIndex = (index + 1) % self.topics.count;
     return [self.topics objectAtIndex: nextIndex];
+}
+
+- (void) loadFromFile: (NSString*) filepath {
+    NSError *error;
+    NSString *content = [NSString stringWithContentsOfFile: filepath
+                                                  encoding: NSUTF8StringEncoding
+                                                     error: &error];
+    if(error) {
+        self.topics = @[];
+        NSLog(@"Error loading library file: %@", error);
+        return;
+    }
+    
+    [self loadFromString: content];
+}
+
+- (void) loadFromString: (NSString*) content {
+    NSMutableArray *newTopics = [NSMutableArray array];
+    // otherwise continue loading
+    NSArray *lines = [content componentsSeparatedByString:@"\n"];
+    for (NSString *line in lines) {
+        NSArray *words = [line componentsSeparatedByString: @"|"];
+        if(words.count < 2) continue;
+        
+        NSString *name = [words objectAtIndex: 0];
+        NSArray *itemNames = [words subarrayWithRange: NSMakeRange(1, words.count-1)];
+        Topic *topic = [Topic topicWithName:name andItemNames:itemNames];
+        [newTopics addObject: topic];
+    }
+    
+    self.topics = newTopics;
+}
+
+- (Topic*) randomTopic {
+    NSInteger count = self.topics.count;
+    return count == 0 ? nil : [self.topics objectAtIndex: arc4random_uniform(count)];
 }
 
 + (Library*) sharedInstance {

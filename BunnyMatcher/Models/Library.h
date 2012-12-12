@@ -21,6 +21,10 @@ extern NSString* LIBRARY_TOPIC_DESSERTS;
 // if the topic is not part of the library
 - (Topic*) topicAfter: (Topic*) topic;
 
+// Load a library file
+- (void) loadFromFile: (NSString*) filepath;
+- (Topic*) randomTopic;
+
 @property (nonatomic, strong) NSArray* topics;
 
 + (Library*) sharedInstance;
