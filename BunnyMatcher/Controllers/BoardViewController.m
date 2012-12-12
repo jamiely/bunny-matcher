@@ -55,10 +55,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     // later, we'll pass a round pre-built to this controller
     if(!self.round) {
-        NSString *topicName = [[Library sharedInstance] randomTopic].name;
-        self.round = [Round roundWithLibrary:[Library sharedInstance]
-                            andMainTopicName:topicName];
-        [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
+        [self startInitialRound];
     }
     
     self.heroController =
@@ -66,6 +63,14 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     self.enemyController = [[EnemyViewController alloc] init];
     self.enemyController.delegate = self;
     self.enemyController.actorMovement = self.actorMovement;
+}
+
+- (void) startInitialRound {
+    Library *lib = [Library sharedInstance];
+    NSString *topicName = [lib randomTopic].name;
+    
+    self.round = [Round roundWithLibrary:lib andMainTopicName:topicName];
+    [self.round startRoundWithItemCount: BOARD_ITEM_COUNT];
 }
 
 #pragma mark - View Controller Delegate Functions
