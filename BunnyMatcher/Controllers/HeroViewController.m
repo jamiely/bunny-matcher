@@ -50,18 +50,27 @@
     return self.hero.hasCollided;
 }
 
-- (void) setHasCollided:(BOOL)hasCollided {
-    self.hero.hasCollided = hasCollided;
-}
-
 - (void) collide {
-    self.hasCollided = YES;
+    if(self.hero.state == HeroStateStunned) return;
+    
+    [self.hero collide];
+    self.view.alpha = 0.5;
     self.heroLives --;
     [self stopMovement];
+    
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [UIView animateWithDuration:1.0 animations:^{
+            self.view.alpha = 1;
+        } completion:^(BOOL finished) {
+            [self.hero recover];
+        }];
+    });
 }
 
 - (void) resetCollision {
-    self.hasCollided = NO;
+    [self.hero resetCollide];
 }
 
 - (CGRect) presentationFrame {

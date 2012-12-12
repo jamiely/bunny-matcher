@@ -219,6 +219,11 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) collideHero {
     [self.heroController collide];
+    int64_t delayInSeconds = 5.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.heroController resetCollision];
+    });
     [self updateHeroDisplay];
     
     if([self isGameOver]) {

@@ -10,10 +10,20 @@
 
 const extern NSUInteger HERO_LIVES_DEFAULT;
 
+typedef enum {
+    HeroStateNormal,
+    HeroStateStunned
+} HeroState;
+
 @interface Hero : NSObject
 
+- (void) collide;
+- (void) recover;
+- (void) resetCollide;
+
+@property (nonatomic, assign) HeroState state;
 @property (nonatomic, assign) BOOL isMoving;
-@property (nonatomic, assign) BOOL hasCollided;
+@property (nonatomic, readonly) BOOL hasCollided;
 @property (nonatomic, assign) NSUInteger lives;
 
 @end

@@ -10,6 +10,10 @@
 
 const NSUInteger HERO_LIVES_DEFAULT = 3;
 
+@interface Hero()
+@property (nonatomic, assign) BOOL hasCollided;
+@end
+
 @implementation Hero
 
 - (id) init {
@@ -18,8 +22,22 @@ const NSUInteger HERO_LIVES_DEFAULT = 3;
         self.hasCollided = NO;
         self.isMoving = NO;
         self.lives = HERO_LIVES_DEFAULT;
+        self.state = HeroStateNormal;
     }
     return self;
+}
+
+- (void) collide {
+    self.hasCollided = YES;
+    self.state = HeroStateStunned;
+}
+
+- (void) recover {
+    self.state = HeroStateNormal;
+}
+
+- (void) resetCollide {
+    self.hasCollided = NO;
 }
 
 @end
