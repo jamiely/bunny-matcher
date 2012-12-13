@@ -44,7 +44,13 @@
     
     CGRect imageViewFrame = CGRectMake(0, 0, 0, 0);
     imageViewFrame.size = spriteSize;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        static CGFloat factor = 0.6;
+        imageViewFrame.size = CGSizeMake(spriteSize.width * factor,
+                                         spriteSize.height * factor);
+    }
     self.imageView = [[UIImageView alloc] initWithFrame: imageViewFrame];
+    
     
     NSRange runRange;
     runRange.length = 6;
