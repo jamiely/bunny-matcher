@@ -51,14 +51,10 @@
     }
     self.imageView = [[UIImageView alloc] initWithFrame: imageViewFrame];
     
-    
-    NSRange runRange;
-    runRange.length = 6;
-    runRange.location = 3;
     self.imageView.animationImages =
-    [self.spriteSheetImage spritesWithSpriteSheetImage: self.spriteSheetImage
-                                               inRange: runRange
-                                            spriteSize: spriteSize];
+        [self.spriteSheetImage spritesWithSpriteSheetImage: self.spriteSheetImage
+                                                   inRange: NSMakeRange(3, 6)
+                                                spriteSize: spriteSize];
     self.imageView.animationDuration = 0.7;
     self.imageView.animationRepeatCount = 0; // infinite
     
