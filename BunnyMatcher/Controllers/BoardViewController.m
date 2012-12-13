@@ -306,7 +306,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction) playAgain: (UIStoryboardSegue*) segue {
     void ((^completion)()) = ^{
-        [self.navigationController popViewControllerAnimated: NO];
+        [self.navigationController popViewControllerAnimated: YES];
     };
     [self dismissViewControllerAnimated:YES completion:completion];
 }
