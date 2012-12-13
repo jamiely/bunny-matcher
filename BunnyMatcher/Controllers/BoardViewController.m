@@ -240,7 +240,11 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) updateTopicDisplay {
-    self.topicLabel.text = [[self topic].name capitalizedString];
+    NSString *topicDisplayString = [[self topic].name capitalizedString];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.topicLabel.text = topicDisplayString;
+    }
+    self.title = topicDisplayString;
 }
 
 - (void) updateHeroDisplay {
