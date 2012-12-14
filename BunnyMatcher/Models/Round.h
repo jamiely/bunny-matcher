@@ -16,6 +16,8 @@ typedef enum {
     Captured
 } ScoreEvent;
 
+const extern NSTimeInterval ROUND_DEFAULT_TIME;
+
 @interface Round : NSObject
 
 - (void) startRoundWithItemCount: (NSUInteger) itemCount;
@@ -38,6 +40,7 @@ typedef enum {
 // and selecting the next topic. The score is also passed to the next round.
 - (Round*) nextRound;
 
+@property (nonatomic, assign) NSTimeInterval timeRemaining;
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;
 @property (nonatomic, readonly) NSArray *spots;

@@ -26,4 +26,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet LivesView *livesView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @end

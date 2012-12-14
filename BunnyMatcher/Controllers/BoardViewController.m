@@ -23,6 +23,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, strong) ActorMovement *actorMovement;
 @property (nonatomic, strong) NSTimer *gameLoopTimer;
 @property (nonatomic, strong) Game *game;
+@property (nonatomic, strong) NSDate *lastLoopTime;
 @end
 
 @implementation BoardViewController
@@ -182,16 +183,34 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) startGameLoop {
     [self stopGameLoop];
-    
+
+    self.lastLoopTime = [NSDate date];
     self.gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
                                                           target:self
                                                         selector:@selector(gameLoop)
                                                         userInfo:nil
                                                          repeats:YES];
+
 }
 
 - (void) gameLoop {
     [self resolveCollisions];
+    [self updateTime];
+}
+
+- (void) updateTime {
+    // Update time
+    NSTimeInterval timeDelta = [self.lastLoopTime timeIntervalSinceNow];
+    self.lastLoopTime = [NSDate date];
+    self.game.currentRound.timeRemaining += timeDelta;
+    
+    if(self.game.currentRound.timeRemaining >= 0) {
+        self.timeLabel.text = [NSString stringWithFormat: @"%02d",
+                               (NSInteger)self.game.currentRound.timeRemaining];
+    }
+    else {
+        [self gameOverSegue];
+    }
 }
 
 - (void) stopGameLoop {
@@ -295,11 +314,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Segue functions
 
 - (void) roundCompleteSegue {
+    [self stopGameLoop];
+    
     static NSString *segueId = @"RoundCompleteSegue";
     [self performSegueWithIdentifier:segueId sender:self];
 }
 
 - (void) gameOverSegue {
+    [self stopGameLoop];
+    
     static NSString *segueId = @"GameOverSegue";
     [self performSegueWithIdentifier:segueId sender: self];
 }
@@ -317,6 +340,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         [self.heroController resetLives];
         [self updateDisplays];
         [self.collectionView reloadData];
+        
+        [self startGameLoop];
     }];
 }
 

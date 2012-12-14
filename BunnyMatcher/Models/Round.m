@@ -12,6 +12,7 @@
 const NSInteger ROUND_SCORE_POINT = 100;
 const NSInteger ROUND_SCORE_PENALTY = -50;
 const NSInteger ROUND_SCORE_CAPTURED = -100;
+const NSTimeInterval ROUND_DEFAULT_TIME = 60;
 
 @interface Round()
 @property (nonatomic, strong) NSArray *topicItems;
@@ -26,6 +27,7 @@ const NSInteger ROUND_SCORE_CAPTURED = -100;
 - (id) init {
     self = [super init];
     if(self) {
+        self.timeRemaining = ROUND_DEFAULT_TIME;
         self.topicItems = @[];
         self.spots = @[];
         self.score = 0;

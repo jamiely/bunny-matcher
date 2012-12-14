@@ -221,7 +221,30 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AmD-A0-trD"/>
+                    <navigationItem key="navigationItem" id="AmD-A0-trD">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZnA-qJ-Im7">
+                            <view key="customView" contentMode="scaleToFill" id="3nD-f2-svy">
+                                <rect key="frame" x="790" y="5" width="227" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPx-Ue-SRh">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="63" id="2XU-UY-6EF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RPx-Ue-SRh" firstAttribute="bottom" secondItem="3nD-f2-svy" secondAttribute="bottom" type="default" id="EMu-dP-xdc"/>
+                                    <constraint firstItem="RPx-Ue-SRh" firstAttribute="top" secondItem="3nD-f2-svy" secondAttribute="top" type="default" id="Qpe-Bz-avk"/>
+                                    <constraint firstItem="RPx-Ue-SRh" firstAttribute="trailing" secondItem="3nD-f2-svy" secondAttribute="trailing" type="default" id="UrY-2N-YYI"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="collectionView" destination="Smb-At-bgE" id="d5O-dP-UEE"/>
@@ -229,6 +252,7 @@
                         <outlet property="heroView" destination="q6l-ww-1yv" id="bmj-T8-IvE"/>
                         <outlet property="livesView" destination="ehm-By-8vQ" id="ycf-Uw-DxX"/>
                         <outlet property="scoreLabel" destination="tiY-KN-waK" id="4C7-Ps-LJR"/>
+                        <outlet property="timeLabel" destination="RPx-Ue-SRh" id="gBV-nX-RBD"/>
                         <outlet property="topicLabel" destination="04Z-zb-DHl" id="bfy-Kq-Odm"/>
                         <segue destination="JVo-wj-hst" kind="modal" identifier="GameOverSegue" modalPresentationStyle="formSheet" id="Wmk-CR-TEf"/>
                         <segue destination="kyp-UI-Hq6" kind="modal" identifier="RoundCompleteSegue" modalPresentationStyle="formSheet" id="eEq-EP-k9a"/>
@@ -366,6 +390,7 @@
                 <relationship kind="outlet" name="heroView" candidateClass="HeroView"/>
                 <relationship kind="outlet" name="livesView" candidateClass="LivesView"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="topicLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
