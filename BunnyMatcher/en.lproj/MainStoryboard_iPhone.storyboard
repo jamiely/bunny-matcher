@@ -136,18 +136,29 @@
                                     <constraint firstAttribute="width" constant="38" type="user" id="W6h-03-9IH"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5L-LC-aQ7">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="VcK-Xc-z79"/>
+                                    <constraint firstAttribute="height" constant="26" id="cXx-PI-Pjw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="gsa-eb-wpr" secondAttribute="bottom" constant="214" id="0Hj-vd-E5V"/>
-                            <constraint firstItem="jqj-9r-c9L" firstAttribute="trailing" secondItem="evV-JE-5Pz" secondAttribute="trailing" type="default" id="2GG-Pn-STk"/>
+                            <constraint firstItem="jqj-9r-c9L" firstAttribute="trailing" secondItem="evV-JE-5Pz" secondAttribute="trailing" type="user" id="2GG-Pn-STk"/>
                             <constraint firstItem="mYw-uZ-FRV" firstAttribute="top" secondItem="evV-JE-5Pz" secondAttribute="top" constant="179" id="9eW-y6-gAy"/>
-                            <constraint firstAttribute="bottom" secondItem="mYw-uZ-FRV" secondAttribute="bottom" constant="35" id="ExH-Zj-wfN"/>
-                            <constraint firstItem="jqj-9r-c9L" firstAttribute="leading" secondItem="evV-JE-5Pz" secondAttribute="leading" type="default" id="M2r-yQ-TfA"/>
+                            <constraint firstItem="z5L-LC-aQ7" firstAttribute="trailing" secondItem="evV-JE-5Pz" secondAttribute="trailing" type="default" id="BZE-qC-mc5"/>
+                            <constraint firstItem="jqj-9r-c9L" firstAttribute="leading" secondItem="evV-JE-5Pz" secondAttribute="leading" type="user" id="M2r-yQ-TfA"/>
                             <constraint firstItem="gsa-eb-wpr" firstAttribute="top" secondItem="evV-JE-5Pz" secondAttribute="top" type="default" id="Oyk-kt-GM7"/>
-                            <constraint firstItem="jqj-9r-c9L" firstAttribute="top" secondItem="evV-JE-5Pz" secondAttribute="top" type="default" id="Tnj-99-UnU"/>
+                            <constraint firstItem="jqj-9r-c9L" firstAttribute="top" secondItem="evV-JE-5Pz" secondAttribute="top" type="user" id="Tnj-99-UnU"/>
+                            <constraint firstAttribute="bottom" secondItem="mYw-uZ-FRV" secondAttribute="bottom" constant="35" id="Tvr-3W-PpF"/>
+                            <constraint firstItem="z5L-LC-aQ7" firstAttribute="bottom" secondItem="evV-JE-5Pz" secondAttribute="bottom" type="default" id="WkM-I2-vWS"/>
                             <constraint firstItem="gsa-eb-wpr" firstAttribute="leading" secondItem="evV-JE-5Pz" secondAttribute="leading" priority="317" constant="51" type="user" id="ZIK-8Q-T1z"/>
-                            <constraint firstItem="jqj-9r-c9L" firstAttribute="bottom" secondItem="evV-JE-5Pz" secondAttribute="bottom" type="default" id="cNs-Tl-eTg"/>
+                            <constraint firstItem="jqj-9r-c9L" firstAttribute="bottom" secondItem="evV-JE-5Pz" secondAttribute="bottom" type="user" id="cNs-Tl-eTg"/>
                             <constraint firstAttribute="trailing" secondItem="mYw-uZ-FRV" secondAttribute="trailing" constant="99" type="user" id="eqN-cx-cbF"/>
                             <constraint firstItem="mYw-uZ-FRV" firstAttribute="leading" secondItem="evV-JE-5Pz" secondAttribute="leading" priority="1" constant="431" type="user" id="qi2-LD-wwK"/>
                             <constraint firstAttribute="trailing" secondItem="gsa-eb-wpr" secondAttribute="trailing" priority="1" constant="479" type="user" id="yOZ-36-AYd"/>
@@ -217,6 +228,7 @@
                         <outlet property="heroView" destination="gsa-eb-wpr" id="Xt9-Ju-zXx"/>
                         <outlet property="livesView" destination="kkS-HS-tLs" id="chS-95-mjv"/>
                         <outlet property="scoreLabel" destination="WwN-Y8-uld" id="TzD-4y-rnT"/>
+                        <outlet property="timeLabel" destination="z5L-LC-aQ7" id="5Iq-7i-5ST"/>
                         <segue destination="khM-Xt-TbU" kind="modal" identifier="RoundCompleteSegue" id="ia7-SL-su2"/>
                         <segue destination="xt4-35-pyN" kind="modal" identifier="GameOverSegue" id="eJM-L5-fQh"/>
                     </connections>
@@ -356,6 +368,7 @@
                 <relationship kind="outlet" name="heroView" candidateClass="HeroView"/>
                 <relationship kind="outlet" name="livesView" candidateClass="LivesView"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="topicLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
