@@ -319,10 +319,10 @@
             </objects>
             <point key="canvasLocation" x="1081" y="-626"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Over View Controller-->
         <scene sceneID="V9J-Bf-AYv">
             <objects>
-                <viewController id="JVo-wj-hst" sceneMemberID="viewController">
+                <viewController id="JVo-wj-hst" customClass="GameOverViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WxW-vD-ZpR">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -338,7 +338,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8C-WB-VtF">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="Iho-uB-PCR"/>
+                                    <constraint firstAttribute="width" constant="283" id="jpB-ct-VxR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Play Again">
@@ -349,24 +349,102 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7Yj-8Y-jbU" kind="unwind" unwindAction="playAgain:" id="Ji0-z4-qAY"/>
+                                    <action selector="nextButtonClick:" destination="JVo-wj-hst" eventType="touchUpInside" id="sK6-WP-csF"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="yY9-z7-5PQ" firstAttribute="centerY" secondItem="WxW-vD-ZpR" secondAttribute="centerY" type="default" id="16O-RM-oHK"/>
-                            <constraint firstItem="K8C-WB-VtF" firstAttribute="top" secondItem="yY9-z7-5PQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Ddu-oQ-hJf"/>
-                            <constraint firstItem="K8C-WB-VtF" firstAttribute="centerX" secondItem="yY9-z7-5PQ" secondAttribute="centerX" type="default" id="aLc-0l-gU1"/>
-                            <constraint firstItem="K8C-WB-VtF" firstAttribute="centerX" secondItem="WxW-vD-ZpR" secondAttribute="centerX" type="default" id="nlZ-sU-kCT"/>
+                            <constraint firstItem="K8C-WB-VtF" firstAttribute="centerX" secondItem="yY9-z7-5PQ" secondAttribute="centerX" type="default" id="Xgf-p6-voa"/>
+                            <constraint firstItem="yY9-z7-5PQ" firstAttribute="centerX" secondItem="WxW-vD-ZpR" secondAttribute="centerX" type="default" id="h5B-YM-ct0"/>
+                            <constraint firstAttribute="bottom" secondItem="K8C-WB-VtF" secondAttribute="bottom" constant="202" id="q0w-x0-Esa"/>
+                            <constraint firstItem="yY9-z7-5PQ" firstAttribute="top" secondItem="WxW-vD-ZpR" secondAttribute="top" constant="148" id="tm6-1U-6qn"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="K8C-WB-VtF" id="s4Q-zx-vkG"/>
+                        <segue destination="mC3-87-mGs" kind="modal" identifier="ScorerEntrySegue" modalPresentationStyle="formSheet" id="iW0-YO-Os9"/>
+                        <segue destination="7Yj-8Y-jbU" kind="unwind" identifier="PlayAgainSegue" unwindAction="playAgain:" id="PED-Lr-fXi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u35-j6-Wlr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7Yj-8Y-jbU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2401" y="-950"/>
+        </scene>
+        <!--Scorer Entry View Controller-->
+        <scene sceneID="ih3-Bc-nMd">
+            <objects>
+                <viewController id="mC3-87-mGs" customClass="ScorerEntryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mxM-dL-aqx">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jane Q" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hG5-SY-tiF">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="407" id="KOX-mR-rXF"/>
+                                    <constraint firstAttribute="height" constant="62" id="e0G-g7-g77"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="You scored:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shV-9O-PYP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="aLT-QO-9aJ"/>
+                                    <constraint firstAttribute="height" constant="29" id="r6C-zJ-cfc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qly-j6-VdL">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="317" id="2UZ-Kl-ayI"/>
+                                    <constraint firstAttribute="height" constant="61" id="gZt-El-qgw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbt-SB-l9s">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="171" id="bJ8-j2-oVl"/>
+                                    <constraint firstAttribute="height" constant="43" id="ymb-Ja-Wjp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hG5-SY-tiF" firstAttribute="centerX" secondItem="qly-j6-VdL" secondAttribute="centerX" type="default" id="2g9-9d-HZ1"/>
+                            <constraint firstItem="Zbt-SB-l9s" firstAttribute="centerX" secondItem="hG5-SY-tiF" secondAttribute="centerX" type="default" id="2yL-Bn-BhB"/>
+                            <constraint firstItem="qly-j6-VdL" firstAttribute="centerX" secondItem="mxM-dL-aqx" secondAttribute="centerX" type="default" id="TWk-O1-eHL"/>
+                            <constraint firstItem="qly-j6-VdL" firstAttribute="top" secondItem="mxM-dL-aqx" secondAttribute="top" constant="158" id="VUb-rm-apT"/>
+                            <constraint firstItem="Zbt-SB-l9s" firstAttribute="baseline" secondItem="hG5-SY-tiF" secondAttribute="baseline" type="default" id="Vdt-Ol-fl2"/>
+                            <constraint firstAttribute="bottom" secondItem="Zbt-SB-l9s" secondAttribute="bottom" constant="111" id="ewm-vA-vfZ"/>
+                            <constraint firstItem="shV-9O-PYP" firstAttribute="leading" secondItem="mxM-dL-aqx" secondAttribute="leading" constant="85" id="kZx-hG-PJe"/>
+                            <constraint firstItem="shV-9O-PYP" firstAttribute="top" secondItem="mxM-dL-aqx" secondAttribute="top" constant="84" id="lfa-pr-aSu"/>
+                            <constraint firstAttribute="bottom" secondItem="hG5-SY-tiF" secondAttribute="bottom" constant="233" id="sab-Dt-lPI"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="qly-j6-VdL" id="bah-A8-Xax"/>
+                        <outlet property="scorerField" destination="hG5-SY-tiF" id="rYf-sC-XUL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yE-dM-UoI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3232" y="-1004"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gMh-lw-VYT">
@@ -457,6 +535,13 @@
         <class className="EnemyView" superclassName="CharacterView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EnemyView.h"/>
         </class>
+        <class className="GameOverViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameOverViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="nextButtonClick:"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="HeroView" superclassName="CharacterView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HeroView.h"/>
         </class>
@@ -465,6 +550,13 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ScorerEntryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScorerEntryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scorerField" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="ScoresViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoresViewController.h"/>
@@ -492,9 +584,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>

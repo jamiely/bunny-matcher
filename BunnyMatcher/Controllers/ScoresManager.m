@@ -15,6 +15,10 @@ const NSUInteger SCORE_MANAGER_LIMIT = 10;
 @end
 
 @implementation ScoresManager
+- (BOOL) isHighScore: (ScoreRecord*) record {
+    return self.cachedRecords.count < SCORE_MANAGER_LIMIT ||
+        record.score > [self leastScore];
+}
 - (NSInteger) leastScore {
     NSUInteger count = self.cachedRecords.count;
     if(count == 0) return 0;
@@ -25,8 +29,7 @@ const NSUInteger SCORE_MANAGER_LIMIT = 10;
 - (BOOL) addRecord: (ScoreRecord*) record {
     // assume that the cached records are sorted
 
-    if(self.cachedRecords.count < SCORE_MANAGER_LIMIT ||
-       record.score > [self leastScore]) {
+    if([self isHighScore: record]) {
         NSMutableArray *records = [self.cachedRecords mutableCopy];
         [records addObject: record];
         NSArray *sortedRecords = [[self class] sortScores: records];

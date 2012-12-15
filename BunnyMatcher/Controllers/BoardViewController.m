@@ -12,6 +12,7 @@
 #import "HeroViewController.h"
 #import "Game.h"
 #import "AudioController.h"
+#import "GameOverViewController.h"
 
 const NSUInteger BOARD_ITEM_COUNT = 30;
 
@@ -328,6 +329,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *segueId = @"GameOverSegue";
     [self performSegueWithIdentifier:segueId sender: self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString: @"GameOverSegue"]) {
+        [segue.destinationViewController setScoreRecord: self.game.scoreRecord];
+    }
 }
 
 - (IBAction) playAgain: (UIStoryboardSegue*) segue {

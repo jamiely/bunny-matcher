@@ -15,5 +15,6 @@ const extern NSUInteger SCORE_MANAGER_LIMIT;
 - (BOOL) addRecord: (ScoreRecord*) record;
 - (NSArray*) records;
 - (NSUInteger) count;
+- (BOOL) isHighScore: (ScoreRecord*) record;
 + (ScoresManager*) sharedInstance;
 @end

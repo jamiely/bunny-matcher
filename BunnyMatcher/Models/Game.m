@@ -59,4 +59,9 @@
     [newRounds addObject: round];
     self.rounds = [newRounds copy];
 }
+- (ScoreRecord*) scoreRecord {
+    ScoreRecord *record = [[ScoreRecord alloc] init];
+    record.score = self.score;
+    return record;
+}
 @end

@@ -15,6 +15,8 @@
 		6D941F85167D0BED00AC5BAC /* ScoresManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F84167D0BED00AC5BAC /* ScoresManager.m */; };
 		6D941F88167D0C0400AC5BAC /* ScoreRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F87167D0C0400AC5BAC /* ScoreRecord.m */; };
 		6D941F8B167D285E00AC5BAC /* ScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F8A167D285E00AC5BAC /* ScoresViewController.m */; };
+		6D941F8E167D351E00AC5BAC /* ScorerEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F8D167D351E00AC5BAC /* ScorerEntryViewController.m */; };
+		6D941F91167D35BD00AC5BAC /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F90167D35BD00AC5BAC /* GameOverViewController.m */; };
 		6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DB165E8D7700C06503 /* UIKit.framework */; };
 		6DACD4DE165E8D7700C06503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DD165E8D7700C06503 /* Foundation.framework */; };
 		6DACD4E0165E8D7700C06503 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DF165E8D7700C06503 /* CoreGraphics.framework */; };
@@ -82,6 +84,10 @@
 		6D941F87167D0C0400AC5BAC /* ScoreRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreRecord.m; path = Models/ScoreRecord.m; sourceTree = "<group>"; };
 		6D941F89167D285E00AC5BAC /* ScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoresViewController.h; path = Controllers/ScoresViewController.h; sourceTree = "<group>"; };
 		6D941F8A167D285E00AC5BAC /* ScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoresViewController.m; path = Controllers/ScoresViewController.m; sourceTree = "<group>"; };
+		6D941F8C167D351E00AC5BAC /* ScorerEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScorerEntryViewController.h; path = Controllers/ScorerEntryViewController.h; sourceTree = "<group>"; };
+		6D941F8D167D351E00AC5BAC /* ScorerEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScorerEntryViewController.m; path = Controllers/ScorerEntryViewController.m; sourceTree = "<group>"; };
+		6D941F8F167D35BD00AC5BAC /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOverViewController.h; path = Controllers/GameOverViewController.h; sourceTree = "<group>"; };
+		6D941F90167D35BD00AC5BAC /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOverViewController.m; path = Controllers/GameOverViewController.m; sourceTree = "<group>"; };
 		6DACD4D7165E8D7700C06503 /* BunnyMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BunnyMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DACD4DB165E8D7700C06503 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6DACD4DD165E8D7700C06503 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -290,6 +296,10 @@
 				6D941F84167D0BED00AC5BAC /* ScoresManager.m */,
 				6D941F89167D285E00AC5BAC /* ScoresViewController.h */,
 				6D941F8A167D285E00AC5BAC /* ScoresViewController.m */,
+				6D941F8C167D351E00AC5BAC /* ScorerEntryViewController.h */,
+				6D941F8D167D351E00AC5BAC /* ScorerEntryViewController.m */,
+				6D941F8F167D35BD00AC5BAC /* GameOverViewController.h */,
+				6D941F90167D35BD00AC5BAC /* GameOverViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -506,6 +516,8 @@
 				6D941F85167D0BED00AC5BAC /* ScoresManager.m in Sources */,
 				6D941F88167D0C0400AC5BAC /* ScoreRecord.m in Sources */,
 				6D941F8B167D285E00AC5BAC /* ScoresViewController.m in Sources */,
+				6D941F8E167D351E00AC5BAC /* ScorerEntryViewController.m in Sources */,
+				6D941F91167D35BD00AC5BAC /* GameOverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

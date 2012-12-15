@@ -12,6 +12,7 @@
 #import "LivesView.h"
 #import "ActorMovement.h"
 #import "EnemyViewController.h"
+#import "ScoreRecord.h"
 
 @interface BoardViewController : UIViewController<UICollectionViewDataSource,
     UICollectionViewDelegate, UIGestureRecognizerDelegate, ActorMovementDelegate,

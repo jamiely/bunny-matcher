@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Round.h"
+#import "ScoreRecord.h"
 
 @interface Game : NSObject
 - (id) initWithLibrary:(Library*) library andItemCount: (NSUInteger) itemCount;
 - (Round*) nextRound;
+- (ScoreRecord*) scoreRecord;
 @property (nonatomic, strong) Round* currentRound;
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic, assign) NSUInteger itemCount;
