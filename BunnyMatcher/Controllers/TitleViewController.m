@@ -20,7 +20,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    self.contents = @[@"Play", @"Contact"];
+    self.contents = @[@"Play", @"Scores", @"Contact"];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -59,6 +59,11 @@
         }
             
         case 1: {
+            [self performSegueWithIdentifier: @"ScoresSegue" sender: self];
+            break;
+        }
+            
+        case 2: {
             NSLog(@"Contact email");
             break;
         }

@@ -12,6 +12,9 @@
 		6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F7B167ACFFA00AC5BAC /* AudioController.m */; };
 		6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */; };
 		6D941F82167D07CB00AC5BAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */; };
+		6D941F85167D0BED00AC5BAC /* ScoresManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F84167D0BED00AC5BAC /* ScoresManager.m */; };
+		6D941F88167D0C0400AC5BAC /* ScoreRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F87167D0C0400AC5BAC /* ScoreRecord.m */; };
+		6D941F8B167D285E00AC5BAC /* ScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F8A167D285E00AC5BAC /* ScoresViewController.m */; };
 		6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DB165E8D7700C06503 /* UIKit.framework */; };
 		6DACD4DE165E8D7700C06503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DD165E8D7700C06503 /* Foundation.framework */; };
 		6DACD4E0165E8D7700C06503 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DF165E8D7700C06503 /* CoreGraphics.framework */; };
@@ -73,6 +76,12 @@
 		6D941F7B167ACFFA00AC5BAC /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioController.m; path = Controllers/AudioController.m; sourceTree = "<group>"; };
 		6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6D941F83167D0BED00AC5BAC /* ScoresManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoresManager.h; path = Controllers/ScoresManager.h; sourceTree = "<group>"; };
+		6D941F84167D0BED00AC5BAC /* ScoresManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoresManager.m; path = Controllers/ScoresManager.m; sourceTree = "<group>"; };
+		6D941F86167D0C0400AC5BAC /* ScoreRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreRecord.h; path = Models/ScoreRecord.h; sourceTree = "<group>"; };
+		6D941F87167D0C0400AC5BAC /* ScoreRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreRecord.m; path = Models/ScoreRecord.m; sourceTree = "<group>"; };
+		6D941F89167D285E00AC5BAC /* ScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoresViewController.h; path = Controllers/ScoresViewController.h; sourceTree = "<group>"; };
+		6D941F8A167D285E00AC5BAC /* ScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoresViewController.m; path = Controllers/ScoresViewController.m; sourceTree = "<group>"; };
 		6DACD4D7165E8D7700C06503 /* BunnyMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BunnyMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DACD4DB165E8D7700C06503 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6DACD4DD165E8D7700C06503 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -277,6 +286,10 @@
 				6DACD564167444F800C06503 /* EnemyViewController.m */,
 				6D941F7A167ACFFA00AC5BAC /* AudioController.h */,
 				6D941F7B167ACFFA00AC5BAC /* AudioController.m */,
+				6D941F83167D0BED00AC5BAC /* ScoresManager.h */,
+				6D941F84167D0BED00AC5BAC /* ScoresManager.m */,
+				6D941F89167D285E00AC5BAC /* ScoresViewController.h */,
+				6D941F8A167D285E00AC5BAC /* ScoresViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +334,8 @@
 				6DACD55E1673F5D700C06503 /* Hero.m */,
 				6DE534FB16781D4B004F270E /* Game.h */,
 				6DE534FC16781D4B004F270E /* Game.m */,
+				6D941F86167D0C0400AC5BAC /* ScoreRecord.h */,
+				6D941F87167D0C0400AC5BAC /* ScoreRecord.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -488,6 +503,9 @@
 				6DACD5681674504200C06503 /* UIImage+Sprite.m in Sources */,
 				6DE534FD16781D4B004F270E /* Game.m in Sources */,
 				6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */,
+				6D941F85167D0BED00AC5BAC /* ScoresManager.m in Sources */,
+				6D941F88167D0C0400AC5BAC /* ScoreRecord.m in Sources */,
+				6D941F8B167D285E00AC5BAC /* ScoresViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
