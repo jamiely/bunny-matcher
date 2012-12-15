@@ -22,3 +22,8 @@ fox and tux image provided by user `creek23` at:
 
 Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
  
+Audio
+-----
+
+Sounds generated via [bxfr](http://www.bfxr.net/).
+

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D941F77167ACF7300AC5BAC /* Hit_Hurt10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */; };
+		6D941F79167ACF9000AC5BAC /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F78167ACF9000AC5BAC /* Powerup.wav */; };
+		6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F7B167ACFFA00AC5BAC /* AudioController.m */; };
+		6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */; };
 		6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DB165E8D7700C06503 /* UIKit.framework */; };
 		6DACD4DE165E8D7700C06503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DD165E8D7700C06503 /* Foundation.framework */; };
 		6DACD4E0165E8D7700C06503 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DF165E8D7700C06503 /* CoreGraphics.framework */; };
@@ -62,6 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Hit_Hurt10.wav; path = Assets/Hit_Hurt10.wav; sourceTree = "<group>"; };
+		6D941F78167ACF9000AC5BAC /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Powerup.wav; path = Assets/Powerup.wav; sourceTree = "<group>"; };
+		6D941F7A167ACFFA00AC5BAC /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioController.h; path = Controllers/AudioController.h; sourceTree = "<group>"; };
+		6D941F7B167ACFFA00AC5BAC /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioController.m; path = Controllers/AudioController.m; sourceTree = "<group>"; };
+		6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6DACD4D7165E8D7700C06503 /* BunnyMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BunnyMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DACD4DB165E8D7700C06503 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6DACD4DD165E8D7700C06503 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */,
 				6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */,
 				6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */,
 				6DACD4DE165E8D7700C06503 /* Foundation.framework in Frameworks */,
@@ -161,7 +172,7 @@
 		6DACD4CC165E8D7700C06503 = {
 			isa = PBXGroup;
 			children = (
-				6DACD53E1660283900C06503 /* QuartzCore.framework */,
+				6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */,
 				6DACD4E1165E8D7700C06503 /* BunnyMatcher */,
 				6DACD4FF165E8D7700C06503 /* BunnyMatcherTests */,
 				6DACD4DA165E8D7700C06503 /* Frameworks */,
@@ -181,6 +192,8 @@
 		6DACD4DA165E8D7700C06503 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */,
+				6DACD53E1660283900C06503 /* QuartzCore.framework */,
 				6DACD4DB165E8D7700C06503 /* UIKit.framework */,
 				6DACD4DD165E8D7700C06503 /* Foundation.framework */,
 				6DACD4DF165E8D7700C06503 /* CoreGraphics.framework */,
@@ -260,6 +273,8 @@
 				6DACD5611673F79A00C06503 /* HeroViewController.m */,
 				6DACD563167444F800C06503 /* EnemyViewController.h */,
 				6DACD564167444F800C06503 /* EnemyViewController.m */,
+				6D941F7A167ACFFA00AC5BAC /* AudioController.h */,
+				6D941F7B167ACFFA00AC5BAC /* AudioController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +337,8 @@
 		6DACD555166B0C8100C06503 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6D941F78167ACF9000AC5BAC /* Powerup.wav */,
+				6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */,
 				6DACD558166B106000C06503 /* tux_from_linux.png */,
 				6DACD556166B0C9100C06503 /* kit_from_firefox.png */,
 				6DE534F81676D0F8004F270E /* topics.txt */,
@@ -409,6 +426,8 @@
 				6DACD559166B106000C06503 /* tux_from_linux.png in Resources */,
 				6DE534F91676D0F8004F270E /* topics.txt in Resources */,
 				6DE5350016782D58004F270E /* MainStoryboard_iPhone.storyboard in Resources */,
+				6D941F77167ACF7300AC5BAC /* Hit_Hurt10.wav in Resources */,
+				6D941F79167ACF9000AC5BAC /* Powerup.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +485,7 @@
 				6DACD565167444F800C06503 /* EnemyViewController.m in Sources */,
 				6DACD5681674504200C06503 /* UIImage+Sprite.m in Sources */,
 				6DE534FD16781D4B004F270E /* Game.m in Sources */,
+				6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
