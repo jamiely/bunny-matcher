@@ -83,9 +83,14 @@ const NSUInteger SCORE_MANAGER_LIMIT = 10;
     return [[self records] count];
 }
 - (void) loadPlaceholders {
+    static NSArray *names = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        names = [@"James,Thomas,Susan,Kelly,Sharon" componentsSeparatedByString:@","];
+    });
     for(NSInteger i=1; i<SCORE_MANAGER_LIMIT; i++) {
         ScoreRecord *record = [[ScoreRecord alloc] init];
-        record.scorer = @"Jamie";
+        record.scorer = [names objectAtIndex: i % names.count];
         record.score = 500 * i;
         [self addRecord: record];
     }
