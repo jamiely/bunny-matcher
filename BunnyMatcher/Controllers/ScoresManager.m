@@ -15,11 +15,29 @@ const NSUInteger SCORE_MANAGER_LIMIT = 10;
 @end
 
 @implementation ScoresManager
+- (NSInteger) leastScore {
+    NSUInteger count = self.cachedRecords.count;
+    if(count == 0) return 0;
+    
+    ScoreRecord *record = [self.cachedRecords objectAtIndex: count - 1];
+    return record.score;
+}
 - (BOOL) addRecord: (ScoreRecord*) record {
-    NSMutableArray *records = [self.cachedRecords mutableCopy];
-    [records addObject: record];
-    self.cachedRecords = [records copy];
-    return YES;
+    // assume that the cached records are sorted
+
+    if(self.cachedRecords.count < SCORE_MANAGER_LIMIT ||
+       record.score > [self leastScore]) {
+        NSMutableArray *records = [self.cachedRecords mutableCopy];
+        [records addObject: record];
+        NSArray *sortedRecords = [[self class] sortScores: records];
+        NSUInteger limit = MIN(SCORE_MANAGER_LIMIT, sortedRecords.count);
+        self.cachedRecords =
+            [sortedRecords subarrayWithRange: NSMakeRange(0, limit)];
+        
+        return YES;
+    }
+    
+    return NO;
 }
 - (NSArray*) records {
     if(!self.cachedRecords) {
@@ -35,7 +53,15 @@ const NSUInteger SCORE_MANAGER_LIMIT = 10;
     for(NSDictionary* scoreDict in highScores) {
         [toCache addObject: [ScoreRecord recordFromDictionary: scoreDict]];
     }
-    return [toCache copy];
+
+    return [[self class] sortScores: toCache];
+}
++ (NSArray*) sortScores: (NSArray*) scores {
+    return [scores sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if([obj1 score] == [obj2 score]) return NSOrderedSame;
+        return [obj1 score] < [obj2 score] ?
+        NSOrderedDescending : NSOrderedAscending;
+    }];
 }
 - (NSString*) highScoreKey {
     static NSString* key = @"high scores";
