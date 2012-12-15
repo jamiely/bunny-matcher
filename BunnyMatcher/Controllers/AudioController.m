@@ -23,9 +23,13 @@
     if(self){
         self.soundIds = [NSMutableDictionary dictionary];
         self.players = [NSMutableDictionary dictionary];
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback
-                                               error: nil];
-        UInt32 category = kAudioSessionCategory_PlayAndRecord;
+        NSError *error;
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
+                                               error: &error];
+        if(error) {
+            NSLog(@"Problem setting up the audio: %@", error);
+        }
+        UInt32 category = kAudioSessionCategory_AmbientSound;
         AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
                                 sizeof(category), &category);
     }
@@ -44,13 +48,12 @@
 
 // http://stackoverflow.com/questions/9791491/best-way-to-play-simple-sound-effect-in-ios
 - (void) playURL: (NSURL*) url {
-    SystemSoundID audioEffect = [self soundIdForURL: url];
-    //AudioServicesPlaySystemSound(audioEffect);
-    AudioServicesPlayAlertSound(audioEffect);
-    NSLog(@"Played sound: %ld", audioEffect);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, (unsigned long)NULL), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SystemSoundID audioEffect = [self soundIdForURL: url];
+        AudioServicesPlaySystemSound(audioEffect);
+        NSError *error;
+        [[AVAudioSession sharedInstance] setActive:YES error:&error];
         [[self playerForURL: url] play];
-        NSLog(@"Playing url: %@", url);
     });
 }
 
@@ -61,6 +64,7 @@
         SystemSoundID audioEffect = [[self.soundIds objectForKey: relUrl] integerValue];
         AudioServicesDisposeSystemSoundID(audioEffect);
     }
+    [self.players removeAllObjects];
 }
 
 - (AVAudioPlayer*) playerForURL: (NSURL*) url {
@@ -82,7 +86,7 @@
 }
 
 - (SystemSoundID) soundIdForURL: (NSURL*) url {
-    NSNumber *effectNumber = [self.soundIds objectForKey: url.relativeString];
+    NSNumber *effectNumber = [self.soundIds objectForKey: url];
     SystemSoundID audioEffect;
     
     if(effectNumber) {
@@ -90,7 +94,7 @@
     }
     else {
         AudioServicesCreateSystemSoundID((__bridge CFURLRef) url, &audioEffect);
-        [self.soundIds setObject: @(audioEffect) forKey: url.description];
+        [self.soundIds setObject: @(audioEffect) forKey: url];
     }
     
     return audioEffect;
