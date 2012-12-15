@@ -116,11 +116,6 @@ withNextDestinationBlock: (void(^)(CGPoint nextDestination))nextDestinationBlock
                thenFrame: finalFrame
 withNextDestinationBlock: nextDestinationBlock
               completion: completion];
-    
-    NSLog(@"Moving view: %@ from: %@ to: %@",
-          aView,
-          NSStringFromCGRect(currentFrame),
-          NSStringFromCGRect(finalFrame));
 }
 
 - (NSTimeInterval) durationForAnimationFrom: (CGPoint) a to: (CGPoint) b {

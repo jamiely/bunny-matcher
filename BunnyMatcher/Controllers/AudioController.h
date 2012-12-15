@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface AudioController : NSObject
+- (void) playWav: (NSString*) file;
+- (void) playResource: (NSString*) file withExtension: (NSString*) ext;
 - (void) playURL: (NSURL*) url;
 + (AudioController*) sharedInstance;
 @end

@@ -11,6 +11,7 @@
 #import "ActorMovement.h"
 #import "HeroViewController.h"
 #import "Game.h"
+#import "AudioController.h"
 
 const NSUInteger BOARD_ITEM_COUNT = 30;
 
@@ -151,6 +152,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     if([self.round tryToConsumeSpotAtIndex: index]) {
+        [self playSoundPickup];
         if([self.round roundOver]) {
             [self roundCompleteSegue];
         }
@@ -237,6 +239,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) collideHero {
+    [self playSoundHit];
     [self.heroController collide];
     int64_t delayInSeconds = 5.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -343,6 +346,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         
         [self startGameLoop];
     }];
+}
+
+#pragma mark - Sound effects
+
+- (void) playSoundPickup {
+    [[AudioController sharedInstance] playWav: @"Powerup"];
+}
+
+- (void) playSoundHit {
+    [[AudioController sharedInstance] playWav: @"Hit_Hurt10"];
 }
 
 @end

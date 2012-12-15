@@ -11,6 +11,7 @@
 		6D941F79167ACF9000AC5BAC /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F78167ACF9000AC5BAC /* Powerup.wav */; };
 		6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F7B167ACFFA00AC5BAC /* AudioController.m */; };
 		6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */; };
+		6D941F81167C263900AC5BAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */; };
 		6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DB165E8D7700C06503 /* UIKit.framework */; };
 		6DACD4DE165E8D7700C06503 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DD165E8D7700C06503 /* Foundation.framework */; };
 		6DACD4E0165E8D7700C06503 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DACD4DF165E8D7700C06503 /* CoreGraphics.framework */; };
@@ -148,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D941F81167C263900AC5BAC /* AVFoundation.framework in Frameworks */,
 				6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */,
 				6DACD53F1660283900C06503 /* QuartzCore.framework in Frameworks */,
 				6DACD4DC165E8D7700C06503 /* UIKit.framework in Frameworks */,
@@ -172,7 +174,6 @@
 		6DACD4CC165E8D7700C06503 = {
 			isa = PBXGroup;
 			children = (
-				6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */,
 				6DACD4E1165E8D7700C06503 /* BunnyMatcher */,
 				6DACD4FF165E8D7700C06503 /* BunnyMatcherTests */,
 				6DACD4DA165E8D7700C06503 /* Frameworks */,
@@ -192,6 +193,7 @@
 		6DACD4DA165E8D7700C06503 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */,
 				6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */,
 				6DACD53E1660283900C06503 /* QuartzCore.framework */,
 				6DACD4DB165E8D7700C06503 /* UIKit.framework */,
