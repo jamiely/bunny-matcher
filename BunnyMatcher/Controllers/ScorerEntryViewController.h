@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *scorerField;
 @property (nonatomic, strong) ScoreRecord *scoreRecord;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+- (IBAction)onDone:(id)sender;
 @end

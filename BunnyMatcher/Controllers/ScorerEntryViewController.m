@@ -7,6 +7,7 @@
 //
 
 #import "ScorerEntryViewController.h"
+#import "ScoresManager.h"
 
 @interface ScorerEntryViewController ()
 
@@ -20,4 +21,13 @@
                             self.scoreRecord.score];
 }
 
+- (IBAction)onDone:(id)sender {
+    self.scoreRecord.scorer = self.scorerField.text;
+    if(self.scoreRecord.scorer) {
+        self.scoreRecord.scorer = @"Jane Q";
+    }
+    ScoresManager *manager = [ScoresManager sharedInstance];
+    [manager addRecord: self.scoreRecord];
+    [manager saveToDefaults: [NSUserDefaults standardUserDefaults]];
+}
 @end
