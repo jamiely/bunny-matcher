@@ -347,7 +347,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
     [self dismissViewControllerAnimated:YES completion:^{
         [self.game nextRound];
-        [self.heroController resetLives];
         [self updateDisplays];
         [self.collectionView reloadData];
         

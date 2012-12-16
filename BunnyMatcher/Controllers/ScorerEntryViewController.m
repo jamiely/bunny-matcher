@@ -23,7 +23,7 @@
 
 - (IBAction)onDone:(id)sender {
     self.scoreRecord.scorer = self.scorerField.text;
-    if(self.scoreRecord.scorer) {
+    if(!self.scoreRecord.scorer) {
         self.scoreRecord.scorer = @"Jane Q";
     }
     ScoresManager *manager = [ScoresManager sharedInstance];
