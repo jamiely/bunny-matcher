@@ -408,10 +408,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbt-SB-l9s">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-cs-cUV">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="bJ8-j2-oVl"/>
-                                    <constraint firstAttribute="height" constant="43" id="ymb-Ja-Wjp"/>
+                                    <constraint firstAttribute="width" constant="159" id="7Iy-S1-EyM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Done">
@@ -422,21 +421,19 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onDone:" destination="mC3-87-mGs" eventType="touchUpInside" id="lWa-oc-v6n"/>
-                                    <segue destination="euk-PS-I5Q" kind="unwind" unwindAction="playAgain:" id="4Px-Lc-rFM"/>
+                                    <segue destination="euk-PS-I5Q" kind="unwind" unwindAction="playAgain:" id="iU8-yx-JUX"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hG5-SY-tiF" firstAttribute="centerX" secondItem="qly-j6-VdL" secondAttribute="centerX" type="default" id="2g9-9d-HZ1"/>
-                            <constraint firstItem="Zbt-SB-l9s" firstAttribute="centerX" secondItem="hG5-SY-tiF" secondAttribute="centerX" type="default" id="2yL-Bn-BhB"/>
-                            <constraint firstItem="qly-j6-VdL" firstAttribute="centerX" secondItem="mxM-dL-aqx" secondAttribute="centerX" type="default" id="TWk-O1-eHL"/>
                             <constraint firstItem="qly-j6-VdL" firstAttribute="top" secondItem="mxM-dL-aqx" secondAttribute="top" constant="158" id="VUb-rm-apT"/>
-                            <constraint firstItem="Zbt-SB-l9s" firstAttribute="baseline" secondItem="hG5-SY-tiF" secondAttribute="baseline" type="default" id="Vdt-Ol-fl2"/>
-                            <constraint firstAttribute="bottom" secondItem="Zbt-SB-l9s" secondAttribute="bottom" constant="111" id="ewm-vA-vfZ"/>
+                            <constraint firstItem="qly-j6-VdL" firstAttribute="centerX" secondItem="mxM-dL-aqx" secondAttribute="centerX" type="default" id="cjn-ga-H2h"/>
+                            <constraint firstAttribute="bottom" secondItem="U2a-cs-cUV" secondAttribute="bottom" constant="119" id="ghg-vi-UWc"/>
                             <constraint firstItem="shV-9O-PYP" firstAttribute="leading" secondItem="mxM-dL-aqx" secondAttribute="leading" constant="85" id="kZx-hG-PJe"/>
                             <constraint firstItem="shV-9O-PYP" firstAttribute="top" secondItem="mxM-dL-aqx" secondAttribute="top" constant="84" id="lfa-pr-aSu"/>
+                            <constraint firstItem="U2a-cs-cUV" firstAttribute="centerX" secondItem="hG5-SY-tiF" secondAttribute="centerX" type="default" id="owd-R1-iQz"/>
                             <constraint firstAttribute="bottom" secondItem="hG5-SY-tiF" secondAttribute="bottom" constant="233" id="sab-Dt-lPI"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -559,6 +556,7 @@
         <class className="ScorerEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScorerEntryViewController.h"/>
             <relationships>
+                <relationship kind="action" name="onDone:"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scorerField" candidateClass="UITextField"/>
             </relationships>

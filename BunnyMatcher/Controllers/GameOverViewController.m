@@ -11,8 +11,8 @@
 
 @implementation GameOverViewController
 - (void)viewDidAppear:(BOOL)animated {
-    self.nextButton.titleLabel.text = [self hasHighScore] ?
-        @"Enter name" : @"Play again";
+    NSString *buttonTitle = [self hasHighScore] ? @"Enter name" : @"Play again";
+    [self.nextButton setTitle: buttonTitle forState: UIControlStateNormal];
 }
 - (BOOL) hasHighScore {
     return YES;
