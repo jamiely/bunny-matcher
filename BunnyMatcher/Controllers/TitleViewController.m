@@ -59,7 +59,7 @@
         }
             
         case 1: {
-            [self performSegueWithIdentifier: @"ScoresSegue" sender: self];
+            [self scoresSegue];
             break;
         }
             
@@ -71,6 +71,30 @@
         default:
             break;
     }
+}
+
+#pragma mark - Segue functions
+
+- (void) scoresSegue {
+    [self performSegueWithIdentifier: @"ScoresSegue" sender: self];
+}
+
+- (IBAction)showHighScores:(UIStoryboardSegue*)segue {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self scoresSegue];
+    }];
+}
+
+- (IBAction)showTitleScreen:(UIStoryboardSegue*)segue {
+    [self dismissViewControllerAnimated:YES completion:^{
+        // ?
+    }];
+}
+
+- (IBAction)showBoard:(UIStoryboardSegue*)segue{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier: @"PlaySegue" sender: self];
+    }];
 }
 
 @end

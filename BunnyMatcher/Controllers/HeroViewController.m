@@ -7,6 +7,7 @@
 //
 
 #import "HeroViewController.h"
+#import "AudioController.h"
 
 @interface HeroViewController()
 @property (nonatomic, strong) Hero* hero;
@@ -54,6 +55,7 @@
     if(self.hero.state == HeroStateStunned) return;
     
     [self.hero collide];
+    [self playSoundHit];
     self.view.alpha = 0.5;
     self.heroLives --;
     [self stopMovement];
@@ -68,6 +70,11 @@
         }];
     });
 }
+
+- (void) playSoundHit {
+    [[AudioController sharedInstance] playWav: @"Hit_Hurt10"];
+}
+
 
 - (void) resetCollision {
     [self.hero resetCollide];
@@ -90,6 +97,8 @@
 }
 
 - (void) reboundFromPoint: (CGPoint) point {
+    if(self.hero.state == HeroStateStunned) return;
+    
     CGPoint hero = [self presentationOrigin];
     CGPoint newPoint = CGPointMake(point.x - hero.x, point.y - hero.y);
     newPoint.x *= -1.05;

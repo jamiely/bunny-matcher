@@ -11,15 +11,18 @@
 
 @implementation GameOverViewController
 - (void)viewDidAppear:(BOOL)animated {
-    NSString *buttonTitle = [self hasHighScore] ? @"Enter name" : @"Play again";
+    BOOL hasHighScore = [self hasHighScore];
+    NSString *buttonTitle = hasHighScore ? @"Enter name" : @"Play again";
     [self.nextButton setTitle: buttonTitle forState: UIControlStateNormal];
+    
+    self.titleScreenButton.hidden = hasHighScore;
 }
 - (BOOL) hasHighScore {
-    return YES;
     return [[ScoresManager sharedInstance] isHighScore: self.scoreRecord];
 }
 - (IBAction)nextButtonClick:(id)sender {
-    NSString *segueId = [self hasHighScore] ? @"ScorerEntrySegue" : @"PlayAgainSegue";
+    NSString *segueId = [self hasHighScore] ?
+        @"ScorerEntrySegue" : @"PlayAgainSegue";
     [self performSegueWithIdentifier: segueId sender: self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

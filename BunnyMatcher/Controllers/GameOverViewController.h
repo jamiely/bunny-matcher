@@ -10,6 +10,7 @@
 @class ScoreRecord;
 
 @interface GameOverViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *titleScreenButton;
 @property (nonatomic, strong) ScoreRecord *scoreRecord;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 - (IBAction)nextButtonClick:(id)sender;

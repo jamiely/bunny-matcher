@@ -18,7 +18,6 @@
     UICollectionViewDelegate, UIGestureRecognizerDelegate, ActorMovementDelegate,
     EnemyViewControllerDelegate>
 
-- (IBAction) playAgain: (UIStoryboardSegue*) segue;
 - (IBAction) nextRound: (UIStoryboardSegue*) segue;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

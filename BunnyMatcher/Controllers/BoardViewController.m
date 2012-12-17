@@ -240,7 +240,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) collideHero {
-    [self playSoundHit];
     [self.heroController collide];
     [self.heroController reboundFromPoint:
      [self.enemyController presentationOrigin]];
@@ -339,13 +338,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-- (IBAction) playAgain: (UIStoryboardSegue*) segue {
-    void ((^completion)()) = ^{
-        [self.navigationController popViewControllerAnimated: YES];
-    };
-    [self dismissViewControllerAnimated:YES completion:completion];
-}
-
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
     [self dismissViewControllerAnimated:YES completion:^{
         [self.game nextRound];
@@ -360,10 +352,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) playSoundPickup {
     [[AudioController sharedInstance] playWav: @"Powerup"];
-}
-
-- (void) playSoundHit {
-    [[AudioController sharedInstance] playWav: @"Hit_Hurt10"];
 }
 
 @end
