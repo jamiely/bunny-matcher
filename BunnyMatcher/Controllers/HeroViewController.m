@@ -77,11 +77,28 @@
     return [[self.view.layer presentationLayer] frame];
 }
 
+- (CGPoint) presentationOrigin {
+    return [self presentationFrame].origin;
+}
+
 - (BOOL) collidesWithRect: (CGRect) rect {
     return CGRectIntersectsRect(self.presentationFrame, rect);
 }
 
 - (void) resetLives {
     self.heroLives = HERO_LIVES_DEFAULT;
+}
+
+- (void) reboundFromPoint: (CGPoint) point {
+    CGPoint hero = [self presentationOrigin];
+    CGPoint newPoint = CGPointMake(point.x - hero.x, point.y - hero.y);
+    newPoint.x *= -1.05;
+    newPoint.y *= -1.05;
+    hero.x += newPoint.x;
+    hero.y += newPoint.y;
+    
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin = hero;
+    self.view.frame = viewFrame;
 }
 @end

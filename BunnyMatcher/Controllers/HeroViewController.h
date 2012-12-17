@@ -19,6 +19,7 @@
 - (BOOL) hasCollided;
 
 - (void) collide;
+- (void) reboundFromPoint: (CGPoint) point;
 - (void) resetCollision;
 
 // A convenience method to return the frame corresponding to the presentation CALayer frame

@@ -51,4 +51,8 @@
     return [[self.view.layer presentationLayer] frame];
 }
 
+- (CGPoint)presentationOrigin {
+    return [self presentationFrame].origin;
+}
+
 @end

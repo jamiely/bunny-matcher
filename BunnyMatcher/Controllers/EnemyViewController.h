@@ -19,6 +19,7 @@
 - (void) collide;
 
 - (CGRect) presentationFrame;
+- (CGPoint) presentationOrigin;
 
 @property (nonatomic, strong) id<EnemyViewControllerDelegate> delegate;
 @property (nonatomic, strong) ActorMovement *actorMovement;
