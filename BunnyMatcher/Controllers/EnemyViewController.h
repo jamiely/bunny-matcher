@@ -16,6 +16,7 @@
 @interface EnemyViewController : UIViewController
 
 - (void) beginEnemyMovement;
+- (void) endEnemyMovement;
 - (void) collide;
 
 - (CGRect) presentationFrame;
@@ -23,6 +24,5 @@
 
 @property (nonatomic, strong) id<EnemyViewControllerDelegate> delegate;
 @property (nonatomic, strong) ActorMovement *actorMovement;
-@property (nonatomic, assign) BOOL mayMove;
 
 @end

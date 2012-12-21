@@ -84,7 +84,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    self.enemyController.mayMove = NO;
+    [self.enemyController endEnemyMovement];
     [self stopGameLoop];
 }
 
@@ -243,6 +243,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.heroController collide];
     [self.heroController reboundFromPoint:
      [self.enemyController presentationOrigin]];
+    
     int64_t delayInSeconds = 5.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){

@@ -8,37 +8,30 @@
 
 #import "EnemyViewController.h"
 
+@interface EnemyViewController()
+@property (nonatomic, strong) NSTimer *timer;
+@end
+
 @implementation EnemyViewController
 
-- (id) init {
-    self = [super init];
-    if(self) {
-        self.mayMove = YES;
-    }
-    return self;
-}
-
 - (void) beginEnemyMovement {
-    self.mayMove = YES;
-    [self moveEnemyRecursivelyWithIntervalInSeconds: 5.0];
+    [self endEnemyMovement];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(moveEnemyWithoutDelay) userInfo:nil repeats:YES];
 }
 
-// arguably, this should be done as part of the game loop
-- (void) moveEnemyRecursivelyWithIntervalInSeconds: (CGFloat) intervalInSeconds {
-    if(!self.mayMove) return;
+- (void) endEnemyMovement {
+    if(! self.timer) return;
     
-    [self moveEnemyAfterDelayInSeconds: intervalInSeconds completion:^(BOOL finish){
-        [self moveEnemyRecursivelyWithIntervalInSeconds: intervalInSeconds];
-    }];
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
-- (void) moveEnemyAfterDelayInSeconds: (CGFloat) delayInSeconds
-                           completion: (void (^)(BOOL finish)) completion {
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+- (void) moveEnemyWithoutDelay {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.actorMovement moveView: self.view
                          toIndexPath: [self.delegate nextIndexPathDestination]
-                          completion: completion];
+                          completion: nil];
     });
 }
 

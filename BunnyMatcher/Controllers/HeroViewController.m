@@ -97,12 +97,11 @@
 }
 
 - (void) reboundFromPoint: (CGPoint) point {
-    if(self.hero.state == HeroStateStunned) return;
-    
     CGPoint hero = [self presentationOrigin];
     CGPoint newPoint = CGPointMake(point.x - hero.x, point.y - hero.y);
-    newPoint.x *= -1.05;
-    newPoint.y *= -1.05;
+    static CGFloat reboundFactor = -1.2;
+    newPoint.x *= reboundFactor;
+    newPoint.y *= reboundFactor;
     hero.x += newPoint.x;
     hero.y += newPoint.y;
     
