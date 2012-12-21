@@ -19,6 +19,8 @@
     [self.scorerField becomeFirstResponder];
     self.scoreLabel.text = [NSString stringWithFormat: @"%06d",
                             self.scoreRecord.score];
+    self.scorerField.delegate = self;
+    self.scorerField.returnKeyType = UIReturnKeyDone;
 }
 
 - (IBAction)onDone:(id)sender {
@@ -29,5 +31,14 @@
     ScoresManager *manager = [ScoresManager sharedInstance];
     [manager addRecord: self.scoreRecord];
     [manager saveToDefaults: [NSUserDefaults standardUserDefaults]];
+    [self performSegueWithIdentifier:@"ScoresSegue" sender:self];
 }
+
+#pragma mark - UITextFieldDelegate functions
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.scorerField resignFirstResponder];
+    return YES;
+}
+
 @end
