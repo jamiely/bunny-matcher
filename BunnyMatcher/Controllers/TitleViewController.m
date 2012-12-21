@@ -7,6 +7,7 @@
 //
 
 #import "TitleViewController.h"
+#import <MessageUI/MessageUI.h>
 
 @interface TitleViewController()
 @property (nonatomic, strong) NSArray *contents;
@@ -20,7 +21,13 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    self.contents = @[@"Play", @"Scores", @"Contact"];
+    NSMutableArray *sections = [@[@"Play", @"Scores"] mutableCopy];
+    
+    if([MFMailComposeViewController canSendMail]) {
+        [sections addObject: @"Contact"];
+    }
+    
+    self.contents = sections;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -64,13 +71,25 @@
         }
             
         case 2: {
-            NSLog(@"Contact email");
+            [self contact];
             break;
         }
             
         default:
             break;
     }
+}
+
+#pragma mark - Contact functions
+
+- (void) contact {
+    MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    [self presentViewController: controller animated: YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 #pragma mark - Segue functions
@@ -86,9 +105,7 @@
 }
 
 - (IBAction)showTitleScreen:(UIStoryboardSegue*)segue {
-    [self dismissViewControllerAnimated:YES completion:^{
-        // ?
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)showBoard:(UIStoryboardSegue*)segue{

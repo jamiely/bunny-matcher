@@ -152,11 +152,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     
-    if([self.round tryToConsumeSpotAtIndex: index]) {
+    if ([self.round spotIsConsumedAtIndex: index]) {
+        // do nothing
+    }
+    else if([self.round tryToConsumeSpotAtIndex: index]) {
         [self playSoundPickup];
         if([self.round roundOver]) {
             [self roundCompleteSegue];
         }
+    }
+    else {
+        [self playIncorrectItem];
     }
     
     [self updateScoreDisplay];
@@ -353,6 +359,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) playSoundPickup {
     [[AudioController sharedInstance] playWav: @"Powerup"];
+}
+
+- (void) playIncorrectItem {
+    [[AudioController sharedInstance] playWav: @"Blip_Select3"];
 }
 
 @end

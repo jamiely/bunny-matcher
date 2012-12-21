@@ -87,7 +87,7 @@
 
 - (SystemSoundID) soundIdForURL: (NSURL*) url {
     NSNumber *effectNumber = [self.soundIds objectForKey: url];
-    SystemSoundID audioEffect;
+    SystemSoundID audioEffect = 0;
     
     if(effectNumber) {
         audioEffect = [effectNumber integerValue];

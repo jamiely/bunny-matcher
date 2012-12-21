@@ -98,7 +98,7 @@ const NSTimeInterval ROUND_DEFAULT_TIME = 60;
         [self scoreEvent: IncorrectTerm];
         return NO;
     }
-
+    return NO;
 }
 
 - (BOOL) roundOver {
