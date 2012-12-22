@@ -11,7 +11,7 @@
 #import "ActorMovement.h"
 #import "HeroViewController.h"
 #import "Game.h"
-#import "AudioController.h"
+#import "GameAudioController.h"
 #import "GameOverViewController.h"
 
 const NSUInteger BOARD_ITEM_COUNT = 30;
@@ -26,6 +26,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, strong) NSTimer *gameLoopTimer;
 @property (nonatomic, strong) Game *game;
 @property (nonatomic, strong) NSDate *lastLoopTime;
+@property (nonatomic, readonly) GameAudioController *audio;
 @end
 
 @implementation BoardViewController
@@ -156,13 +157,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         // do nothing
     }
     else if([self.round tryToConsumeSpotAtIndex: index]) {
-        [self playSoundPickup];
+        [self.audio pickup];
         if([self.round roundOver]) {
             [self roundCompleteSegue];
         }
     }
     else {
-        [self playIncorrectItem];
+        [self.audio badPickup];
     }
     
     [self updateScoreDisplay];
@@ -334,7 +335,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) gameOverSegue {
     [self stopGameLoop];
-    [self playGameOver];
+    [self.audio gameOver];
     
     static NSString *segueId = @"GameOverSegue";
     [self performSegueWithIdentifier:segueId sender: self];
@@ -347,7 +348,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
-    [self playRoundSuccess];
+    [self.audio roundComplete];
     [self dismissViewControllerAnimated:YES completion:^{
         [self.game nextRound];
         [self updateDisplays];
@@ -359,20 +360,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Sound effects
 
-- (void) playSoundPickup {
-    [[AudioController sharedInstance] playWav: @"Pickup_Coint5"];
-}
-
-- (void) playIncorrectItem {
-    [[AudioController sharedInstance] playWav: @"Blip_Select3"];
-}
-
-- (void) playRoundSuccess {
-    [[AudioController sharedInstance] playWav: @"Powerup9"];
-}
-
-- (void) playGameOver {
-    [[AudioController sharedInstance] playWav: @"gameover1"];
+- (GameAudioController*) audio {
+    return [GameAudioController sharedInstance];
 }
 
 @end
