@@ -13,6 +13,7 @@ const NSInteger ROUND_SCORE_POINT = 100;
 const NSInteger ROUND_SCORE_PENALTY = -50;
 const NSInteger ROUND_SCORE_CAPTURED = -100;
 const NSTimeInterval ROUND_DEFAULT_TIME = 60;
+const NSInteger ROUND_TIME_SCORE_MULTIPLIER = 5;
 
 @interface Round()
 @property (nonatomic, strong) NSArray *topicItems;
@@ -134,6 +135,13 @@ const NSTimeInterval ROUND_DEFAULT_TIME = 60;
     next.library = self.library;
     next.mainTopic = [self nextTopic];
     return next;
+}
+
+- (NSInteger) scoreTimeFactor {
+    return self.timeRemaining * ROUND_TIME_SCORE_MULTIPLIER;
+}
+- (NSInteger) totalScore {
+    return self.score + [self scoreTimeFactor];
 }
 
 + (id) roundWithLibrary: (Library*) library andMainTopicName: (NSString*) topicName {

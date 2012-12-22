@@ -13,6 +13,7 @@
 #import "Game.h"
 #import "GameAudioController.h"
 #import "GameOverViewController.h"
+#import "RoundCompleteViewController.h"
 
 const NSUInteger BOARD_ITEM_COUNT = 30;
 
@@ -80,6 +81,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
+    
     [self startGameLoop];
     [self.enemyController beginEnemyMovement];
 }
@@ -87,6 +90,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 - (void)viewDidDisappear:(BOOL)animated {
     [self.enemyController endEnemyMovement];
     [self stopGameLoop];
+    
+    [super viewDidDisappear: animated];
 }
 
 - (NSUInteger) supportedInterfaceOrientations {
@@ -345,6 +350,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString: @"GameOverSegue"]) {
         [segue.destinationViewController setScoreRecord: self.game.scoreRecord];
+    }
+    if([segue.destinationViewController respondsToSelector: @selector(setRound:)]) {
+        [segue.destinationViewController setRound: [self round]];
     }
 }
 

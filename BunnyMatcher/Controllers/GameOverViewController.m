@@ -10,7 +10,9 @@
 #import "ScoresManager.h"
 
 @implementation GameOverViewController
-- (void)viewDidAppear:(BOOL)animated {
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
     BOOL hasHighScore = [self hasHighScore];
     NSString *buttonTitle = hasHighScore ? @"Enter name" : @"Play again";
     [self.nextButton setTitle: buttonTitle forState: UIControlStateNormal];

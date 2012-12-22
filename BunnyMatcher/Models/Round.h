@@ -39,7 +39,9 @@ const extern NSTimeInterval ROUND_DEFAULT_TIME;
 // Creates a new round based on the current round, passing along library information
 // and selecting the next topic. The score is also passed to the next round.
 - (Round*) nextRound;
-
+- (NSInteger) scoreTimeFactor;
+- (NSInteger) totalScore;
+    
 @property (nonatomic, assign) NSTimeInterval timeRemaining;
 @property (nonatomic, strong) Topic *mainTopic;
 @property (nonatomic, strong) Library *library;

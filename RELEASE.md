@@ -1,5 +1,11 @@
 Version 1.0
 ===========
+Build 1.5
+---------
+* Added contact template
+* Changed round complete sound playback time
+* Added time multiplier for score
+* Fixed display flicker problem in on game over view
 
 Build 1.4
 ---------

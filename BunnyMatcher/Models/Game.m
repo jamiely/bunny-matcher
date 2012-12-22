@@ -43,7 +43,7 @@
 }
 - (Round*) nextRound {
     // save score first
-    self.scoreForPreviousRounds += self.currentRound.score;
+    self.scoreForPreviousRounds += self.currentRound.totalScore;
     
     self.currentRound = [self.currentRound nextRound];
     
