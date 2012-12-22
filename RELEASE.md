@@ -1,6 +1,12 @@
 Version 1.0
 ===========
 
+Build 1.4
+---------
+* Fixed problem with sound
+* Added new sounds for bad pickup, gameover, and round completion
+* Added contact link
+
 Build 1.3
 ---------
 * Got iPhone views lined up with iPad views, including the Scorer Entry
