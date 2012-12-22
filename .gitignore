@@ -1,2 +1,6 @@
 .DS_Store
 *xcuserdata*
+*.app.dSYM.zip
+*.ipa
+build
+.env
