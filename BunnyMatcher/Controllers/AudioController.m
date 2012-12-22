@@ -14,7 +14,6 @@
 
 @interface AudioController()
 @property (nonatomic, strong) NSMutableDictionary* soundIds;
-@property (nonatomic, strong) NSMutableDictionary* players;
 @end
 
 @implementation AudioController
@@ -22,16 +21,6 @@
     self = [super init];
     if(self){
         self.soundIds = [NSMutableDictionary dictionary];
-        self.players = [NSMutableDictionary dictionary];
-        NSError *error;
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
-                                               error: &error];
-        if(error) {
-            NSLog(@"Problem setting up the audio: %@", error);
-        }
-        UInt32 category = kAudioSessionCategory_AmbientSound;
-        AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
-                                sizeof(category), &category);
     }
     return self;
 }
@@ -48,12 +37,11 @@
 
 // http://stackoverflow.com/questions/9791491/best-way-to-play-simple-sound-effect-in-ios
 - (void) playURL: (NSURL*) url {
+    SystemSoundID audioEffect = [self soundIdForURL: url];
+    NSLog(@"Playing audio effect: %ld", audioEffect);
+    AudioServicesPlaySystemSound(audioEffect);
+
     dispatch_async(dispatch_get_main_queue(), ^{
-        SystemSoundID audioEffect = [self soundIdForURL: url];
-        AudioServicesPlaySystemSound(audioEffect);
-        NSError *error;
-        [[AVAudioSession sharedInstance] setActive:YES error:&error];
-        [[self playerForURL: url] play];
     });
 }
 
@@ -64,43 +52,31 @@
         SystemSoundID audioEffect = [[self.soundIds objectForKey: relUrl] integerValue];
         AudioServicesDisposeSystemSoundID(audioEffect);
     }
-    [self.players removeAllObjects];
-}
-
-- (AVAudioPlayer*) playerForURL: (NSURL*) url {
-    AVAudioPlayer *player = [self.players objectForKey: url];
-    if(! player) {
-        NSError *error;
-        player = [[AVAudioPlayer alloc] initWithContentsOfURL: url
-                                                        error: &error];
-        if(error) {
-            NSLog(@"Problem creating player. %@", error);
-            player = nil;
-        }
-        else {
-            player.numberOfLoops = -1;
-            [self.players setObject: player forKey: url];
-        }
-    }
-    return player;
 }
 
 - (SystemSoundID) soundIdForURL: (NSURL*) url {
-    NSNumber *effectNumber = [self.soundIds objectForKey: url];
+    NSNumber *effectNumber = [self.soundIds objectForKey: url.absoluteString];
     SystemSoundID audioEffect = 0;
     
     if(effectNumber) {
-        audioEffect = [effectNumber integerValue];
+        audioEffect = [effectNumber unsignedIntegerValue];
     }
     else {
         AudioServicesCreateSystemSoundID((__bridge CFURLRef) url, &audioEffect);
-        [self.soundIds setObject: @(audioEffect) forKey: url];
+        AudioServicesPropertyID flag = 0; // always play
+        AudioServicesSetProperty(kAudioServicesPropertyIsUISound, sizeof(SystemSoundID), &audioEffect, sizeof(AudioServicesPropertyID), &flag);
+        [self.soundIds setObject: @(audioEffect) forKey: url.absoluteString];
     }
     
     return audioEffect;
 }
 
 + (AudioController*) sharedInstance {
-    return [[AudioController alloc] init];
+    static AudioController* instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[AudioController alloc] init];
+    });
+    return instance;
 }
 @end

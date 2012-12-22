@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		6D23195616841E2100226E69 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D23195516841E2100226E69 /* MessageUI.framework */; };
 		6D6C859E1685299500706364 /* Blip_Select3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C859D1685299500706364 /* Blip_Select3.wav */; };
+		6D6C85DD1685432C00706364 /* Pickup_Coin5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85DB1685432C00706364 /* Pickup_Coin5.wav */; };
+		6D6C85DE1685432C00706364 /* Powerup9.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85DC1685432C00706364 /* Powerup9.wav */; };
+		6D6C85E0168543D100706364 /* gameover1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85DF168543D100706364 /* gameover1.wav */; };
 		6D941F77167ACF7300AC5BAC /* Hit_Hurt10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */; };
-		6D941F79167ACF9000AC5BAC /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F78167ACF9000AC5BAC /* Powerup.wav */; };
 		6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F7B167ACFFA00AC5BAC /* AudioController.m */; };
 		6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */; };
 		6D941F82167D07CB00AC5BAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */; };
@@ -76,8 +78,10 @@
 /* Begin PBXFileReference section */
 		6D23195516841E2100226E69 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6D6C859D1685299500706364 /* Blip_Select3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Blip_Select3.wav; path = Assets/Blip_Select3.wav; sourceTree = "<group>"; };
+		6D6C85DB1685432C00706364 /* Pickup_Coin5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Pickup_Coin5.wav; path = Assets/Pickup_Coin5.wav; sourceTree = "<group>"; };
+		6D6C85DC1685432C00706364 /* Powerup9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Powerup9.wav; path = Assets/Powerup9.wav; sourceTree = "<group>"; };
+		6D6C85DF168543D100706364 /* gameover1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gameover1.wav; path = Assets/gameover1.wav; sourceTree = "<group>"; };
 		6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Hit_Hurt10.wav; path = Assets/Hit_Hurt10.wav; sourceTree = "<group>"; };
-		6D941F78167ACF9000AC5BAC /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Powerup.wav; path = Assets/Powerup.wav; sourceTree = "<group>"; };
 		6D941F7A167ACFFA00AC5BAC /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioController.h; path = Controllers/AudioController.h; sourceTree = "<group>"; };
 		6D941F7B167ACFFA00AC5BAC /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioController.m; path = Controllers/AudioController.m; sourceTree = "<group>"; };
 		6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -370,8 +374,10 @@
 		6DACD555166B0C8100C06503 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6D6C85DF168543D100706364 /* gameover1.wav */,
+				6D6C85DB1685432C00706364 /* Pickup_Coin5.wav */,
+				6D6C85DC1685432C00706364 /* Powerup9.wav */,
 				6D6C859D1685299500706364 /* Blip_Select3.wav */,
-				6D941F78167ACF9000AC5BAC /* Powerup.wav */,
 				6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */,
 				6DACD558166B106000C06503 /* tux_from_linux.png */,
 				6DACD556166B0C9100C06503 /* kit_from_firefox.png */,
@@ -461,8 +467,10 @@
 				6DE534F91676D0F8004F270E /* topics.txt in Resources */,
 				6DE5350016782D58004F270E /* MainStoryboard_iPhone.storyboard in Resources */,
 				6D941F77167ACF7300AC5BAC /* Hit_Hurt10.wav in Resources */,
-				6D941F79167ACF9000AC5BAC /* Powerup.wav in Resources */,
 				6D6C859E1685299500706364 /* Blip_Select3.wav in Resources */,
+				6D6C85DD1685432C00706364 /* Pickup_Coin5.wav in Resources */,
+				6D6C85DE1685432C00706364 /* Powerup9.wav in Resources */,
+				6D6C85E0168543D100706364 /* gameover1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

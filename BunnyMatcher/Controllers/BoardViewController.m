@@ -334,6 +334,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) gameOverSegue {
     [self stopGameLoop];
+    [self playGameOver];
     
     static NSString *segueId = @"GameOverSegue";
     [self performSegueWithIdentifier:segueId sender: self];
@@ -346,6 +347,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
+    [self playRoundSuccess];
     [self dismissViewControllerAnimated:YES completion:^{
         [self.game nextRound];
         [self updateDisplays];
@@ -358,11 +360,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Sound effects
 
 - (void) playSoundPickup {
-    [[AudioController sharedInstance] playWav: @"Powerup"];
+    [[AudioController sharedInstance] playWav: @"Pickup_Coint5"];
 }
 
 - (void) playIncorrectItem {
     [[AudioController sharedInstance] playWav: @"Blip_Select3"];
+}
+
+- (void) playRoundSuccess {
+    [[AudioController sharedInstance] playWav: @"Powerup9"];
+}
+
+- (void) playGameOver {
+    [[AudioController sharedInstance] playWav: @"gameover1"];
 }
 
 @end
