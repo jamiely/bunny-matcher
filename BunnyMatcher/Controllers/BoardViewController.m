@@ -328,6 +328,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) roundCompleteSegue {
     [self stopGameLoop];
+    [self.audio roundComplete];
     
     static NSString *segueId = @"RoundCompleteSegue";
     [self performSegueWithIdentifier:segueId sender:self];
@@ -348,7 +349,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction) nextRound: (UIStoryboardSegue*) segue {
-    [self.audio roundComplete];
     [self dismissViewControllerAnimated:YES completion:^{
         [self.game nextRound];
         [self updateDisplays];

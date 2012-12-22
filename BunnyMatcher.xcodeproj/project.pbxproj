@@ -13,6 +13,7 @@
 		6D6C85DE1685432C00706364 /* Powerup9.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85DC1685432C00706364 /* Powerup9.wav */; };
 		6D6C85E0168543D100706364 /* gameover1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85DF168543D100706364 /* gameover1.wav */; };
 		6D6C85E3168544B400706364 /* GameAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C85E2168544B400706364 /* GameAudioController.m */; };
+		6D6C85ED168562DD00706364 /* contact.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85EC168562DD00706364 /* contact.txt */; };
 		6D941F77167ACF7300AC5BAC /* Hit_Hurt10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */; };
 		6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F7B167ACFFA00AC5BAC /* AudioController.m */; };
 		6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */; };
@@ -84,6 +85,7 @@
 		6D6C85DF168543D100706364 /* gameover1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gameover1.wav; path = Assets/gameover1.wav; sourceTree = "<group>"; };
 		6D6C85E1168544B400706364 /* GameAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameAudioController.h; path = Controllers/GameAudioController.h; sourceTree = "<group>"; };
 		6D6C85E2168544B400706364 /* GameAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameAudioController.m; path = Controllers/GameAudioController.m; sourceTree = "<group>"; };
+		6D6C85EC168562DD00706364 /* contact.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = contact.txt; path = Assets/contact.txt; sourceTree = "<group>"; };
 		6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Hit_Hurt10.wav; path = Assets/Hit_Hurt10.wav; sourceTree = "<group>"; };
 		6D941F7A167ACFFA00AC5BAC /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioController.h; path = Controllers/AudioController.h; sourceTree = "<group>"; };
 		6D941F7B167ACFFA00AC5BAC /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioController.m; path = Controllers/AudioController.m; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				6DACD558166B106000C06503 /* tux_from_linux.png */,
 				6DACD556166B0C9100C06503 /* kit_from_firefox.png */,
 				6DE534F81676D0F8004F270E /* topics.txt */,
+				6D6C85EC168562DD00706364 /* contact.txt */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				6D6C85DD1685432C00706364 /* Pickup_Coin5.wav in Resources */,
 				6D6C85DE1685432C00706364 /* Powerup9.wav in Resources */,
 				6D6C85E0168543D100706364 /* gameover1.wav in Resources */,
+				6D6C85ED168562DD00706364 /* contact.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

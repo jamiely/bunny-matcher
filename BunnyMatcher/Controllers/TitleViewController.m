@@ -84,6 +84,12 @@
 
 - (void) contact {
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+    [controller setToRecipients: @[@"bunnymatcher@angelforge.org"]];
+    [controller setSubject: @"[BunnyMatcher] Bug/Feature Request"];
+    NSError *error;
+    NSString *filename = [[NSBundle mainBundle] pathForResource: @"contact" ofType:@"txt"];
+    NSString *bodyContent = [NSString stringWithContentsOfFile: filename encoding:NSUTF8StringEncoding error: &error];
+    [controller setMessageBody: bodyContent isHTML: NO];
     controller.mailComposeDelegate = self;
     [self presentViewController: controller animated: YES completion:nil];
 }

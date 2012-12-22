@@ -1,0 +1,15 @@
+Hello! 
+
+I would like to report a bug in the application: 
+
+<Enter the bug description here>
+
+I would like to request the following features:
+
+<Enter feature description here>
+
+I would like to request the following topics, with associated words.
+
+Example:
+
+Plants: Mercury, Venus, Earth, Mars, Jupita, Saturn, Uranus, Neptune
