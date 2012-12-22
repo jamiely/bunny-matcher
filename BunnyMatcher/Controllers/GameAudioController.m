@@ -18,7 +18,7 @@
     return instance;
 }
 - (void) pickup {
-    [self playWav: @"Pickup_Coint5"];
+    [self playWav: @"Pickup_Coin5"];
 }
 
 - (void) badPickup {
