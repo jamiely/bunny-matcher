@@ -114,7 +114,7 @@
                                 <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="w3W-hc-n3k" firstAttribute="centerX" secondItem="gsa-eb-wpr" secondAttribute="centerX" priority="1" type="user" id="Fpz-aV-d4l"/>
-                                    <constraint firstAttribute="width" constant="38" type="user" id="Nlh-zi-Fv8"/>
+                                    <constraint firstAttribute="width" constant="60" type="user" id="Nlh-zi-Fv8"/>
                                     <constraint firstItem="w3W-hc-n3k" firstAttribute="top" secondItem="gsa-eb-wpr" secondAttribute="top" constant="9" id="iyC-fs-D3B"/>
                                 </constraints>
                             </view>
