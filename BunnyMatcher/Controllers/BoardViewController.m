@@ -81,6 +81,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.heroController.view = self.heroView;
     self.enemyController.view = self.enemyView;
+    self.collectionView.backgroundColor =
+        [UIColor colorWithRed:0 green:0.9 blue:0.5 alpha: 0.9];
     
     [self updateDisplays];
 }

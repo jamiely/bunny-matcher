@@ -40,6 +40,11 @@
     self.gameSelectionStyle = GameActiveSelectionStyle;
     
     [self updateBackgroundView];
+    self.backgroundColor = [UIColor colorWithRed: 0 green: 0.7 blue: 0.3 alpha: 1];
+}
+
+- (void)layoutSubviews {
+    self.textLabel.textColor = [UIColor whiteColor];
 }
 
 - (void) updateBackgroundView {
@@ -49,7 +54,7 @@
             break;
         case GameOverSelectionStyle:
             self.selectedBackgroundView = [[UIView alloc] initWithFrame: self.frame];
-            self.selectedBackgroundView.backgroundColor = [UIColor greenColor];
+            self.selectedBackgroundView.backgroundColor = [UIColor blueColor];
             break;
     }
 }
