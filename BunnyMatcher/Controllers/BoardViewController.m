@@ -28,6 +28,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, strong) Game *game;
 @property (nonatomic, strong) NSDate *lastLoopTime;
 @property (nonatomic, readonly) GameAudioController *audio;
+@property (nonatomic, assign) BOOL highlightItems;
 @end
 
 @implementation BoardViewController
@@ -64,9 +65,13 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.heroController =
         [[HeroViewController alloc] initWithModel: [[Hero alloc] init]];
+    self.heroController.actorMovement = self.actorMovement;
+    
     self.enemyController = [[EnemyViewController alloc] init];
     self.enemyController.delegate = self;
     self.enemyController.actorMovement = self.actorMovement;
+    
+    self.highlightItems = NO;
 }
 #pragma mark - View Controller Delegate Functions
 
@@ -78,6 +83,10 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     self.enemyController.view = self.enemyView;
     
     [self updateDisplays];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.highlightItems = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -119,7 +128,11 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     StandardCollectionCell *cell =
         [aCollectionView dequeueReusableCellWithReuseIdentifier:cellId
                                                    forIndexPath:indexPath];
-    cell.textLabel.text = [self.round nameAtIndex: indexPath.row];
+    
+    NSUInteger index = indexPath.row;
+    cell.textLabel.text = [self.round nameAtIndex: index];
+    cell.gameSelectionStyle = self.highlightItems ? GameOverSelectionStyle : GameActiveSelectionStyle;
+    [cell setSelected: self.highlightItems && [self.round isMainTopicItemAtIndex: index]];
     return cell;
 }
 
@@ -182,16 +195,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if(self.heroController.isMoving) return;
     
     // start the animation
-    [self.heroController startMovement];
-    __weak BoardViewController *weakSelf = self;
-    [self.actorMovement moveView: self.heroView
-                     toIndexPath: indexPath
-                      completion:^(BOOL finished) {
-                          [weakSelf.heroController stopMovement];
-                          if(! finished) return;
-                        
-                          [weakSelf view: weakSelf.heroView movedToIndexPath: indexPath];
-                      }];
+    [self.heroController moveToIndexPath: indexPath
+                              completion:^(NSIndexPath * indexPath) {
+          [self view: self.heroView movedToIndexPath: indexPath];
+    }];
 }
 
 #pragma mark - Game Loop Functions
@@ -343,8 +350,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self stopGameLoop];
     [self.audio gameOver];
     
+    self.highlightItems = YES;
+    [self.collectionView reloadData];
+    
     static NSString *segueId = @"GameOverSegue";
-    [self performSegueWithIdentifier:segueId sender: self];
+    int64_t delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self performSegueWithIdentifier:segueId sender: self];
+    });
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

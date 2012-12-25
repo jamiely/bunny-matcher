@@ -100,6 +100,12 @@ withNextDestinationBlock: nil
               completion: completion];
 }
 
+- (BOOL) willMoveView: (UIView*) aView leftToIndexPath: (NSIndexPath*) ip {
+    CGRect finalFrame = [self.delegate view: aView locationFromIndexPath: ip];
+    return aView.frame.origin.x > finalFrame.origin.x;
+}
+
+
 - (void)        moveView: (UIView*) aView
              toIndexPath: (NSIndexPath*) indexPath
 withNextDestinationBlock: (void(^)(CGPoint nextDestination))nextDestinationBlock

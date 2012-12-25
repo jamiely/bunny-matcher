@@ -1,5 +1,9 @@
 Version 1.0
 ===========
+?
+---------
+* Added highlight of answers upon game over
+
 Build 1.5
 ---------
 * Added contact template

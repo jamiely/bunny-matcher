@@ -20,6 +20,8 @@ extern const CGFloat ACTOR_DEFAULT_SPEED;
       toIndexPath: (NSIndexPath*) indexPath
        completion: (void(^)(BOOL finished))completion;
 
+- (BOOL) willMoveView: (UIView*) aView leftToIndexPath: (NSIndexPath*) ip;
+    
 @property (nonatomic, strong) id<ActorMovementDelegate> delegate;
 @property (nonatomic, assign) CGFloat speed;
 @end

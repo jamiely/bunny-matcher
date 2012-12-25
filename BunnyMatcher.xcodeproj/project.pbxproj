@@ -15,6 +15,7 @@
 		6D6C85E3168544B400706364 /* GameAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C85E2168544B400706364 /* GameAudioController.m */; };
 		6D6C85ED168562DD00706364 /* contact.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C85EC168562DD00706364 /* contact.txt */; };
 		6D6C85F11685657D00706364 /* RoundCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C85F01685657D00706364 /* RoundCompleteViewController.m */; };
+		6D6C8621168946EA00706364 /* bunny_sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6C8620168946EA00706364 /* bunny_sprites.png */; };
 		6D941F77167ACF7300AC5BAC /* Hit_Hurt10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */; };
 		6D941F7C167ACFFA00AC5BAC /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D941F7B167ACFFA00AC5BAC /* AudioController.m */; };
 		6D941F80167C22C700AC5BAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */; };
@@ -89,6 +90,7 @@
 		6D6C85EC168562DD00706364 /* contact.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = contact.txt; path = Assets/contact.txt; sourceTree = "<group>"; };
 		6D6C85EF1685657D00706364 /* RoundCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundCompleteViewController.h; path = Controllers/RoundCompleteViewController.h; sourceTree = "<group>"; };
 		6D6C85F01685657D00706364 /* RoundCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundCompleteViewController.m; path = Controllers/RoundCompleteViewController.m; sourceTree = "<group>"; };
+		6D6C8620168946EA00706364 /* bunny_sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bunny_sprites.png; path = Assets/bunny_sprites.png; sourceTree = "<group>"; };
 		6D941F76167ACF7300AC5BAC /* Hit_Hurt10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Hit_Hurt10.wav; path = Assets/Hit_Hurt10.wav; sourceTree = "<group>"; };
 		6D941F7A167ACFFA00AC5BAC /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioController.h; path = Controllers/AudioController.h; sourceTree = "<group>"; };
 		6D941F7B167ACFFA00AC5BAC /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioController.m; path = Controllers/AudioController.m; sourceTree = "<group>"; };
@@ -206,7 +208,6 @@
 		6DACD4CC165E8D7700C06503 = {
 			isa = PBXGroup;
 			children = (
-				6D23195516841E2100226E69 /* MessageUI.framework */,
 				6DACD4E1165E8D7700C06503 /* BunnyMatcher */,
 				6DACD4FF165E8D7700C06503 /* BunnyMatcherTests */,
 				6DACD4DA165E8D7700C06503 /* Frameworks */,
@@ -226,6 +227,7 @@
 		6DACD4DA165E8D7700C06503 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D23195516841E2100226E69 /* MessageUI.framework */,
 				6D941F7F167C22C700AC5BAC /* AudioToolbox.framework */,
 				6D941F7D167AD03A00AC5BAC /* AVFoundation.framework */,
 				6DACD53E1660283900C06503 /* QuartzCore.framework */,
@@ -386,6 +388,7 @@
 		6DACD555166B0C8100C06503 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6D6C8620168946EA00706364 /* bunny_sprites.png */,
 				6D6C85DF168543D100706364 /* gameover1.wav */,
 				6D6C85DB1685432C00706364 /* Pickup_Coin5.wav */,
 				6D6C85DC1685432C00706364 /* Powerup9.wav */,
@@ -485,6 +488,7 @@
 				6D6C85DE1685432C00706364 /* Powerup9.wav in Resources */,
 				6D6C85E0168543D100706364 /* gameover1.wav in Resources */,
 				6D6C85ED168562DD00706364 /* contact.txt in Resources */,
+				6D6C8621168946EA00706364 /* bunny_sprites.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

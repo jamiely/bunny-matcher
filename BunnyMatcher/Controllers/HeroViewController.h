@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Hero.h"
 #import "HeroView.h"
+#import "ActorMovement.h"
 
 @interface HeroViewController : UIViewController
 - (id) initWithModel: (Hero*) hero;
@@ -27,7 +28,10 @@
 - (BOOL) collidesWithRect: (CGRect) rect;
 
 - (void) resetLives;
-
+- (void) moveToIndexPath: (NSIndexPath*) indexPath
+              completion: (void (^)(NSIndexPath*)) completion;
+    
 @property (nonatomic, assign) NSUInteger heroLives;
+@property (nonatomic, strong) ActorMovement *actorMovement;
 
 @end

@@ -35,12 +35,14 @@
 
 - (void) startMovement {
     self.hero.isMoving = YES;
+    [[self heroView] showRunAnimation];
 }
 
 - (void) stopMovement {
     self.hero.isMoving = NO;
     self.view.frame = [[self.view.layer presentationLayer] frame];
     [self.view.layer removeAllAnimations];
+    [[self heroView] showStandingAnimation];
 }
 
 - (BOOL) isMoving {
@@ -109,4 +111,37 @@
     viewFrame.origin = hero;
     self.view.frame = viewFrame;
 }
+
+- (HeroView*) heroView {
+    return (HeroView*) self.view;
+}
+
+- (void) faceIndexPath: (NSIndexPath*) ip {
+    if([self.actorMovement willMoveView: self.heroView
+                        leftToIndexPath:ip]) {
+        [[self heroView] faceLeft];
+    }
+    else {
+        [[self heroView] faceRight];
+    }
+    
+}
+
+- (void) moveToIndexPath: (NSIndexPath*) indexPath
+              completion: (void (^)(NSIndexPath*)) completion {
+    [self startMovement];
+    [self faceIndexPath: indexPath];
+    
+    [self.actorMovement moveView: self.heroView
+                     toIndexPath: indexPath
+                      completion:^(BOOL finished) {
+                          [self stopMovement];
+                          if(! finished) return;
+                          
+                          if(completion) {
+                              completion(indexPath);
+                          }
+                      }];
+}
+
 @end

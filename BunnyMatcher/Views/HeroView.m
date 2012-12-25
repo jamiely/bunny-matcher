@@ -9,11 +9,16 @@
 #import "HeroView.h"
 #import "UIImage+Sprite.h"
 
-@interface HeroView()
-@end
-
 @implementation HeroView
+- (void)initialize {
+    [super initialize];
+    
+    self.spriteSize = CGSizeMake(110, 80);
+    self.runImages = [self imagesInRange: NSMakeRange(1, 2)];
+    self.standingImages = nil;
+    [self showStandingAnimation];
+}
 - (NSString*) spriteImageName {
-    return @"kit_from_firefox.png";
+    return @"bunny_sprites.png";
 }
 @end

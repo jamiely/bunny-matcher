@@ -88,6 +88,10 @@ const NSInteger ROUND_TIME_SCORE_MULTIPLIER = 5;
     
     return [self.mainTopic hasItem: spot.item];
 }
+- (BOOL) isMainTopicItemAtIndex: (NSUInteger) index {
+    BoardSpot *spot = [self spotAtIndex: index];
+    return [self.mainTopic hasItem: spot.item];
+}
 
 - (BOOL) tryToConsumeSpotAtIndex: (NSUInteger) index {
     if([self mayConsumeSpotAtIndex: index]) {

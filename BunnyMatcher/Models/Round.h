@@ -35,6 +35,7 @@ const extern NSTimeInterval ROUND_DEFAULT_TIME;
 - (BOOL) roundOver;
 
 - (NSInteger) scoreEvent: (ScoreEvent) event;
+- (BOOL) isMainTopicItemAtIndex: (NSUInteger) index;
 
 // Creates a new round based on the current round, passing along library information
 // and selecting the next topic. The score is also passed to the next round.

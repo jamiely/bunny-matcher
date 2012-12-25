@@ -9,4 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface CharacterView : UIView
+- (void) initialize;
+- (void) showRunAnimation;
+- (void) showStandingAnimation;
+- (NSArray*) imagesInRange: (NSRange) range;
+- (void)faceLeft;
+- (void)faceRight;
+@property (nonatomic, assign) CGSize spriteSize;
+@property (nonatomic, strong) NSArray *runImages;
+@property (nonatomic, strong) NSArray *standingImages;
 @end
