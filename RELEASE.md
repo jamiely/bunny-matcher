@@ -1,8 +1,12 @@
 Version 1.0
 ===========
-?
+
+Build 1.6
 ---------
 * Added highlight of answers upon game over
+* Added bunny image
+* Added fox image
+* Changed color palette
 
 Build 1.5
 ---------
