@@ -134,7 +134,7 @@
                                 <constraints>
                                     <constraint firstItem="UWz-1I-pi6" firstAttribute="centerX" secondItem="mYw-uZ-FRV" secondAttribute="centerX" type="default" id="4SL-AH-p5c"/>
                                     <constraint firstItem="UWz-1I-pi6" firstAttribute="top" secondItem="mYw-uZ-FRV" secondAttribute="top" constant="9" id="HDw-Ae-4OV"/>
-                                    <constraint firstAttribute="width" constant="38" type="user" id="W6h-03-9IH"/>
+                                    <constraint firstAttribute="width" constant="70" type="user" id="W6h-03-9IH"/>
                                 </constraints>
                             </view>
                         </subviews>

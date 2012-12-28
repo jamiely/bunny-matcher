@@ -55,6 +55,9 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 - (void) initialize {
     self.actorMovement = [[ActorMovement alloc] init];
     self.actorMovement.delegate = self;
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+        self.actorMovement.speed = 250;
+    }
     
     // load the library
     NSString *filepath = [[NSBundle mainBundle] pathForResource:@"topics"

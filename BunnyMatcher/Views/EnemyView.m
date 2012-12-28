@@ -9,7 +9,15 @@
 #import "EnemyView.h"
 
 @implementation EnemyView
+- (void)initialize {
+    [super initialize];
+    
+    self.spriteSize = CGSizeMake(120, 79);
+    self.runImages = [self imagesInRange: NSMakeRange(1, 2)];
+    self.standingImages = nil;
+    [self showStandingAnimation];
+}
 - (NSString*) spriteImageName {
-    return @"tux_from_linux.png";
+    return @"fox_sprites.png";
 }
 @end

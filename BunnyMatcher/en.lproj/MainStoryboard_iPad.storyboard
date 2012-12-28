@@ -230,8 +230,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.11170811810504833" green="0.24111648527011098" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="839-Tj-VFv" firstAttribute="centerX" secondItem="El8-g7-JRw" secondAttribute="centerX" type="default" id="UL8-vM-XOO"/>
-                                    <constraint firstItem="839-Tj-VFv" firstAttribute="top" secondItem="El8-g7-JRw" secondAttribute="top" type="default" id="teW-jC-6FG"/>
+                                    <constraint firstAttribute="width" constant="150" type="user" id="1u1-SJ-1RN"/>
+                                    <constraint firstItem="839-Tj-VFv" firstAttribute="leading" secondItem="El8-g7-JRw" secondAttribute="leading" priority="1" constant="12" type="user" id="5F9-Kq-jQF"/>
+                                    <constraint firstItem="839-Tj-VFv" firstAttribute="bottom" secondItem="El8-g7-JRw" secondAttribute="bottom" priority="1" type="user" id="B5R-f2-F7Z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehm-By-8vQ" customClass="LivesView">
@@ -273,21 +274,21 @@
                             <constraint firstItem="Smb-At-bgE" firstAttribute="bottom" secondItem="t6V-nr-kqf" secondAttribute="bottom" type="default" id="BD1-u5-lfw"/>
                             <constraint firstItem="Smb-At-bgE" firstAttribute="trailing" secondItem="t6V-nr-kqf" secondAttribute="trailing" type="default" id="FhR-Ii-7Wr"/>
                             <constraint firstItem="Smb-At-bgE" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" type="default" id="G3D-Xu-qag"/>
+                            <constraint firstAttribute="trailing" secondItem="El8-g7-JRw" secondAttribute="trailing" priority="1" constant="405" type="user" id="Ikf-uV-9Yd"/>
+                            <constraint firstItem="El8-g7-JRw" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" priority="1" constant="469" type="user" id="Ir9-ld-PP8"/>
                             <constraint firstItem="ehm-By-8vQ" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="731" id="LQL-Gi-vt7"/>
                             <constraint firstAttribute="trailing" secondItem="04Z-zb-DHl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Pzi-fE-Lde"/>
-                            <constraint firstItem="El8-g7-JRw" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="623" id="SEz-zB-GSb"/>
+                            <constraint firstItem="El8-g7-JRw" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" priority="1" constant="623" type="user" id="SEz-zB-GSb"/>
                             <constraint firstItem="q6l-ww-1yv" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="595" id="SIn-g4-Bbm"/>
                             <constraint firstAttribute="trailing" secondItem="ehm-By-8vQ" secondAttribute="trailing" constant="226" id="TTi-Rn-l0o"/>
                             <constraint firstAttribute="bottom" secondItem="q6l-ww-1yv" secondAttribute="bottom" constant="636" id="aLc-ll-qrp"/>
                             <constraint firstItem="ehm-By-8vQ" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="27" id="e9e-7N-W62"/>
                             <constraint firstItem="04Z-zb-DHl" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iKr-74-zqO"/>
-                            <constraint firstAttribute="trailing" secondItem="El8-g7-JRw" secondAttribute="trailing" constant="448" id="jAQ-wO-m82"/>
                             <constraint firstItem="tiY-KN-waK" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" constant="20" symbolic="YES" type="default" id="kss-aW-2an"/>
                             <constraint firstItem="Gm5-En-xdG" firstAttribute="trailing" secondItem="t6V-nr-kqf" secondAttribute="trailing" type="default" id="kzt-e3-axF"/>
-                            <constraint firstAttribute="bottom" secondItem="El8-g7-JRw" secondAttribute="bottom" constant="45" id="nc9-JU-vFd"/>
+                            <constraint firstAttribute="bottom" secondItem="El8-g7-JRw" secondAttribute="bottom" priority="1" constant="45" type="user" id="nc9-JU-vFd"/>
                             <constraint firstItem="ehm-By-8vQ" firstAttribute="bottom" secondItem="04Z-zb-DHl" secondAttribute="bottom" type="default" id="qG4-de-twx"/>
                             <constraint firstItem="Gm5-En-xdG" firstAttribute="top" secondItem="t6V-nr-kqf" secondAttribute="top" type="default" id="quH-S1-A2R"/>
-                            <constraint firstItem="El8-g7-JRw" firstAttribute="leading" secondItem="t6V-nr-kqf" secondAttribute="leading" constant="511" id="y9z-te-azJ"/>
                             <constraint firstAttribute="trailing" secondItem="tiY-KN-waK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="yrc-1V-SNv"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -708,6 +709,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>

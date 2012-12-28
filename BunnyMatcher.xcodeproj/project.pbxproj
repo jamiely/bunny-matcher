@@ -67,6 +67,7 @@
 		6DE534F91676D0F8004F270E /* topics.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DE534F81676D0F8004F270E /* topics.txt */; };
 		6DE534FD16781D4B004F270E /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE534FC16781D4B004F270E /* Game.m */; };
 		6DE5350016782D58004F270E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE534FE16782D58004F270E /* MainStoryboard_iPhone.storyboard */; };
+		6DF89B63168D2A680064632F /* fox_sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DF89B62168D2A680064632F /* fox_sprites.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		6DE534FB16781D4B004F270E /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = Models/Game.h; sourceTree = "<group>"; };
 		6DE534FC16781D4B004F270E /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = Models/Game.m; sourceTree = "<group>"; };
 		6DE534FF16782D58004F270E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		6DF89B62168D2A680064632F /* fox_sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fox_sprites.png; path = Assets/fox_sprites.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +390,7 @@
 		6DACD555166B0C8100C06503 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6DF89B62168D2A680064632F /* fox_sprites.png */,
 				6D6C8620168946EA00706364 /* bunny_sprites.png */,
 				6D6C85DF168543D100706364 /* gameover1.wav */,
 				6D6C85DB1685432C00706364 /* Pickup_Coin5.wav */,
@@ -489,6 +492,7 @@
 				6D6C85E0168543D100706364 /* gameover1.wav in Resources */,
 				6D6C85ED168562DD00706364 /* contact.txt in Resources */,
 				6D6C8621168946EA00706364 /* bunny_sprites.png in Resources */,
+				6DF89B63168D2A680064632F /* fox_sprites.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
