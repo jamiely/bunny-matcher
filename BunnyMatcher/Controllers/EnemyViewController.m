@@ -29,9 +29,19 @@
 - (void) moveEnemyWithoutDelay {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[self enemyView] showRunAnimation];
+        NSIndexPath *ip = [self.delegate nextIndexPathDestination];
+        if([self.actorMovement willMoveView: self.view leftToIndexPath: ip]) {
+            [[self enemyView] faceLeft];
+        }
+        else {
+            [[self enemyView] faceRight];
+        }
         [self.actorMovement moveView: self.view
-                         toIndexPath: [self.delegate nextIndexPathDestination]
-                          completion: nil];
+                         toIndexPath: ip
+                          completion: ^(BOOL success){
+                              [[self enemyView] showStandingAnimation];
+                          }];
     });
 }
 
@@ -48,4 +58,7 @@
     return [self presentationFrame].origin;
 }
 
+- (EnemyView*) enemyView {
+    return (EnemyView*) self.view;
+}
 @end

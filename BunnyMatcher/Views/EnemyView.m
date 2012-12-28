@@ -12,7 +12,7 @@
 - (void)initialize {
     [super initialize];
     
-    self.spriteSize = CGSizeMake(120, 79);
+    self.spriteSize = CGSizeMake(140, 79);
     self.runImages = [self imagesInRange: NSMakeRange(1, 2)];
     self.standingImages = nil;
     [self showStandingAnimation];
