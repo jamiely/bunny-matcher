@@ -1,0 +1,38 @@
+body, p {
+  font-size: 150%;
+  line-height: 125%;
+}
+h1 {
+  font-family: sans-serif;
+}
+.word {
+  font-style: italic;
+}
+.topic-word {
+  font-weight: bold;
+}
+.topic {
+  font-weight: bold;
+  text-decoration: underline;
+  font-variant: small-caps;
+  background-color: blue;
+  color: white;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.character {
+  font-variant: small-caps;
+  background-color: black;
+  color: white;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.hero {
+  background-color: green;
+}
+.enemy {
+  background-color: red;
+}
+
