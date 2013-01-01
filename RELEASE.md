@@ -1,6 +1,10 @@
 Version 1.0
 ===========
 
+Build 1.7
+---------
+* Added images and icons
+
 Build 1.6
 ---------
 * Added highlight of answers upon game over
