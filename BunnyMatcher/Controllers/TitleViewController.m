@@ -22,7 +22,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    NSMutableArray *sections = [@[@"Play", @"Scores"] mutableCopy];
+    NSMutableArray *sections = [@[@"Play", @"Scores", @"How to Play"] mutableCopy];
     
     if([MFMailComposeViewController canSendMail]) {
         [sections addObject: @"Contact"];
@@ -162,6 +162,11 @@
         }
             
         case 2: {
+            [self performSegueWithIdentifier: @"InstructionsSegue" sender: self];
+            break;
+        }
+            
+        case 3: {
             [self contact];
             break;
         }
