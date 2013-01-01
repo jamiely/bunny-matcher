@@ -14,6 +14,7 @@
 #import "GameAudioController.h"
 #import "GameOverViewController.h"
 #import "RoundCompleteViewController.h"
+#import "BMColor.h"
 
 const NSUInteger BOARD_ITEM_COUNT = 30;
 
@@ -84,8 +85,7 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.heroController.view = self.heroView;
     self.enemyController.view = self.enemyView;
-    self.collectionView.backgroundColor =
-        [UIColor colorWithRed:0 green:0.9 blue:0.5 alpha: 0.9];
+    self.collectionView.backgroundColor = [BMColor grassColor];
     
     [self updateDisplays];
 }
@@ -308,12 +308,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if(self.game.score >= 0) {
         format = BOARDVIEWCONTROLLER_SCORE_FORMAT;
         score = self.game.score;
-        color = [UIColor blackColor];
+        color = [BMColor positiveScoreColor];
     }
     else {
         format = BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT;
         score = - self.game.score;
-        color = [UIColor redColor];
+        color = [BMColor negativeScoreColor];
     }
     
     self.scoreLabel.text = [NSString stringWithFormat: format, score];

@@ -7,6 +7,7 @@
 //
 
 #import "StandardCollectionCell.h"
+#import "BMColor.h"
 
 @implementation StandardCollectionCell
 
@@ -40,11 +41,11 @@
     self.gameSelectionStyle = GameActiveSelectionStyle;
     
     [self updateBackgroundView];
-    self.backgroundColor = [UIColor colorWithRed: 0 green: 0.7 blue: 0.3 alpha: 1];
+    self.backgroundColor = [BMColor patchColor];
 }
 
 - (void)layoutSubviews {
-    self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.textColor = [BMColor patchTextColor];
 }
 
 - (void) updateBackgroundView {
@@ -54,7 +55,7 @@
             break;
         case GameOverSelectionStyle:
             self.selectedBackgroundView = [[UIView alloc] initWithFrame: self.frame];
-            self.selectedBackgroundView.backgroundColor = [UIColor blueColor];
+            self.selectedBackgroundView.backgroundColor = [BMColor patchHighlightColor];
             break;
     }
 }

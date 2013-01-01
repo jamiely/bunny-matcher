@@ -8,6 +8,7 @@
 
 #import "CharacterView.h"
 #import "UIImage+Sprite.h"
+#import "BMColor.h"
 
 @interface CharacterView()
 @property (nonatomic, strong) UIImage* spriteSheetImage;
@@ -105,7 +106,7 @@
     [self addSubview: self.imageView];
     [self bringSubviewToFront: self.imageView];
     
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [BMColor characterBackgroundColor];
     [self hideLabels];
 }
 

@@ -8,11 +8,16 @@
 
 #import "ScoresViewController.h"
 #import "ScoresManager.h"
-
-@interface ScoresViewController ()
-@end
+#import "BMColor.h"
 
 @implementation ScoresViewController
+#pragma mark - UIViewController functions
+
+- (void)viewDidLoad {
+    self.view.backgroundColor = [BMColor grassColor];
+    self.tableView.backgroundView = nil;
+}
+
 #pragma mark - UITableViewDatasource functions
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
