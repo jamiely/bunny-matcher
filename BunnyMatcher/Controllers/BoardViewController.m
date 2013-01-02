@@ -35,6 +35,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, assign) CGSize cellSizeIPadLandscape;
 @property (nonatomic, assign) CGSize cellSizeIPhonePortrait;
 @property (nonatomic, assign) CGSize cellSizeIPhoneLandscape;
+@property (nonatomic, assign) CGSize cellSizeIPhone5Portrait;
+@property (nonatomic, assign) CGSize cellSizeIPhone5Landscape;
 @end
 
 @implementation BoardViewController
@@ -64,6 +66,9 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     
     self.cellSizeIPhonePortrait = CGSizeMake(100, 32);
     self.cellSizeIPhoneLandscape = CGSizeMake(86, 35);
+    
+    self.cellSizeIPhone5Portrait = CGSizeMake(100, 40);
+    self.cellSizeIPhone5Landscape = CGSizeMake(86, 45);
 }
 
 - (void) initialize {
@@ -162,6 +167,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ?
             self.cellSizeIPadPortrait : self.cellSizeIPadLandscape;
+    }
+    else if([UIScreen mainScreen].bounds.size.height - 568 < DBL_EPSILON) {
+        return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ?
+            self.cellSizeIPhone5Portrait : self.cellSizeIPhone5Landscape;
     }
     
     return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ?
