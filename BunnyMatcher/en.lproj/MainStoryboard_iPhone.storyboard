@@ -12,14 +12,23 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="itJ-Fl-uh6">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="bunny_matcher.png" translatesAutoresizingMaskIntoConstraints="NO" id="xvU-uj-pAg">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="272" id="aKm-P9-5i0"/>
+                                    <constraint firstAttribute="height" constant="132" id="h22-ar-eG8"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="itJ-Fl-uh6">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="201" id="SQV-wt-UJ2"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="StandardCell" id="YNs-wC-TZc">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -33,10 +42,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="itJ-Fl-uh6" firstAttribute="bottom" secondItem="mDE-Wt-MmU" secondAttribute="bottom" type="default" id="Cgh-In-qpB"/>
-                            <constraint firstItem="itJ-Fl-uh6" firstAttribute="trailing" secondItem="mDE-Wt-MmU" secondAttribute="trailing" type="default" id="UaR-Az-3AY"/>
+                            <constraint firstItem="xvU-uj-pAg" firstAttribute="centerX" secondItem="itJ-Fl-uh6" secondAttribute="centerX" type="default" id="48p-Hn-a5T"/>
+                            <constraint firstItem="itJ-Fl-uh6" firstAttribute="top" secondItem="mDE-Wt-MmU" secondAttribute="top" priority="1" constant="224" type="user" id="5Ud-Wb-5kc"/>
+                            <constraint firstItem="xvU-uj-pAg" firstAttribute="centerX" secondItem="mDE-Wt-MmU" secondAttribute="centerX" type="default" id="J4w-if-Is1"/>
+                            <constraint firstItem="xvU-uj-pAg" firstAttribute="top" secondItem="mDE-Wt-MmU" secondAttribute="top" type="user" id="clz-Nx-7Uj"/>
                             <constraint firstItem="itJ-Fl-uh6" firstAttribute="leading" secondItem="mDE-Wt-MmU" secondAttribute="leading" type="default" id="e9p-lG-mmS"/>
-                            <constraint firstItem="itJ-Fl-uh6" firstAttribute="top" secondItem="mDE-Wt-MmU" secondAttribute="top" type="default" id="kjp-LK-p3q"/>
+                            <constraint firstItem="itJ-Fl-uh6" firstAttribute="bottom" secondItem="mDE-Wt-MmU" secondAttribute="bottom" type="user" id="jg0-UC-ysH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bunny Matcher" id="Zob-1x-LuW"/>
@@ -614,11 +625,15 @@
             <point key="canvasLocation" x="1041" y="466"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bunny_matcher.png" width="1052" height="744"/>
+    </resources>
     <classes>
         <class className="BoardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BoardViewController.h"/>
             <relationships>
                 <relationship kind="action" name="nextRound:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="onQuit:"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="enemyView" candidateClass="EnemyView"/>
                 <relationship kind="outlet" name="heroView" candidateClass="HeroView"/>
@@ -704,9 +719,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
