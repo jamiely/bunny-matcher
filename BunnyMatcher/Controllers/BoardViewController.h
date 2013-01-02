@@ -16,9 +16,10 @@
 
 @interface BoardViewController : UIViewController<UICollectionViewDataSource,
     UICollectionViewDelegate, UIGestureRecognizerDelegate, ActorMovementDelegate,
-    EnemyViewControllerDelegate>
+    EnemyViewControllerDelegate, UICollectionViewDelegateFlowLayout>
 
 - (IBAction) nextRound: (UIStoryboardSegue*) segue;
+- (IBAction)onQuit:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet HeroView *heroView;

@@ -49,14 +49,6 @@
     [self.view.layer removeAllAnimations];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
-}
-
-- (BOOL)shouldAutorotate {
-    return YES;
-}
-
 #pragma mark - Animation functions
 
 - (void) showRunAnimation {

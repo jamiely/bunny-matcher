@@ -46,7 +46,12 @@
     static UIColor *color = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        color = [UIColor blackColor];
+        if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+            color = [UIColor whiteColor];
+        }
+        else {
+            color = [UIColor blackColor];
+        }
     });
     return color;
 }

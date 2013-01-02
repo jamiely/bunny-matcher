@@ -1,6 +1,11 @@
 Version 1.0
 ===========
 
+Build 1.8
+---------
+* Added How to Play instructions
+* Added portrait support
+
 Build 1.7
 ---------
 * Added images and icons

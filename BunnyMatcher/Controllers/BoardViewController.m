@@ -30,6 +30,11 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 @property (nonatomic, strong) NSDate *lastLoopTime;
 @property (nonatomic, readonly) GameAudioController *audio;
 @property (nonatomic, assign) BOOL highlightItems;
+
+@property (nonatomic, assign) CGSize cellSizeIPadPortrait;
+@property (nonatomic, assign) CGSize cellSizeIPadLandscape;
+@property (nonatomic, assign) CGSize cellSizeIPhonePortrait;
+@property (nonatomic, assign) CGSize cellSizeIPhoneLandscape;
 @end
 
 @implementation BoardViewController
@@ -53,7 +58,17 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     return self;
 }
 
+- (void) initCellSizes {
+    self.cellSizeIPadPortrait = CGSizeMake(245, 80);
+    self.cellSizeIPadLandscape = CGSizeMake(190, 100);
+    
+    self.cellSizeIPhonePortrait = CGSizeMake(100, 32);
+    self.cellSizeIPhoneLandscape = CGSizeMake(86, 35);
+}
+
 - (void) initialize {
+    [self initCellSizes];
+    
     self.actorMovement = [[ActorMovement alloc] init];
     self.actorMovement.delegate = self;
     if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
@@ -108,12 +123,8 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
     [super viewDidDisappear: animated];
 }
 
-- (NSUInteger) supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskLandscape;
-}
-
-- (BOOL)shouldAutorotate {
-    return YES;
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -144,6 +155,17 @@ NSString *BOARDVIEWCONTROLLER_NEGATIVE_SCORE_FORMAT = @"(%06d)";
 - (void)  collectionView:(UICollectionView *)aCollectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self moveHeroToIndexPath: indexPath completion: nil];
+}
+
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ?
+            self.cellSizeIPadPortrait : self.cellSizeIPadLandscape;
+    }
+    
+    return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ?
+        self.cellSizeIPhonePortrait : self.cellSizeIPhoneLandscape;
 }
 
 #pragma mark - EnemyViewControllerDelegate functions
@@ -383,6 +405,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         
         [self startGameLoop];
     }];
+}
+
+- (IBAction)onQuit:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Sound effects
